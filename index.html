@@ -14,21 +14,24 @@
         }
 
         :root {
-            /* BLACK & GOLD THEME */
-            --primary-black: #0A0A0A;
-            --secondary-black: #1A1A1A;
-            --tertiary-black: #2A2A2A;
-            --dark-gray: #3A3A3A;
-            --light-gray: #8A8A8A;
-            --off-white: #F5F5F0;
-            --pure-white: #FFFFFF;
+            /* NAVY BLUE & GOLD THEME */
+            --primary-navy: #001B44;
+            --secondary-navy: #002855;
+            --tertiary-navy: #003366;
+            --dark-navy: #001233;
+            --light-navy: #0A3D6E;
             
             /* Gold Palette */
+            --gold-light: #E6C670;
             --gold-primary: #D4AF37;
-            --gold-light: #F4D03F;
-            --gold-dark: #B8860B;
-            --gold-muted: #C5A028;
+            --gold-deep: #A67C00;
             --gold-shine: #FFD700;
+            
+            /* Neutral Colors */
+            --cream: #F9F7F1;
+            --off-white: #FEFDFB;
+            --pure-white: #FFFFFF;
+            --light-gray: #B8B5AD;
             
             /* Typography */
             --font-display: 'Playfair Display', serif;
@@ -42,8 +45,8 @@
 
         body {
             font-family: var(--font-body);
-            background: var(--primary-black);
-            color: var(--off-white);
+            background: var(--primary-navy);
+            color: var(--cream);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -58,7 +61,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--primary-black);
+            background: var(--primary-navy);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -77,7 +80,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-black);
+            background: var(--primary-navy);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -95,7 +98,7 @@
             font-family: var(--font-display);
             font-size: 48px;
             font-weight: 900;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             margin-bottom: 30px;
             animation: logoReveal 1.5s ease forwards;
             opacity: 0;
@@ -109,7 +112,7 @@
         .preloader-bar {
             width: 200px;
             height: 2px;
-            background: var(--tertiary-black);
+            background: var(--tertiary-navy);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -117,7 +120,7 @@
         .preloader-progress {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light));
+            background: linear-gradient(90deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
             animation: loadProgress 2s ease forwards;
         }
 
@@ -130,7 +133,7 @@
         .cursor {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--gold-primary);
+            border: 2px solid var(--gold-light);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -142,7 +145,7 @@
         .cursor-dot {
             width: 6px;
             height: 6px;
-            background: var(--gold-primary);
+            background: var(--gold-light);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -152,7 +155,7 @@
 
         .cursor.hover {
             transform: translate(-50%, -50%) scale(2);
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(230, 198, 112, 0.1);
         }
 
         /* ===== NAVIGATION ===== */
@@ -161,7 +164,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(0, 27, 68, 0.9);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 25px 8%;
@@ -171,8 +174,8 @@
 
         nav.scrolled {
             padding: 15px 8%;
-            background: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(0, 27, 68, 0.98);
+            border-bottom: 1px solid rgba(230, 198, 112, 0.2);
         }
 
         .nav-container {
@@ -200,7 +203,6 @@
             overflow: hidden;
         }
 
-        /* Replaced SVG selector with IMG styling */
         .logo-emblem img {
             width: 100%;
             height: 100%;
@@ -211,7 +213,7 @@
             font-family: var(--font-display);
             font-size: 28px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -226,7 +228,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--off-white);
+            color: var(--cream);
             font-weight: 500;
             font-size: 14px;
             text-transform: uppercase;
@@ -248,7 +250,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--gold-primary);
+            color: var(--gold-light);
         }
 
         .nav-links a:hover::before {
@@ -258,9 +260,9 @@
         .menu-toggle {
             display: none;
             background: none;
-            border: 2px solid var(--gold-primary);
+            border: 2px solid var(--gold-light);
             padding: 10px 15px;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             cursor: pointer;
             font-size: 14px;
             text-transform: uppercase;
@@ -269,8 +271,8 @@
         }
 
         .menu-toggle:hover {
-            background: var(--gold-primary);
-            color: var(--primary-black);
+            background: var(--gold-light);
+            color: var(--primary-navy);
         }
 
         /* Mobile Menu */
@@ -280,7 +282,7 @@
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: var(--primary-black);
+            background: var(--primary-navy);
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -297,13 +299,13 @@
         .mobile-menu a {
             font-family: var(--font-display);
             font-size: 36px;
-            color: var(--off-white);
+            color: var(--cream);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .mobile-menu a:hover {
-            color: var(--gold-primary);
+            color: var(--gold-light);
         }
 
         .menu-close {
@@ -313,7 +315,7 @@
             background: none;
             border: none;
             font-size: 32px;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             cursor: pointer;
         }
 
@@ -325,7 +327,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: var(--primary-black);
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--primary-navy) 50%, var(--secondary-navy) 100%);
         }
 
         .hero-bg {
@@ -345,9 +347,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
-                radial-gradient(ellipse at 60% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+                radial-gradient(ellipse at 20% 50%, rgba(230, 198, 112, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(230, 198, 112, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 80%, rgba(166, 124, 0, 0.05) 0%, transparent 40%);
         }
 
         /* NNRG MUN Watermark */
@@ -377,8 +379,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(230, 198, 112, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(230, 198, 112, 0.03) 1px, transparent 1px);
             background-size: 100px 100px;
             animation: gridMove 20s linear infinite;
         }
@@ -400,7 +402,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: var(--gold-primary);
+            background: var(--gold-light);
             border-radius: 50%;
             opacity: 0.3;
             animation: floatParticle 15s infinite ease-in-out;
@@ -423,9 +425,9 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold-primary);
+            background: rgba(230, 198, 112, 0.1);
+            border: 1px solid rgba(230, 198, 112, 0.3);
+            color: var(--gold-light);
             padding: 12px 30px;
             border-radius: 50px;
             font-size: 13px;
@@ -475,12 +477,12 @@
             to { transform: translateY(0); }
         }
 
-        .hero h1 .text-white {
-            color: var(--off-white);
+        .hero h1 .text-cream {
+            color: var(--cream);
         }
 
         .hero h1 .text-gold {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -522,8 +524,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(0, 40, 85, 0.8);
+            border: 1px solid rgba(230, 198, 112, 0.2);
             border-radius: 10px;
             transition: all 0.4s ease;
         }
@@ -535,7 +537,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(230, 198, 112, 0.1), transparent);
             border-radius: 10px;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -547,8 +549,8 @@
 
         .countdown-item:hover {
             transform: translateY(-10px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-light);
+            box-shadow: 0 20px 40px rgba(230, 198, 112, 0.15);
         }
 
         .countdown-number {
@@ -580,8 +582,8 @@
 
         .btn-primary {
             position: relative;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
-            color: var(--primary-black);
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
+            color: var(--primary-navy);
             padding: 20px 50px;
             border-radius: 50px;
             text-decoration: none;
@@ -615,7 +617,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 40px rgba(230, 198, 112, 0.4);
         }
 
         .scroll-indicator {
@@ -640,7 +642,7 @@
         .scroll-line {
             width: 1px;
             height: 60px;
-            background: linear-gradient(to bottom, var(--gold-primary), transparent);
+            background: linear-gradient(to bottom, var(--gold-light), transparent);
             animation: scrollPulse 2s ease-in-out infinite;
         }
 
@@ -665,7 +667,7 @@
             font-size: 120px;
             font-weight: 900;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.2);
+            -webkit-text-stroke: 1px rgba(230, 198, 112, 0.15);
             position: absolute;
             top: 60px;
             left: 50%;
@@ -678,7 +680,7 @@
             align-items: center;
             gap: 10px;
             background: transparent;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             padding: 8px 0;
             font-size: 12px;
             font-weight: 600;
@@ -693,18 +695,18 @@
             content: '';
             width: 40px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary));
+            background: linear-gradient(90deg, transparent, var(--gold-light));
         }
 
         .section-badge::after {
-            background: linear-gradient(90deg, var(--gold-primary), transparent);
+            background: linear-gradient(90deg, var(--gold-light), transparent);
         }
 
         .section-title {
             font-family: var(--font-display);
             font-size: 64px;
             font-weight: 900;
-            color: var(--off-white);
+            color: var(--cream);
             margin-bottom: 25px;
             letter-spacing: -1px;
             line-height: 1.1;
@@ -729,7 +731,7 @@
 
         /* ===== ABOUT SECTION ===== */
         .about {
-            background: var(--primary-black);
+            background: var(--primary-navy);
             position: relative;
         }
 
@@ -764,14 +766,14 @@
             text-align: center;
             gap: 15px;
             padding: 30px 20px;
-            background: rgba(26, 26, 26, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(0, 40, 85, 0.5);
+            border: 1px solid rgba(230, 198, 112, 0.1);
             border-radius: 10px;
             transition: all 0.4s ease;
         }
 
         .about-feature:hover {
-            border-color: var(--gold-primary);
+            border-color: var(--gold-light);
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
@@ -779,7 +781,7 @@
         .about-feature-icon {
             width: 60px;
             height: 60px;
-            border: 1px solid var(--gold-primary);
+            border: 1px solid var(--gold-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -790,14 +792,14 @@
         }
 
         .about-feature:hover .about-feature-icon {
-            background: var(--gold-primary);
+            background: var(--gold-light);
             transform: rotate(360deg);
         }
 
         .about-feature-text h4 {
             font-size: 16px;
             font-weight: 700;
-            color: var(--off-white);
+            color: var(--cream);
             margin-bottom: 5px;
         }
 
@@ -815,8 +817,8 @@
         .stat-card {
             text-align: center;
             padding: 50px 30px;
-            background: rgba(26, 26, 26, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(0, 40, 85, 0.5);
+            border: 1px solid rgba(230, 198, 112, 0.1);
             border-radius: 10px;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -830,7 +832,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light));
+            background: linear-gradient(90deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
             transform: scaleX(0);
             transition: transform 0.5s ease;
         }
@@ -841,7 +843,7 @@
 
         .stat-card:hover {
             transform: translateY(-15px);
-            border-color: var(--gold-primary);
+            border-color: var(--gold-light);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
 
@@ -866,7 +868,7 @@
 
         /* ===== WHY NNRG MUN ===== */
         .why-nnrg {
-            background: var(--secondary-black);
+            background: var(--secondary-navy);
             position: relative;
             overflow: hidden;
         }
@@ -879,8 +881,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at 0% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+                radial-gradient(ellipse at 0% 50%, rgba(230, 198, 112, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 50%, rgba(230, 198, 112, 0.05) 0%, transparent 50%);
         }
 
         .features-grid {
@@ -892,9 +894,9 @@
         }
 
         .feature-card {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(0, 27, 68, 0.8);
             padding: 50px 40px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(230, 198, 112, 0.1);
             border-radius: 10px;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -908,7 +910,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(230, 198, 112, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -919,14 +921,14 @@
 
         .feature-card:hover {
             transform: translateY(-15px);
-            border-color: var(--gold-primary);
+            border-color: var(--gold-light);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
         .feature-icon {
             width: 80px;
             height: 80px;
-            border: 2px solid var(--gold-primary);
+            border: 2px solid var(--gold-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -937,7 +939,7 @@
         }
 
         .feature-card:hover .feature-icon {
-            background: var(--gold-primary);
+            background: var(--gold-light);
             transform: rotate(360deg);
         }
 
@@ -945,7 +947,7 @@
             font-family: var(--font-display);
             font-size: 24px;
             font-weight: 700;
-            color: var(--off-white);
+            color: var(--cream);
             margin-bottom: 15px;
         }
 
@@ -957,7 +959,7 @@
 
         /* ===== COMMITTEES - FLIP CARDS ===== */
         .committees {
-            background: var(--primary-black);
+            background: var(--primary-navy);
             position: relative;
         }
 
@@ -965,7 +967,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 60px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             perspective: 1000px;
         }
@@ -999,8 +1001,8 @@
         }
 
         .committee-front {
-            background: linear-gradient(180deg, var(--secondary-black), var(--tertiary-black));
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: linear-gradient(180deg, var(--secondary-navy), var(--tertiary-navy));
+            border: 2px solid rgba(230, 198, 112, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1017,8 +1019,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 50% 30%, rgba(230, 198, 112, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 70%, rgba(230, 198, 112, 0.1) 0%, transparent 50%);
         }
 
         .committee-emblem {
@@ -1041,15 +1043,15 @@
         }
 
         @keyframes emblemPulse {
-            0%, 100% { filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0.4)); }
-            50% { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3)); }
+            0%, 100% { filter: drop-shadow(0 0 0 rgba(230, 198, 112, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(230, 198, 112, 0.3)); }
         }
 
         .committee-name {
             font-family: var(--font-display);
             font-size: 48px;
             font-weight: 900;
-            background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1085,11 +1087,11 @@
         .flip-indicator::before {
             content: '↻';
             font-size: 16px;
-            color: var(--gold-primary);
+            color: var(--gold-light);
         }
 
         .committee-back {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
@@ -1113,7 +1115,7 @@
 
         .agenda-label {
             font-size: 12px;
-            color: var(--primary-black);
+            color: var(--primary-navy);
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 20px;
@@ -1125,7 +1127,7 @@
         .agenda-text {
             font-family: var(--font-elegant);
             font-size: 22px;
-            color: var(--primary-black);
+            color: var(--primary-navy);
             line-height: 1.8;
             font-weight: 600;
             position: relative;
@@ -1141,7 +1143,7 @@
             align-items: center;
             gap: 10px;
             font-size: 12px;
-            color: var(--primary-black);
+            color: var(--primary-navy);
             text-transform: uppercase;
             letter-spacing: 2px;
             opacity: 0.8;
@@ -1149,7 +1151,7 @@
 
         /* ===== TIMELINE ===== */
         .timeline {
-            background: var(--secondary-black);
+            background: var(--secondary-navy);
             position: relative;
         }
 
@@ -1165,7 +1167,7 @@
             transform: translateX(-50%);
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--gold-primary), var(--gold-dark), var(--gold-primary));
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-deep), var(--gold-light));
         }
 
         .timeline-item {
@@ -1193,8 +1195,8 @@
         }
 
         .timeline-content {
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(0, 40, 85, 0.8);
+            border: 1px solid rgba(230, 198, 112, 0.2);
             padding: 40px;
             border-radius: 10px;
             position: relative;
@@ -1202,7 +1204,7 @@
         }
 
         .timeline-content:hover {
-            border-color: var(--gold-primary);
+            border-color: var(--gold-light);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
@@ -1212,21 +1214,21 @@
             transform: translateX(-50%);
             width: 24px;
             height: 24px;
-            background: var(--gold-primary);
+            background: var(--gold-light);
             border-radius: 50%;
-            border: 4px solid var(--primary-black);
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3);
+            border: 4px solid var(--primary-navy);
+            box-shadow: 0 0 0 4px rgba(230, 198, 112, 0.3);
             transition: all 0.4s ease;
         }
 
         .timeline-item:hover .timeline-dot {
             transform: translateX(-50%) scale(1.3);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 20px rgba(230, 198, 112, 0.5);
         }
 
         .timeline-date {
             font-size: 13px;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             font-weight: 700;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -1237,7 +1239,7 @@
             font-family: var(--font-display);
             font-size: 26px;
             font-weight: 700;
-            color: var(--off-white);
+            color: var(--cream);
             margin-bottom: 10px;
         }
 
@@ -1249,7 +1251,7 @@
 
         /* ===== REGISTRATION ===== */
         .registration {
-            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1262,51 +1264,362 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(0, 27, 68, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 27, 68, 0.2) 0%, transparent 50%);
         }
 
         .registration .section-badge {
-            color: var(--primary-black);
+            color: var(--primary-navy);
         }
 
         .registration .section-badge::before,
         .registration .section-badge::after {
-            background: var(--primary-black);
+            background: var(--primary-navy);
         }
 
         .registration .section-title {
-            color: var(--primary-black);
+            color: var(--primary-navy);
+        }
+
+        .registration .section-header {
+            margin-bottom: 60px;
         }
 
         .registration-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .registration-form-wrapper {
-            background: var(--primary-black);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        /* Delegation Type Selector */
+        .delegation-selector {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .form-iframe {
-            width: 100%;
-            height: 1200px;
-            border: none;
+        .delegation-btn {
+            position: relative;
+            padding: 25px 50px;
+            border: 3px solid var(--primary-navy);
+            background: transparent;
+            color: var(--primary-navy);
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
             border-radius: 15px;
-            background: var(--secondary-black);
+            transition: all 0.4s ease;
+            min-width: 280px;
+        }
+
+        .delegation-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-navy);
+            border-radius: 12px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .delegation-btn:hover::before,
+        .delegation-btn.active::before {
+            transform: scaleX(1);
+        }
+
+        .delegation-btn:hover,
+        .delegation-btn.active {
+            color: var(--gold-light);
+        }
+
+        .delegation-btn .fee {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        .delegation-btn .fee-amount {
+            font-size: 28px;
+            font-weight: 900;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Registration Form Wrapper */
+        .registration-form-wrapper {
+            background: var(--primary-navy);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        /* Form Styling */
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-header {
+            margin-bottom: 10px;
+        }
+
+        .form-header h3 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group label .required {
+            color: var(--gold-light);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 18px 20px;
+            border: 2px solid rgba(230, 198, 112, 0.2);
+            background: rgba(0, 40, 85, 0.5);
+            border-radius: 10px;
+            font-size: 16px;
+            color: var(--cream);
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: var(--light-gray);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--gold-light);
+            box-shadow: 0 0 20px rgba(230, 198, 112, 0.2);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E6C670' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .form-group select option {
+            background: var(--primary-navy);
+            color: var(--cream);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-submit {
+            margin-top: 10px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
+            color: var(--primary-navy);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230, 198, 112, 0.4);
+        }
+
+        /* Payment Section */
+        .payment-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 40, 85, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(230, 198, 112, 0.2);
+        }
+
+        .payment-header h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        .payment-header p {
+            font-size: 14px;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .payment-amount {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+
+        .qr-code-container {
+            width: 220px;
+            height: 220px;
+            background: var(--pure-white);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-code-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--light-gray);
+            border-radius: 10px;
+            color: var(--primary-navy);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .qr-placeholder span {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .payment-info {
+            font-size: 13px;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        .payment-info strong {
+            color: var(--gold-light);
+        }
+
+        .payment-note {
+            margin-top: 20px;
+            padding: 15px 20px;
+            background: rgba(230, 198, 112, 0.1);
+            border: 1px solid rgba(230, 198, 112, 0.3);
+            border-radius: 10px;
+            font-size: 12px;
+            color: var(--cream);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .success-message h3 {
+            font-family: var(--font-display);
+            font-size: 36px;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            font-size: 16px;
+            color: var(--light-gray);
+            line-height: 1.8;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--primary-black);
-            color: var(--off-white);
+            background: var(--dark-navy);
+            color: var(--cream);
             padding: 100px 8% 40px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(230, 198, 112, 0.2);
         }
 
         .footer-content {
@@ -1337,7 +1650,7 @@
         .footer-section h4 {
             font-size: 16px;
             font-weight: 700;
-            color: var(--gold-primary);
+            color: var(--gold-light);
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -1366,11 +1679,11 @@
             opacity: 0;
             transform: translateX(-10px);
             transition: all 0.3s ease;
-            color: var(--gold-primary);
+            color: var(--gold-light);
         }
 
         .footer-links a:hover {
-            color: var(--gold-primary);
+            color: var(--gold-light);
             padding-left: 20px;
         }
 
@@ -1380,7 +1693,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-top: 1px solid rgba(230, 198, 112, 0.1);
             padding-top: 40px;
             text-align: center;
         }
@@ -1397,11 +1710,11 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--primary-black);
+            background: var(--primary-navy);
             padding: 15px 20px;
             box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
             z-index: 999;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 1px solid rgba(230, 198, 112, 0.3);
         }
 
         .mobile-cta .btn-primary {
@@ -1424,8 +1737,7 @@
             }
 
             .committees-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
+                gap: 40px;
             }
 
             .about-features {
@@ -1440,6 +1752,20 @@
             .mun-watermark {
                 width: 350px;
                 height: 350px;
+            }
+
+            .registration-form-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .delegation-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .delegation-btn {
+                width: 100%;
+                max-width: 350px;
             }
         }
 
@@ -1539,6 +1865,32 @@
                 width: 280px;
                 height: 280px;
             }
+
+            .registration-form-wrapper {
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .delegation-btn {
+                padding: 20px 30px;
+                min-width: unset;
+            }
+
+            .delegation-btn .fee-amount {
+                font-size: 24px;
+            }
+
+            .payment-amount {
+                font-size: 36px;
+            }
+
+            .qr-code-container {
+                width: 180px;
+                height: 180px;
+            }
         }
 
         /* ===== ANIMATION CLASSES ===== */
@@ -1610,7 +1962,6 @@
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-emblem">
-                    <!-- Image Replacement for Navbar Logo -->
                     <img src="nnrg-logo.jpg" alt="NNRG MUN Logo">
                 </div>
                 <span class="logo-text">NNRG MUN 2026</span>
@@ -1630,9 +1981,7 @@
         <div class="hero-bg">
             <div class="grid-lines"></div>
             <div class="particles" id="particles"></div>
-            <!-- NNRG MUN Watermark -->
             <div class="mun-watermark">
-                <!-- Image Replacement for Background Watermark -->
                 <img src="nnrg-logo.jpg" alt="">
             </div>
         </div>
@@ -1640,7 +1989,7 @@
         <div class="hero-content">
             <div class="hero-badge">✦ March 2026 • Hyderabad, India ✦</div>
             <h1>
-                <div class="line"><span class="text-white">NNRG Model</span></div>
+                <div class="line"><span class="text-cream">NNRG Model</span></div>
                 <div class="line"><span class="text-gold">United Nations</span></div>
             </h1>
             <p class="hero-tagline">"Shaping Tomorrow's Diplomatic Leaders Through Excellence"</p>
@@ -1727,11 +2076,11 @@
 
             <div class="about-stats">
                 <div class="stat-card reveal stagger-1">
-                    <div class="stat-number">300+</div>
+                    <div class="stat-number">200+</div>
                     <div class="stat-label">Delegates Expected</div>
                 </div>
                 <div class="stat-card reveal stagger-2">
-                    <div class="stat-number">2</div>
+                    <div class="stat-number">4</div>
                     <div class="stat-label">Committees</div>
                 </div>
                 <div class="stat-card reveal stagger-3">
@@ -1800,7 +2149,6 @@
                 <div class="committee-card-inner">
                     <div class="committee-front">
                         <div class="committee-emblem">
-                            <!-- Image Replacement for DISEC -->
                             <img src="disec-logo.jpg" alt="DISEC Emblem">
                         </div>
                         <h3 class="committee-name">DISEC</h3>
@@ -1820,7 +2168,6 @@
                 <div class="committee-card-inner">
                     <div class="committee-front">
                         <div class="committee-emblem">
-                            <!-- Image Replacement for AIPPM -->
                             <img src="aippm-logo.jpg" alt="AIPPM Emblem">
                         </div>
                         <h3 class="committee-name">AIPPM</h3>
@@ -1831,6 +2178,44 @@
                         <div class="agenda-label">Committee Agenda</div>
                         <p class="agenda-text">Deliberating on electoral reforms and strengthening democratic institutions for transparent and accountable governance in India.</p>
                         <div class="committee-back-footer">AIPPM • 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TLA -->
+            <div class="committee-card reveal stagger-3">
+                <div class="committee-card-inner">
+                    <div class="committee-front">
+                        <div class="committee-emblem">
+                            <img src="tla-logo.jpg" alt="TLA Emblem">
+                        </div>
+                        <h3 class="committee-name">TLA</h3>
+                        <p class="committee-full-name">Telangana Legislative Assembly</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
+                    </div>
+                    <div class="committee-back">
+                        <div class="agenda-label">Committee Agenda</div>
+                        <p class="agenda-text">Demolition on the name of HYDRAA.</p>
+                        <div class="committee-back-footer">TLA • 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNHRC -->
+            <div class="committee-card reveal stagger-4">
+                <div class="committee-card-inner">
+                    <div class="committee-front">
+                        <div class="committee-emblem">
+                            <img src="unhrc-logo.jpg" alt="UNHRC Emblem">
+                        </div>
+                        <h3 class="committee-name">UNHRC</h3>
+                        <p class="committee-full-name">United Nations Human Rights Council</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
+                    </div>
+                    <div class="committee-back">
+                        <div class="agenda-label">Committee Agenda</div>
+                        <p class="agenda-text">Addressing human rights violations in conflict zones and establishing mechanisms for protection of vulnerable populations worldwide.</p>
+                        <div class="committee-back-footer">UNHRC • 2026</div>
                     </div>
                 </div>
             </div>
@@ -1903,14 +2288,105 @@
             <h2 class="section-title reveal">Secure Your<br>Seat Today</h2>
         </div>
 
+        <!-- Delegation Type Selector -->
+        <div class="delegation-selector reveal">
+            <button class="delegation-btn active" id="internalBtn" onclick="selectDelegation('internal')">
+                Internal Delegation
+                <span class="fee">Registration Fee</span>
+                <span class="fee-amount">₹200</span>
+            </button>
+            <button class="delegation-btn" id="externalBtn" onclick="selectDelegation('external')">
+                External Delegation
+                <span class="fee">Registration Fee</span>
+                <span class="fee-amount">₹600</span>
+            </button>
+        </div>
+
         <div class="registration-container reveal">
             <div class="registration-form-wrapper">
-                <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSd3Arl5KFEe5Fa2uGCcaTdFhIJbimoZ55gplGyJKJWhcSnBVQ/viewform?embedded=true" 
-                    class="form-iframe"
-                    id="registrationForm">
-                    Loading form...
-                </iframe>
+                <!-- Registration Form -->
+                <div class="registration-form" id="registrationForm">
+                    <div class="form-header">
+                        <h3 id="formTitle">Internal Delegation Registration</h3>
+                        <p>Please fill in all the required details to complete your registration</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>College/Institution Name <span class="required">*</span></label>
+                        <input type="text" id="college" placeholder="Enter your college name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Committee <span class="required">*</span></label>
+                        <select id="committee" required>
+                            <option value="">Select your preferred committee</option>
+                            <option value="DISEC">DISEC - Disarmament and International Security Committee</option>
+                            <option value="AIPPM">AIPPM - All India Political Parties Meet</option>
+                            <option value="TLA">TLA - Telangana Legislative Assembly</option>
+                            <option value="UNHRC">UNHRC - United Nations Human Rights Council</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transaction ID <span class="required">*</span></label>
+                        <input type="text" id="transactionId" placeholder="Enter your payment transaction ID" required>
+                    </div>
+
+                    <button type="button" class="btn-submit" onclick="submitForm()">
+                        Submit Registration →
+                    </button>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <div class="payment-header">
+                        <h3>Payment Details</h3>
+                        <p>Scan the QR code to complete payment</p>
+                    </div>
+
+                    <div class="payment-amount" id="paymentAmount">₹200</div>
+
+                    <div class="qr-code-container">
+                        <!-- Replace this with your actual QR code image -->
+                        <img src="payment-qr.jpg" alt="Payment QR Code" id="qrImage" onerror="this.style.display='none'; document.getElementById('qrPlaceholder').style.display='flex';">
+                        <div class="qr-placeholder" id="qrPlaceholder" style="display: none;">
+                            <span>📱</span>
+                            <p>QR Code<br>Coming Soon</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-info">
+                        <p><strong>UPI ID:</strong> munnnrg@upi</p>
+                        <p><strong>Account Name:</strong> NNRG MUN 2026</p>
+                    </div>
+
+                    <div class="payment-note">
+                        ⚠️ Please save the transaction ID after payment and enter it in the form to complete registration.
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h3>Registration Successful!</h3>
+                    <p>Thank you for registering for NNRG MUN 2026. A confirmation email will be sent to your registered email address shortly. We look forward to seeing you at the conference!</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1935,14 +2411,13 @@
                 <h4>Connect</h4>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/nnrgmun?igsh=MXExMHhpNXExODd5Ng==" target="_blank">Instagram</a></li>
-                    <li><a href="munnnrg@gmail.com">Email Us</a></li>
+                    <li><a href="https://www.linkedin.com/in/mun-nnrg-b161a73ab" target="_blank">LinkedIn</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Location</h4>
                 <ul class="footer-links">
                     <li><a href="https://maps.app.goo.gl/QvUGkgFe4FzXqew88?g_st=ipc" target="_blank">Campus Location</a></li>
-                    <li><a href="#">Hyderabad, India</a></li>
                 </ul>
             </div>
         </div>
@@ -2109,6 +2584,97 @@
         }, { threshold: 0.5 });
 
         counters.forEach(counter => counterObserver.observe(counter));
+
+        // ===== DELEGATION SELECTION =====
+        let selectedDelegation = 'internal';
+
+        function selectDelegation(type) {
+            selectedDelegation = type;
+            const internalBtn = document.getElementById('internalBtn');
+            const externalBtn = document.getElementById('externalBtn');
+            const formTitle = document.getElementById('formTitle');
+            const paymentAmount = document.getElementById('paymentAmount');
+
+            if (type === 'internal') {
+                internalBtn.classList.add('active');
+                externalBtn.classList.remove('active');
+                formTitle.textContent = 'Internal Delegation Registration';
+                paymentAmount.textContent = '₹200';
+            } else {
+                externalBtn.classList.add('active');
+                internalBtn.classList.remove('active');
+                formTitle.textContent = 'External Delegation Registration';
+                paymentAmount.textContent = '₹600';
+            }
+        }
+
+        // ===== FORM SUBMISSION =====
+        function submitForm() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const college = document.getElementById('college').value;
+            const committee = document.getElementById('committee').value;
+            const transactionId = document.getElementById('transactionId').value;
+
+            // Basic validation
+            if (!fullName || !email || !phone || !college || !committee || !transactionId) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Phone validation (basic)
+            const phoneRegex = /^[\d\s\+\-]{10,15}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+
+            // Prepare form data
+            const formData = {
+                delegationType: selectedDelegation,
+                fullName: fullName,
+                email: email,
+                phone: phone,
+                college: college,
+                committee: committee,
+                transactionId: transactionId,
+                fee: selectedDelegation === 'internal' ? 200 : 600
+            };
+
+            console.log('Form submitted:', formData);
+
+            // Show success message
+            document.getElementById('registrationForm').style.display = 'none';
+            document.querySelector('.payment-section').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+
+            // You can add your form submission logic here (e.g., send to backend/Google Sheets)
+            // Example: Send to Google Sheets via Google Apps Script
+            /*
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+            */
+        }
     </script>
 </body>
 </html>
