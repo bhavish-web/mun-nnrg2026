@@ -2586,109 +2586,110 @@
         }
     }
 
-    // ===== FORM SUBMISSION - FORMSUBMIT =====
-    async function submitForm() {
-        // Get form values
-        const fullName = document.getElementById('fullName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const college = document.getElementById('college').value.trim();
-        const year = document.getElementById('year').value;           // NEW
-        const section = document.getElementById('section').value.trim(); // NEW
-        const committee = document.getElementById('committee').value;
-        const transactionId = document.getElementById('transactionId').value.trim();
+   // ===== FORM SUBMISSION - FIXED =====
+        function submitForm() {
+            console.log('Submit button clicked!'); // Debug log
 
-        // Validation - Updated to include year and section
-        if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
-            alert('⚠️ Please fill in all required fields.');
-            return;
-        }
+            // Get form values
+            var fullName = document.getElementById('fullName').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var college = document.getElementById('college').value.trim();
+            var year = document.getElementById('year').value;
+            var section = document.getElementById('section').value.trim();
+            var committee = document.getElementById('committee').value;
+            var transactionId = document.getElementById('transactionId').value.trim();
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('⚠️ Please enter a valid email address.');
-            return;
-        }
+            console.log('Form values:', { fullName, email, phone, college, year, section, committee, transactionId }); // Debug log
 
-        const phoneClean = phone.replace(/[\s\-\+]/g, '');
-        if (phoneClean.length < 10 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
-            alert('⚠️ Please enter a valid phone number (10-15 digits).');
-            return;
-        }
+            // Validation
+            if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
+                alert('⚠️ Please fill in all required fields.');
+                return;
+            }
 
-        // Show loading
-        const submitBtn = document.querySelector('.btn-submit');
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = 'Submitting... ⏳';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
-        submitBtn.style.cursor = 'not-allowed';
+            // Email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('⚠️ Please enter a valid email address.');
+                return;
+            }
 
-        // Prepare data - Updated to include year and section
-        const formData = {
-            _subject: '🎓 New NNRG MUN 2026 Registration - ' + fullName,
-            _template: 'table',
-            _captcha: 'false',
-            'Delegation Type': selectedDelegation.charAt(0).toUpperCase() + selectedDelegation.slice(1),
-            'Full Name': fullName,
-            'Email': email,
-            'Phone Number': phone,
-            'College / Institution': college,
-            'Year': year,                    // NEW
-            'Section': section.toUpperCase(), // NEW - Auto uppercase
-            'Preferred Committee': committee,
-            'Transaction ID': transactionId,
-            'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
-            'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-        };
+            // Phone validation
+            var phoneClean = phone.replace(/[\s\-\+]/g, '');
+            if (phoneClean.length < 10 || phoneClean.length > 15) {
+                alert('⚠️ Please enter a valid phone number (10-15 digits).');
+                return;
+            }
 
-        // Send to FormSubmit
-        try {
-            const response = await fetch(FORMSUBMIT_URL, {
+            // Show loading
+            var submitBtn = document.getElementById('submitBtn');
+            var originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Submitting... ⏳';
+            submitBtn.disabled = true;
+
+            // Prepare data
+            var formData = {
+                _subject: '🎓 New NNRG MUN 2026 Registration - ' + fullName,
+                _template: 'table',
+                _captcha: 'false',
+                'Delegation Type': selectedDelegation.charAt(0).toUpperCase() + selectedDelegation.slice(1),
+                'Full Name': fullName,
+                'Email': email,
+                'Phone Number': phone,
+                'College / Institution': college,
+                'Year': year,
+                'Section': section.toUpperCase(),
+                'Preferred Committee': committee,
+                'Transaction ID': transactionId,
+                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            };
+
+            console.log('Sending data:', formData); // Debug log
+
+            // Send to FormSubmit
+            fetch(FORMSUBMIT_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify(formData)
+            })
+            .then(function(response) {
+                console.log('Response:', response); // Debug log
+                return response.json();
+            })
+            .then(function(result) {
+                console.log('Result:', result); // Debug log
+
+                if (result.success) {
+                    // SUCCESS
+                    document.getElementById('registrationForm').style.display = 'none';
+                    document.getElementById('paymentSection').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+
+                    // Clear form
+                    document.getElementById('fullName').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('college').value = '';
+                    document.getElementById('year').value = '';
+                    document.getElementById('section').value = '';
+                    document.getElementById('committee').value = '';
+                    document.getElementById('transactionId').value = '';
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error); // Debug log
+                alert('❌ Error submitting form. Please try again.');
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             });
-
-            const result = await response.json();
-
-            if (result.success) {
-                console.log('✅ Registration submitted successfully!');
-                
-                // Hide form and payment
-                document.getElementById('registrationForm').style.display = 'none';
-                document.querySelector('.payment-section').style.display = 'none';
-                
-                // Show success
-                document.getElementById('successMessage').classList.add('show');
-
-                // Clear form - Updated to include year and section
-                document.getElementById('fullName').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('phone').value = '';
-                document.getElementById('college').value = '';
-                document.getElementById('year').value = '';       // NEW
-                document.getElementById('section').value = '';    // NEW
-                document.getElementById('committee').value = '';
-                document.getElementById('transactionId').value = '';
-
-            } else {
-                throw new Error('Submission failed');
-            }
-
-        } catch (error) {
-            console.error('❌ Error:', error);
-            alert('❌ Error submitting form. Please try again.');
-            
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            submitBtn.style.cursor = 'pointer';
         }
-    }
 </script>
 </body>
 </html>
