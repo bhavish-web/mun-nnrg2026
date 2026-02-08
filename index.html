@@ -1023,6 +1023,7 @@
                 radial-gradient(circle at 50% 70%, rgba(230, 198, 112, 0.1) 0%, transparent 50%);
         }
 
+        /* UPDATED: Square committee emblem container */
         .committee-emblem {
             width: 140px;
             height: 140px;
@@ -1035,11 +1036,13 @@
             animation: emblemPulse 3s ease-in-out infinite;
         }
 
+        /* UPDATED: Square committee emblem image - CHANGED FROM ROUND TO SQUARE */
         .committee-emblem img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 50%;
+            border-radius: 10px; /* Changed from 50% (circle) to 10px (square with rounded corners) */
+            /* Use border-radius: 0; for completely square corners */
         }
 
         @keyframes emblemPulse {
@@ -2655,25 +2658,6 @@
             document.getElementById('registrationForm').style.display = 'none';
             document.querySelector('.payment-section').style.display = 'none';
             document.getElementById('successMessage').classList.add('show');
-
-            // You can add your form submission logic here (e.g., send to backend/Google Sheets)
-            // Example: Send to Google Sheets via Google Apps Script
-            /*
-            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-            */
         }
     </script>
 </body>
