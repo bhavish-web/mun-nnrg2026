@@ -1023,7 +1023,7 @@
                 radial-gradient(circle at 50% 70%, rgba(230, 198, 112, 0.1) 0%, transparent 50%);
         }
 
-        /* UPDATED: Square committee emblem container */
+        /* Square committee emblem container */
         .committee-emblem {
             width: 140px;
             height: 140px;
@@ -1036,13 +1036,12 @@
             animation: emblemPulse 3s ease-in-out infinite;
         }
 
-        /* UPDATED: Square committee emblem image - CHANGED FROM ROUND TO SQUARE */
+        /* Square committee emblem image */
         .committee-emblem img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 10px; /* Changed from 50% (circle) to 10px (square with rounded corners) */
-            /* Use border-radius: 0; for completely square corners */
+            border-radius: 10px;
         }
 
         @keyframes emblemPulse {
@@ -2225,7 +2224,7 @@
         </div>
     </section>
 
-    <!-- TIMELINE -->
+    <!-- TIMELINE - UPDATED -->
     <section class="timeline" id="timeline">
         <div class="section-header">
             <span class="section-number">04</span>
@@ -2237,45 +2236,40 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
+            <!-- Registration Open - February 10, 2026 -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">January 15, 2026</div>
+                    <div class="timeline-date">February 10, 2026</div>
                     <h3 class="timeline-title">Registrations Open</h3>
-                    <p class="timeline-description">Early bird registration begins. Secure your spot at NNRG MUN 2026.</p>
+                    <p class="timeline-description">Registration begins. Secure your spot at NNRG MUN 2026 and embark on your diplomatic journey.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
+            <!-- Agenda Release - March 1, 2026 -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">February 1, 2026</div>
+                    <div class="timeline-date">March 1, 2026</div>
                     <h3 class="timeline-title">Agenda Release</h3>
                     <p class="timeline-description">Committee agendas and background guides published for delegate preparation.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
+            <!-- Registration Deadline - March 9, 2026 -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">February 20, 2026</div>
-                    <h3 class="timeline-title">Country Allotment</h3>
-                    <p class="timeline-description">Country portfolios assigned to all registered delegates via email.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">March 1, 2026</div>
+                    <div class="timeline-date">March 9, 2026</div>
                     <h3 class="timeline-title">Registration Deadline</h3>
-                    <p class="timeline-description">Final date for delegate registration. Late entries may not be accommodated.</p>
+                    <p class="timeline-description">Final date for delegate registration. Late entries will not be accommodated.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
+            <!-- Conference Days - March 13-14, 2026 -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">March 15-16, 2026</div>
+                    <div class="timeline-date">March 13-14, 2026</div>
                     <h3 class="timeline-title">Conference Days</h3>
                     <p class="timeline-description">Two-day intensive conference with committee sessions, socials, and closing ceremony.</p>
                 </div>
@@ -2331,13 +2325,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Department Name <span class="required">*</span></label>
-                        <input type="text" id="Department" placeholder="Enter your Department Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Year/Sec <span class="required">*</span></label>
-                        <input type="text" id="Year/sec" placeholder="Year/Sec" required>
+                        <label>College/Institution Name <span class="required">*</span></label>
+                        <input type="text" id="college" placeholder="Enter your college name" required>
                     </div>
 
                     <div class="form-group">
@@ -2515,9 +2504,9 @@
             });
         });
 
-        // ===== COUNTDOWN TIMER =====
+        // ===== COUNTDOWN TIMER - UPDATED TO MARCH 13, 2026 =====
         const CONFIG = {
-            eventDate: '2026-03-15T09:00:00'
+            eventDate: '2026-03-13T09:00:00'  // Changed to March 13, 2026
         };
 
         function updateCountdown() {
