@@ -2438,231 +2438,251 @@
         <a href="#register" class="btn-primary">Register Now →</a>
     </div>
 
-    <script>
-        // ===== PRELOADER =====
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 2500);
+   <script>
+    // ===========================================
+    // FORMSUBMIT CONFIGURED FOR: munnnrg@gmail.com
+    // ===========================================
+    const YOUR_EMAIL = 'munnnrg@gmail.com';
+    const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${YOUR_EMAIL}`;
+
+    // ===== PRELOADER =====
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').classList.add('hidden');
+        }, 2500);
+    });
+
+    // ===== CUSTOM CURSOR =====
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursorDot');
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+    });
+
+    document.querySelectorAll('a, button, .committee-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // ===== PARTICLES =====
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // ===== NAVIGATION SCROLL =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // ===== MOBILE MENU =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+
+    menuToggle.addEventListener('click', () => mobileMenu.classList.add('active'));
+    menuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    });
+
+    // ===== SMOOTH SCROLLING =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
 
-        // ===== CUSTOM CURSOR =====
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursorDot');
+    // ===== COUNTDOWN TIMER =====
+    function updateCountdown() {
+        const eventDate = new Date('2026-03-13T09:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = eventDate - now;
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button, .committee-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // ===== PARTICLES =====
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
+        if (distance > 0) {
+            document.getElementById('days').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById('hours').innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
         }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-        // ===== NAVIGATION SCROLL =====
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== PARALLAX =====
+    document.addEventListener('scroll', () => {
+        const gridLines = document.querySelector('.grid-lines');
+        if (gridLines) gridLines.style.transform = `translateY(${window.pageYOffset * 0.1}px)`;
+    });
+
+    // ===== NUMBER COUNTER =====
+    const counters = document.querySelectorAll('.stat-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const value = target.innerText;
+                const numericValue = parseInt(value.replace(/\D/g, ''));
+                const suffix = value.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = numericValue / 60;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        target.innerText = numericValue + suffix;
+                        clearInterval(timer);
+                    } else {
+                        target.innerText = Math.floor(current) + suffix;
+                    }
+                }, 30);
+                counterObserver.unobserve(target);
             }
         });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
 
-        // ===== MOBILE MENU =====
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuClose = document.getElementById('menuClose');
+    // ===== DELEGATION SELECTION =====
+    let selectedDelegation = 'internal';
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
+    function selectDelegation(type) {
+        selectedDelegation = type;
+        const internalBtn = document.getElementById('internalBtn');
+        const externalBtn = document.getElementById('externalBtn');
+        const formTitle = document.getElementById('formTitle');
+        const paymentAmount = document.getElementById('paymentAmount');
 
-        menuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
+        if (type === 'internal') {
+            internalBtn.classList.add('active');
+            externalBtn.classList.remove('active');
+            formTitle.textContent = 'Internal Delegation Registration';
+            paymentAmount.textContent = '₹200';
+        } else {
+            externalBtn.classList.add('active');
+            internalBtn.classList.remove('active');
+            formTitle.textContent = 'External Delegation Registration';
+            paymentAmount.textContent = '₹600';
+        }
+    }
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
+    // ===== FORM SUBMISSION - FORMSUBMIT =====
+    async function submitForm() {
+        // Get form values
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const college = document.getElementById('college').value.trim();
+        const committee = document.getElementById('committee').value;
+        const transactionId = document.getElementById('transactionId').value.trim();
 
-        // ===== SMOOTH SCROLLING =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        // Validation
+        if (!fullName || !email || !phone || !college || !committee || !transactionId) {
+            alert('⚠️ Please fill in all required fields.');
+            return;
+        }
 
-        // ===== COUNTDOWN TIMER - UPDATED TO MARCH 13, 2026 =====
-        const CONFIG = {
-            eventDate: '2026-03-13T09:00:00'  // Changed to March 13, 2026
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('⚠️ Please enter a valid email address.');
+            return;
+        }
+
+        const phoneClean = phone.replace(/[\s\-\+]/g, '');
+        if (phoneClean.length < 10 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
+            alert('⚠️ Please enter a valid phone number (10-15 digits).');
+            return;
+        }
+
+        // Show loading
+        const submitBtn = document.querySelector('.btn-submit');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Submitting... ⏳';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+
+        // Prepare data
+        const formData = {
+            _subject: '🎓 New NNRG MUN 2026 Registration - ' + fullName,
+            _template: 'table',
+            _captcha: 'false',
+            'Delegation Type': selectedDelegation.charAt(0).toUpperCase() + selectedDelegation.slice(1),
+            'Full Name': fullName,
+            'Email': email,
+            'Phone Number': phone,
+            'College / Institution': college,
+            'Preferred Committee': committee,
+            'Transaction ID': transactionId,
+            'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+            'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
         };
 
-        function updateCountdown() {
-            const eventDate = new Date(CONFIG.eventDate).getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // ===== SCROLL REVEAL ANIMATIONS =====
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Send to FormSubmit
+        try {
+            const response = await fetch(FORMSUBMIT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+            const result = await response.json();
 
-        // ===== PARALLAX EFFECT =====
-        document.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const gridLines = document.querySelector('.grid-lines');
-            if (gridLines) {
-                gridLines.style.transform = `translateY(${scrolled * 0.1}px)`;
-            }
-        });
+            if (result.success) {
+                console.log('✅ Registration submitted successfully!');
+                
+                // Hide form and payment
+                document.getElementById('registrationForm').style.display = 'none';
+                document.querySelector('.payment-section').style.display = 'none';
+                
+                // Show success
+                document.getElementById('successMessage').classList.add('show');
 
-        // ===== NUMBER COUNTER ANIMATION =====
-        const counters = document.querySelectorAll('.stat-number');
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const value = target.innerText;
-                    const numericValue = parseInt(value.replace(/\D/g, ''));
-                    const suffix = value.replace(/[0-9]/g, '');
-                    
-                    let current = 0;
-                    const increment = numericValue / 60;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= numericValue) {
-                            target.innerText = numericValue + suffix;
-                            clearInterval(timer);
-                        } else {
-                            target.innerText = Math.floor(current) + suffix;
-                        }
-                    }, 30);
-                    
-                    counterObserver.unobserve(target);
-                }
-            });
-        }, { threshold: 0.5 });
+                // Clear form
+                document.getElementById('fullName').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('college').value = '';
+                document.getElementById('committee').value = '';
+                document.getElementById('transactionId').value = '';
 
-        counters.forEach(counter => counterObserver.observe(counter));
-
-        // ===== DELEGATION SELECTION =====
-        let selectedDelegation = 'internal';
-
-        function selectDelegation(type) {
-            selectedDelegation = type;
-            const internalBtn = document.getElementById('internalBtn');
-            const externalBtn = document.getElementById('externalBtn');
-            const formTitle = document.getElementById('formTitle');
-            const paymentAmount = document.getElementById('paymentAmount');
-
-            if (type === 'internal') {
-                internalBtn.classList.add('active');
-                externalBtn.classList.remove('active');
-                formTitle.textContent = 'Internal Delegation Registration';
-                paymentAmount.textContent = '₹200';
             } else {
-                externalBtn.classList.add('active');
-                internalBtn.classList.remove('active');
-                formTitle.textContent = 'External Delegation Registration';
-                paymentAmount.textContent = '₹600';
+                throw new Error('Submission failed');
             }
+
+        } catch (error) {
+            console.error('❌ Error:', error);
+            alert('❌ Error submitting form. Please try again.');
+            
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor = 'pointer';
         }
-
-        // ===== FORM SUBMISSION =====
-        function submitForm() {
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const college = document.getElementById('college').value;
-            const committee = document.getElementById('committee').value;
-            const transactionId = document.getElementById('transactionId').value;
-
-            // Basic validation
-            if (!fullName || !email || !phone || !college || !committee || !transactionId) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Phone validation (basic)
-            const phoneRegex = /^[\d\s\+\-]{10,15}$/;
-            if (!phoneRegex.test(phone)) {
-                alert('Please enter a valid phone number.');
-                return;
-            }
-
-            // Prepare form data
-            const formData = {
-                delegationType: selectedDelegation,
-                fullName: fullName,
-                email: email,
-                phone: phone,
-                college: college,
-                committee: committee,
-                transactionId: transactionId,
-                fee: selectedDelegation === 'internal' ? 200 : 600
-            };
-
-            console.log('Form submitted:', formData);
-
-            // Show success message
-            document.getElementById('registrationForm').style.display = 'none';
-            document.querySelector('.payment-section').style.display = 'none';
-            document.getElementById('successMessage').classList.add('show');
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
