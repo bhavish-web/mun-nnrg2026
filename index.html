@@ -2438,7 +2438,7 @@
         <a href="#register" class="btn-primary">Register Now →</a>
     </div>
 
-   <script>
+  <script>
     // ===========================================
     // FORMSUBMIT CONFIGURED FOR: munnnrg@gmail.com
     // ===========================================
@@ -2593,11 +2593,13 @@
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const college = document.getElementById('college').value.trim();
+        const year = document.getElementById('year').value;           // NEW
+        const section = document.getElementById('section').value.trim(); // NEW
         const committee = document.getElementById('committee').value;
         const transactionId = document.getElementById('transactionId').value.trim();
 
-        // Validation
-        if (!fullName || !email || !phone || !college || !committee || !transactionId) {
+        // Validation - Updated to include year and section
+        if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
             alert('⚠️ Please fill in all required fields.');
             return;
         }
@@ -2622,7 +2624,7 @@
         submitBtn.style.opacity = '0.7';
         submitBtn.style.cursor = 'not-allowed';
 
-        // Prepare data
+        // Prepare data - Updated to include year and section
         const formData = {
             _subject: '🎓 New NNRG MUN 2026 Registration - ' + fullName,
             _template: 'table',
@@ -2632,6 +2634,8 @@
             'Email': email,
             'Phone Number': phone,
             'College / Institution': college,
+            'Year': year,                    // NEW
+            'Section': section.toUpperCase(), // NEW - Auto uppercase
             'Preferred Committee': committee,
             'Transaction ID': transactionId,
             'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
@@ -2661,11 +2665,13 @@
                 // Show success
                 document.getElementById('successMessage').classList.add('show');
 
-                // Clear form
+                // Clear form - Updated to include year and section
                 document.getElementById('fullName').value = '';
                 document.getElementById('email').value = '';
                 document.getElementById('phone').value = '';
                 document.getElementById('college').value = '';
+                document.getElementById('year').value = '';       // NEW
+                document.getElementById('section').value = '';    // NEW
                 document.getElementById('committee').value = '';
                 document.getElementById('transactionId').value = '';
 
