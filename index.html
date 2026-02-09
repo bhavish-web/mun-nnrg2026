@@ -957,7 +957,7 @@
             line-height: 1.8;
         }
 
-       /* ===== COMMITTEES - FLIP CARDS (ALL PLATFORMS FIXED) ===== */
+       /* ===== COMMITTEES - FLIP CARDS (FIXED) ===== */
 .committees {
     background: var(--primary-navy);
     position: relative;
@@ -1106,8 +1106,7 @@
     color: var(--gold-light);
 }
 
-
-}
+/* REMOVED THE STRAY CLOSING BRACE THAT WAS HERE */
 
 .committee-back {
     background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
@@ -1169,6 +1168,32 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity: 0.8;
+}
+
+/* Touch Device Overrides */
+@media (hover: none) and (pointer: coarse) {
+    .committee-card:hover .committee-card-inner {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    
+    .committee-card.flipped .committee-card-inner {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    
+    .flip-indicator::before {
+        content: '👆';
+    }
+}
+
+.committee-card.touch-device {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease;
+}
+
+.committee-card.touch-device:active {
+    transform: scale(0.98);
 }
 
 /* Touch Device Overrides */
@@ -2202,8 +2227,7 @@
                             <img src="disec-logo.jpg" alt="DISEC Emblem">
                         </div>
                         <h3 class="committee-name">DISEC</h3>
-                        <p class="committee-full-name">Disarmament and International Security Committee</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <p class="committee-full-name">Disarmament and International Security Committee</p>                       
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2221,8 +2245,7 @@
                             <img src="aippm-logo.jpg" alt="AIPPM Emblem">
                         </div>
                         <h3 class="committee-name">AIPPM</h3>
-                        <p class="committee-full-name">All India Political Parties Meet</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <p class="committee-full-name">All India Political Parties Meet</p>                       
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2241,7 +2264,6 @@
                         </div>
                         <h3 class="committee-name">TLA</h3>
                         <p class="committee-full-name">Telangana Legislative Assembly</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2260,7 +2282,6 @@
                         </div>
                         <h3 class="committee-name">UNHRC</h3>
                         <p class="committee-full-name">United Nations Human Rights Council</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
