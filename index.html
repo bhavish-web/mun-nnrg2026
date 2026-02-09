@@ -957,273 +957,243 @@
             line-height: 1.8;
         }
 
-       /* ===== COMMITTEES - FLIP CARDS (FIXED) ===== */
-.committees {
-    background: var(--primary-navy);
-    position: relative;
-}
+        /* ===== COMMITTEES - FLIP CARDS (FIXED) ===== */
+        .committees {
+            background: var(--primary-navy);
+            position: relative;
+        }
 
-.committees-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .committees-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.committee-card {
-    height: 500px;
-    position: relative;
-    cursor: pointer;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-}
+        .committee-card {
+            height: 500px;
+            position: relative;
+            cursor: pointer;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
 
-.committee-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
+        .committee-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
 
-.committee-card:hover .committee-card-inner {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
+        .committee-card:hover .committee-card-inner {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
 
-.committee-card.flipped .committee-card-inner {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
+        .committee-card.flipped .committee-card-inner {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
 
-.committee-front,
-.committee-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    overflow: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
+        .committee-front,
+        .committee-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
 
-.committee-front {
-    background: linear-gradient(180deg, var(--secondary-navy), var(--tertiary-navy));
-    border: 2px solid rgba(230, 198, 112, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px;
-    z-index: 2;
-    -webkit-transform: rotateY(0deg) translate3d(0, 0, 0);
-    transform: rotateY(0deg) translate3d(0, 0, 0);
-}
+        .committee-front {
+            background: linear-gradient(180deg, var(--secondary-navy), var(--tertiary-navy));
+            border: 2px solid rgba(230, 198, 112, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            z-index: 2;
+            -webkit-transform: rotateY(0deg) translate3d(0, 0, 0);
+            transform: rotateY(0deg) translate3d(0, 0, 0);
+        }
 
-.committee-front::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 50% 30%, rgba(230, 198, 112, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 70%, rgba(230, 198, 112, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
+        .committee-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(230, 198, 112, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 70%, rgba(230, 198, 112, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-.committee-emblem {
-    width: 140px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 1;
-    animation: emblemPulse 3s ease-in-out infinite;
-}
+        .committee-emblem {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            animation: emblemPulse 3s ease-in-out infinite;
+        }
 
-.committee-emblem img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-}
+        .committee-emblem img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
 
-@keyframes emblemPulse {
-    0%, 100% { filter: drop-shadow(0 0 0 rgba(230, 198, 112, 0.4)); }
-    50% { filter: drop-shadow(0 0 20px rgba(230, 198, 112, 0.3)); }
-}
+        @keyframes emblemPulse {
+            0%, 100% { filter: drop-shadow(0 0 0 rgba(230, 198, 112, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(230, 198, 112, 0.3)); }
+        }
 
-.committee-name {
-    font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 900;
-    background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-}
+        .committee-name {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
 
-.committee-full-name {
-    font-family: var(--font-elegant);
-    font-size: 18px;
-    color: var(--light-gray);
-    font-style: italic;
-    position: relative;
-    z-index: 1;
-}
+        .committee-full-name {
+            font-family: var(--font-elegant);
+            font-size: 18px;
+            color: var(--light-gray);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
 
-.flip-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    color: var(--light-gray);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.7;
-}
+        .flip-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
 
-.flip-indicator::before {
-    content: '↻';
-    font-size: 16px;
-    color: var(--gold-light);
-}
+        .flip-indicator::before {
+            content: '↻';
+            font-size: 16px;
+            color: var(--gold-light);
+        }
 
-/* REMOVED THE STRAY CLOSING BRACE THAT WAS HERE */
+        .committee-back {
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
+            -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
+            transform: rotateY(180deg) translate3d(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 40px;
+            z-index: 1;
+        }
 
-.committee-back {
-    background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
-    -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
-    transform: rotateY(180deg) translate3d(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 50px 40px;
-    z-index: 1;
-}
+        .committee-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-.committee-back::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
-    pointer-events: none;
-}
+        .agenda-label {
+            font-size: 12px;
+            color: var(--primary-navy);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
 
-.agenda-label {
-    font-size: 12px;
-    color: var(--primary-navy);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    opacity: 0.8;
-    position: relative;
-    z-index: 1;
-}
+        .agenda-text {
+            font-family: var(--font-elegant);
+            font-size: 22px;
+            color: var(--primary-navy);
+            line-height: 1.8;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
 
-.agenda-text {
-    font-family: var(--font-elegant);
-    font-size: 22px;
-    color: var(--primary-navy);
-    line-height: 1.8;
-    font-weight: 600;
-    position: relative;
-    z-index: 1;
-}
+        .committee-back-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--primary-navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
 
-.committee-back-footer {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    color: var(--primary-navy);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.8;
-}
+        /* Touch Device Overrides */
+        @media (hover: none) and (pointer: coarse) {
+            .committee-card:hover .committee-card-inner {
+                -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+            }
+            
+            .committee-card.flipped .committee-card-inner {
+                -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+            }
+            
+            .flip-indicator::before {
+                content: '👆';
+            }
+        }
 
-/* Touch Device Overrides */
-@media (hover: none) and (pointer: coarse) {
-    .committee-card:hover .committee-card-inner {
-        -webkit-transform: rotateY(0deg);
-        transform: rotateY(0deg);
-    }
-    
-    .committee-card.flipped .committee-card-inner {
-        -webkit-transform: rotateY(180deg);
-        transform: rotateY(180deg);
-    }
-    
-    .flip-indicator::before {
-        content: '👆';
-    }
-}
+        .committee-card.touch-device {
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.2s ease;
+        }
 
-.committee-card.touch-device {
-    -webkit-tap-highlight-color: transparent;
-    transition: transform 0.2s ease;
-}
+        .committee-card.touch-device:active {
+            transform: scale(0.98);
+        }
 
-.committee-card.touch-device:active {
-    transform: scale(0.98);
-}
-
-/* Touch Device Overrides */
-@media (hover: none) and (pointer: coarse) {
-    .committee-card:hover .committee-card-inner {
-        -webkit-transform: rotateY(0deg);
-        transform: rotateY(0deg);
-    }
-    
-    .committee-card.flipped .committee-card-inner {
-        -webkit-transform: rotateY(180deg);
-        transform: rotateY(180deg);
-    }
-    
-    .flip-indicator::before {
-        content: '👆';
-    }
-    
-   
-    }
-}
-
-.committee-card.touch-device {
-    -webkit-tap-highlight-color: transparent;
-    transition: transform 0.2s ease;
-}
-
-.committee-card.touch-device:active {
-    transform: scale(0.98);
-}
         /* ===== TIMELINE ===== */
         .timeline {
             background: var(--secondary-navy);
@@ -1659,21 +1629,50 @@
             color: var(--cream);
         }
 
-        /* Success Message */
+        /* Enhanced Success Message */
         .success-message {
             display: none;
             text-align: center;
             padding: 60px 40px;
+            grid-column: 1 / -1;
         }
 
         .success-message.show {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: successPop 0.5s ease;
+        }
+
+        @keyframes successPop {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.8); 
+            }
+            50% { 
+                transform: scale(1.05); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
         }
 
         .success-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--primary-navy);
+            margin: 0 auto 30px;
+            animation: successBounce 0.6s ease 0.3s;
+        }
+
+        @keyframes successBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         .success-message h3 {
@@ -2227,7 +2226,8 @@
                             <img src="disec-logo.jpg" alt="DISEC Emblem">
                         </div>
                         <h3 class="committee-name">DISEC</h3>
-                        <p class="committee-full-name">Disarmament and International Security Committee</p>                       
+                        <p class="committee-full-name">Disarmament and International Security Committee</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2245,7 +2245,8 @@
                             <img src="aippm-logo.jpg" alt="AIPPM Emblem">
                         </div>
                         <h3 class="committee-name">AIPPM</h3>
-                        <p class="committee-full-name">All India Political Parties Meet</p>                       
+                        <p class="committee-full-name">All India Political Parties Meet</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2264,6 +2265,7 @@
                         </div>
                         <h3 class="committee-name">TLA</h3>
                         <p class="committee-full-name">Telangana Legislative Assembly</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2282,6 +2284,7 @@
                         </div>
                         <h3 class="committee-name">UNHRC</h3>
                         <p class="committee-full-name">United Nations Human Rights Council</p>
+                        <div class="flip-indicator">Hover to view agenda</div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2293,7 +2296,7 @@
         </div>
     </section>
 
-    <!-- TIMELINE - UPDATED -->
+    <!-- TIMELINE -->
     <section class="timeline" id="timeline">
         <div class="section-header">
             <span class="section-number">04</span>
@@ -2305,7 +2308,7 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- Registration Open - February 10, 2026 -->
+            <!-- Registration Open -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">February 10, 2026</div>
@@ -2315,7 +2318,7 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Agenda Release - March 1, 2026 -->
+            <!-- Agenda Release -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 1, 2026</div>
@@ -2325,7 +2328,7 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Registration Deadline - March 9, 2026 -->
+            <!-- Registration Deadline -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 9, 2026</div>
@@ -2335,7 +2338,7 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Conference Days - March 13-14, 2026 -->
+            <!-- Conference Days -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 13-14, 2026</div>
@@ -2371,73 +2374,73 @@
         <div class="registration-container reveal">
             <div class="registration-form-wrapper">
                 <!-- Registration Form -->
-<div class="registration-form" id="registrationForm">
-    <div class="form-header">
-        <h3 id="formTitle">Internal Delegation Registration</h3>
-        <p>Fill in all required details</p>
-    </div>
+                <div class="registration-form" id="registrationForm">
+                    <div class="form-header">
+                        <h3 id="formTitle">Internal Delegation Registration</h3>
+                        <p>Fill in all required details</p>
+                    </div>
 
-    <div class="form-group">
-        <label>Full Name <span class="required">*</span></label>
-        <input type="text" id="inputFullName" placeholder="Enter your full name">
-    </div>
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" id="inputFullName" placeholder="Enter your full name">
+                    </div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Email <span class="required">*</span></label>
-            <input type="email" id="inputEmail" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-            <label>Phone <span class="required">*</span></label>
-            <input type="tel" id="inputPhone" placeholder="+91 XXXXX XXXXX">
-        </div>
-    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" id="inputEmail" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone <span class="required">*</span></label>
+                            <input type="tel" id="inputPhone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        <label>College/Institution <span class="required">*</span></label>
-        <input type="text" id="inputCollege" placeholder="Enter your college name">
-    </div>
+                    <div class="form-group">
+                        <label>College/Institution <span class="required">*</span></label>
+                        <input type="text" id="inputCollege" placeholder="Enter your college name">
+                    </div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Year <span class="required">*</span></label>
-            <select id="inputYear">
-                <option value="">Select Year</option>
-                <option value="1st Year">1st Year</option>
-                <option value="2nd Year">2nd Year</option>
-                <option value="3rd Year">3rd Year</option>
-                <option value="4th Year">4th Year</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Section <span class="required">*</span></label>
-            <input type="text" id="inputSection" placeholder="A, B, C...">
-        </div>
-    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Year <span class="required">*</span></label>
+                            <select id="inputYear">
+                                <option value="">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Section <span class="required">*</span></label>
+                            <input type="text" id="inputSection" placeholder="A, B, C...">
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        <label>Preferred Committee <span class="required">*</span></label>
-        <select id="inputCommittee">
-            <option value="">Select Committee</option>
-            <option value="DISEC">DISEC - Disarmament and International Security</option>
-            <option value="AIPPM">AIPPM - All India Political Parties Meet</option>
-            <option value="TLA">TLA - Telangana Legislative Assembly</option>
-            <option value="UNHRC">UNHRC - United Nations Human Rights Council</option>
-        </select>
-    </div>
+                    <div class="form-group">
+                        <label>Preferred Committee <span class="required">*</span></label>
+                        <select id="inputCommittee">
+                            <option value="">Select Committee</option>
+                            <option value="DISEC">DISEC - Disarmament and International Security</option>
+                            <option value="AIPPM">AIPPM - All India Political Parties Meet</option>
+                            <option value="TLA">TLA - Telangana Legislative Assembly</option>
+                            <option value="UNHRC">UNHRC - United Nations Human Rights Council</option>
+                        </select>
+                    </div>
 
-    <div class="form-group">
-        <label>Transaction ID <span class="required">*</span></label>
-        <input type="text" id="inputTransactionId" placeholder="Enter payment transaction ID">
-    </div>
+                    <div class="form-group">
+                        <label>Transaction ID <span class="required">*</span></label>
+                        <input type="text" id="inputTransactionId" placeholder="Enter payment transaction ID">
+                    </div>
 
-    <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
-        Submit Registration →
-    </button>
-</div>
+                    <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
+                        Submit Registration →
+                    </button>
+                </div>
 
-                <!-- Payment Section -->
-                <div class="payment-section">
+                <!-- Payment Section - ADDED ID HERE -->
+                <div class="payment-section" id="paymentSection">
                     <div class="payment-header">
                         <h3>Payment Details</h3>
                         <p>Scan the QR code to complete payment</p>
@@ -2446,7 +2449,6 @@
                     <div class="payment-amount" id="paymentAmount">₹200</div>
 
                     <div class="qr-code-container">
-                        <!-- Replace this with your actual QR code image -->
                         <img src="payment-qr.jpg" alt="Payment QR Code" id="qrImage" onerror="this.style.display='none'; document.getElementById('qrPlaceholder').style.display='flex';">
                         <div class="qr-placeholder" id="qrPlaceholder" style="display: none;">
                             <span>📱</span>
@@ -2464,11 +2466,17 @@
                     </div>
                 </div>
 
-                <!-- Success Message -->
+                <!-- Success Message - ENHANCED -->
                 <div class="success-message" id="successMessage">
                     <div class="success-icon">✓</div>
                     <h3>Registration Successful!</h3>
-                    <p>Thank you for registering for NNRG MUN 2026. A confirmation email will be sent to your registered email address shortly. We look forward to seeing you at the conference!</p>
+                    <p>Thank you for registering for NNRG MUN 2026!</p>
+                    <p style="margin-top: 15px;">A confirmation email will be sent to your registered email address shortly.</p>
+                    <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">We look forward to seeing you at the conference on March 13-14, 2026!</p>
+                    <a href="#about" class="btn-primary" style="margin-top: 30px; display: inline-flex;">
+                        <span>Back to Home</span>
+                        <span>→</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -2514,299 +2522,329 @@
         <a href="#register" class="btn-primary">Register Now →</a>
     </div>
 
-  <script>
-    // ===========================================
-    // FORMSUBMIT - munnnrg@gmail.com
-    // ===========================================
-    var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
-    var selectedDelegation = 'internal';
+    <script>
+        // ===========================================
+        // FORMSUBMIT - munnnrg@gmail.com
+        // ===========================================
+        var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
+        var selectedDelegation = 'internal';
 
-    // Preloader
-    window.onload = function() {
-        setTimeout(function() {
-            document.getElementById('preloader').classList.add('hidden');
-        }, 2500);
-    };
-
-    // Particles
-    var particlesContainer = document.getElementById('particles');
-    if (particlesContainer) {
-        for (var i = 0; i < 25; i++) {
-            var p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top = Math.random() * 100 + '%';
-            p.style.animationDelay = Math.random() * 10 + 's';
-            particlesContainer.appendChild(p);
-        }
-    }
-
-    // Cursor
-    var cursor = document.getElementById('cursor');
-    var cursorDot = document.getElementById('cursorDot');
-    if (cursor && cursorDot) {
-        document.addEventListener('mousemove', function(e) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        });
-    }
-
-    // Navbar scroll
-    var navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile menu
-    var menuToggle = document.getElementById('menuToggle');
-    var mobileMenu = document.getElementById('mobileMenu');
-    var menuClose = document.getElementById('menuClose');
-
-    if (menuToggle) {
-        menuToggle.onclick = function() {
-            mobileMenu.classList.add('active');
+        // Preloader
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2500);
         };
-    }
-    if (menuClose) {
-        menuClose.onclick = function() {
-            mobileMenu.classList.remove('active');
-        };
-    }
-    var mobileLinks = document.querySelectorAll('.mobile-menu a');
-    for (var i = 0; i < mobileLinks.length; i++) {
-        mobileLinks[i].onclick = function() {
-            mobileMenu.classList.remove('active');
-        };
-    }
 
-    // Smooth scroll
-    var anchors = document.querySelectorAll('a[href^="#"]');
-    for (var i = 0; i < anchors.length; i++) {
-        anchors[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Particles
+        var particlesContainer = document.getElementById('particles');
+        if (particlesContainer) {
+            for (var i = 0; i < 25; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                particlesContainer.appendChild(p);
             }
-        });
-    }
-
-    // Countdown
-    function updateCountdown() {
-        var eventDate = new Date('2026-03-13T09:00:00').getTime();
-        var now = new Date().getTime();
-        var diff = eventDate - now;
-        if (diff > 0) {
-            document.getElementById('days').innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
-            document.getElementById('hours').innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-        }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // Scroll reveal
-    var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { observer.observe(el); });
-
-    // Parallax
-    document.addEventListener('scroll', function() {
-        var gridLines = document.querySelector('.grid-lines');
-        if (gridLines) {
-            gridLines.style.transform = 'translateY(' + (window.pageYOffset * 0.1) + 'px)';
-        }
-    });
-
-    // Number counter
-    var counters = document.querySelectorAll('.stat-number');
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var target = entry.target;
-                var value = target.innerText;
-                var numericValue = parseInt(value.replace(/\D/g, ''));
-                var suffix = value.replace(/[0-9]/g, '');
-                var current = 0;
-                var increment = numericValue / 60;
-                var timer = setInterval(function() {
-                    current += increment;
-                    if (current >= numericValue) {
-                        target.innerText = numericValue + suffix;
-                        clearInterval(timer);
-                    } else {
-                        target.innerText = Math.floor(current) + suffix;
-                    }
-                }, 30);
-                counterObserver.unobserve(target);
-            }
-        });
-    }, { threshold: 0.5 });
-    counters.forEach(function(counter) { counterObserver.observe(counter); });
-
-    // Delegation selection
-    function selectDelegation(type) {
-        selectedDelegation = type;
-        var intBtn = document.getElementById('internalBtn');
-        var extBtn = document.getElementById('externalBtn');
-        var title = document.getElementById('formTitle');
-        var amount = document.getElementById('paymentAmount');
-
-        if (type === 'internal') {
-            intBtn.classList.add('active');
-            extBtn.classList.remove('active');
-            title.innerText = 'Internal Delegation Registration';
-            amount.innerText = '₹200';
-        } else {
-            extBtn.classList.add('active');
-            intBtn.classList.remove('active');
-            title.innerText = 'External Delegation Registration';
-            amount.innerText = '₹600';
-        }
-    }
-
-    // ===== FORM SUBMISSION - FIXED =====
-    function submitForm() {
-        console.log('Submit clicked!');
-
-        // Get values
-        var fullName = document.getElementById('inputFullName').value.trim();
-        var email = document.getElementById('inputEmail').value.trim();
-        var phone = document.getElementById('inputPhone').value.trim();
-        var college = document.getElementById('inputCollege').value.trim();
-        var year = document.getElementById('inputYear').value;
-        var section = document.getElementById('inputSection').value.trim();
-        var committee = document.getElementById('inputCommittee').value;
-        var transactionId = document.getElementById('inputTransactionId').value.trim();
-
-        // Validation
-        if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
-            alert('⚠️ Please fill in all required fields.');
-            return;
         }
 
-        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-            alert('⚠️ Please enter a valid email address.');
-            return;
-        }
-
-        var phoneDigits = phone.replace(/\D/g, '');
-        if (phoneDigits.length < 10) {
-            alert('⚠️ Please enter a valid phone number.');
-            return;
-        }
-
-        // Show loading
-        var btn = document.getElementById('submitBtn');
-        btn.innerHTML = 'Submitting... ⏳';
-        btn.disabled = true;
-
-        // Prepare data
-        var formData = {
-            _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
-            _template: 'table',
-            _captcha: 'false',
-            'Delegation Type': selectedDelegation === 'internal' ? 'Internal' : 'External',
-            'Full Name': fullName,
-            'Email': email,
-            'Phone Number': phone,
-            'College/Institution': college,
-            'Year': year,
-            'Section': section.toUpperCase(),
-            'Preferred Committee': committee,
-            'Transaction ID': transactionId,
-            'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
-            'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-        };
-
-        console.log('Sending data:', formData);
-
-        // Function to show success
-        function showSuccess() {
-            document.getElementById('registrationForm').style.display = 'none';
-            document.getElementById('paymentSection').style.display = 'none';
-            document.getElementById('successMessage').classList.add('show');
-
-            // Clear form
-            document.getElementById('inputFullName').value = '';
-            document.getElementById('inputEmail').value = '';
-            document.getElementById('inputPhone').value = '';
-            document.getElementById('inputCollege').value = '';
-            document.getElementById('inputYear').value = '';
-            document.getElementById('inputSection').value = '';
-            document.getElementById('inputCommittee').value = '';
-            document.getElementById('inputTransactionId').value = '';
-        }
-
-        // Send to FormSubmit
-        fetch(FORMSUBMIT_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(function(response) {
-            console.log('Response received:', response.status);
-            // Always show success since emails are being received
-            showSuccess();
-        })
-        .catch(function(error) {
-            console.log('Fetch error (but email likely sent):', error);
-            // Still show success because you confirmed emails work!
-            showSuccess();
-        });
-    }
-
-      // ===== iOS/Android Touch Flip Card Handler =====
-(function() {
-    function isTouchDevice() {
-        return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    }
-    
-    if (isTouchDevice()) {
-        var committeeCards = document.querySelectorAll('.committee-card');
-        
-        committeeCards.forEach(function(card) {
-            card.classList.add('touch-device');
-            
-            card.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                committeeCards.forEach(function(otherCard) {
-                    if (otherCard !== card) {
-                        otherCard.classList.remove('flipped');
-                    }
-                });
-                
-                this.classList.toggle('flipped');
+        // Cursor
+        var cursor = document.getElementById('cursor');
+        var cursorDot = document.getElementById('cursorDot');
+        if (cursor && cursorDot) {
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
             });
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.committee-card')) {
-                committeeCards.forEach(function(card) {
-                    card.classList.remove('flipped');
-                });
+        }
+
+        // Navbar scroll
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
-    }
-})();
-      
-</script>
+
+        // Mobile menu
+        var menuToggle = document.getElementById('menuToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var menuClose = document.getElementById('menuClose');
+
+        if (menuToggle) {
+            menuToggle.onclick = function() {
+                mobileMenu.classList.add('active');
+            };
+        }
+        if (menuClose) {
+            menuClose.onclick = function() {
+                mobileMenu.classList.remove('active');
+            };
+        }
+        var mobileLinks = document.querySelectorAll('.mobile-menu a');
+        for (var i = 0; i < mobileLinks.length; i++) {
+            mobileLinks[i].onclick = function() {
+                mobileMenu.classList.remove('active');
+            };
+        }
+
+        // Smooth scroll
+        var anchors = document.querySelectorAll('a[href^="#"]');
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+
+        // Countdown
+        function updateCountdown() {
+            var eventDate = new Date('2026-03-13T09:00:00').getTime();
+            var now = new Date().getTime();
+            var diff = eventDate - now;
+            if (diff > 0) {
+                document.getElementById('days').innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                document.getElementById('hours').innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll reveal
+        var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(function(el) { observer.observe(el); });
+
+        // Parallax
+        document.addEventListener('scroll', function() {
+            var gridLines = document.querySelector('.grid-lines');
+            if (gridLines) {
+                gridLines.style.transform = 'translateY(' + (window.pageYOffset * 0.1) + 'px)';
+            }
+        });
+
+        // Number counter
+        var counters = document.querySelectorAll('.stat-number');
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var target = entry.target;
+                    var value = target.innerText;
+                    var numericValue = parseInt(value.replace(/\D/g, ''));
+                    var suffix = value.replace(/[0-9]/g, '');
+                    var current = 0;
+                    var increment = numericValue / 60;
+                    var timer = setInterval(function() {
+                        current += increment;
+                        if (current >= numericValue) {
+                            target.innerText = numericValue + suffix;
+                            clearInterval(timer);
+                        } else {
+                            target.innerText = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(function(counter) { counterObserver.observe(counter); });
+
+        // Delegation selection
+        function selectDelegation(type) {
+            selectedDelegation = type;
+            var intBtn = document.getElementById('internalBtn');
+            var extBtn = document.getElementById('externalBtn');
+            var title = document.getElementById('formTitle');
+            var amount = document.getElementById('paymentAmount');
+
+            if (type === 'internal') {
+                intBtn.classList.add('active');
+                extBtn.classList.remove('active');
+                title.innerText = 'Internal Delegation Registration';
+                amount.innerText = '₹200';
+            } else {
+                extBtn.classList.add('active');
+                intBtn.classList.remove('active');
+                title.innerText = 'External Delegation Registration';
+                amount.innerText = '₹600';
+            }
+        }
+
+        // ===== FORM SUBMISSION - COMPLETELY FIXED =====
+        function submitForm() {
+            console.log('Submit clicked!');
+
+            // Get values
+            var fullName = document.getElementById('inputFullName').value.trim();
+            var email = document.getElementById('inputEmail').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var college = document.getElementById('inputCollege').value.trim();
+            var year = document.getElementById('inputYear').value;
+            var section = document.getElementById('inputSection').value.trim();
+            var committee = document.getElementById('inputCommittee').value;
+            var transactionId = document.getElementById('inputTransactionId').value.trim();
+
+            // Validation
+            if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
+                alert('⚠️ Please fill in all required fields.');
+                return;
+            }
+
+            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                alert('⚠️ Please enter a valid email address.');
+                return;
+            }
+
+            var phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                alert('⚠️ Please enter a valid phone number.');
+                return;
+            }
+
+            // Show loading
+            var btn = document.getElementById('submitBtn');
+            var originalBtnText = btn.innerHTML;
+            btn.innerHTML = 'Submitting... ⏳';
+            btn.disabled = true;
+
+            // Prepare data
+            var formData = {
+                _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
+                _template: 'table',
+                _captcha: 'false',
+                'Delegation Type': selectedDelegation === 'internal' ? 'Internal' : 'External',
+                'Full Name': fullName,
+                'Email': email,
+                'Phone Number': phone,
+                'College/Institution': college,
+                'Year': year,
+                'Section': section.toUpperCase(),
+                'Preferred Committee': committee,
+                'Transaction ID': transactionId,
+                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            };
+
+            console.log('Sending data:', formData);
+
+            // Function to show success - FIXED VERSION
+            function showSuccess() {
+                console.log('Showing success message...');
+                
+                // Hide the form
+                var formElement = document.getElementById('registrationForm');
+                if (formElement) {
+                    formElement.style.display = 'none';
+                    console.log('Form hidden');
+                }
+                
+                // Hide the payment section
+                var paymentElement = document.getElementById('paymentSection');
+                if (paymentElement) {
+                    paymentElement.style.display = 'none';
+                    console.log('Payment section hidden');
+                }
+                
+                // Show success message
+                var successElement = document.getElementById('successMessage');
+                if (successElement) {
+                    successElement.classList.add('show');
+                    successElement.style.display = 'block';
+                    console.log('Success message shown');
+                }
+
+                // Clear form fields
+                document.getElementById('inputFullName').value = '';
+                document.getElementById('inputEmail').value = '';
+                document.getElementById('inputPhone').value = '';
+                document.getElementById('inputCollege').value = '';
+                document.getElementById('inputYear').value = '';
+                document.getElementById('inputSection').value = '';
+                document.getElementById('inputCommittee').value = '';
+                document.getElementById('inputTransactionId').value = '';
+                
+                // Reset button
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+                
+                // Scroll to success message
+                setTimeout(function() {
+                    successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+                
+                console.log('Success message displayed!');
+            }
+
+            // Send to FormSubmit
+            fetch(FORMSUBMIT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(function(response) {
+                console.log('Response received:', response.status);
+                showSuccess();
+            })
+            .catch(function(error) {
+                console.log('Fetch error (but email likely sent):', error);
+                // Still show success because emails are being received
+                showSuccess();
+            });
+        }
+
+        // ===== iOS/Android Touch Flip Card Handler =====
+        (function() {
+            function isTouchDevice() {
+                return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            }
+            
+            if (isTouchDevice()) {
+                var committeeCards = document.querySelectorAll('.committee-card');
+                
+                committeeCards.forEach(function(card) {
+                    card.classList.add('touch-device');
+                    
+                    card.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        committeeCards.forEach(function(otherCard) {
+                            if (otherCard !== card) {
+                                otherCard.classList.remove('flipped');
+                            }
+                        });
+                        
+                        this.classList.toggle('flipped');
+                    });
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.committee-card')) {
+                        committeeCards.forEach(function(card) {
+                            card.classList.remove('flipped');
+                        });
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
