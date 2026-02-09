@@ -2686,130 +2686,146 @@
             }
         }
 
-        // ===== FORM SUBMISSION - COMPLETELY FIXED =====
-        function submitForm() {
-            console.log('Submit clicked!');
+       // ===== FORM SUBMISSION WITH AUTO-RESPONSE =====
+function submitForm() {
+    console.log('Submit clicked!');
 
-            // Get values
-            var fullName = document.getElementById('inputFullName').value.trim();
-            var email = document.getElementById('inputEmail').value.trim();
-            var phone = document.getElementById('inputPhone').value.trim();
-            var college = document.getElementById('inputCollege').value.trim();
-            var year = document.getElementById('inputYear').value;
-            var section = document.getElementById('inputSection').value.trim();
-            var committee = document.getElementById('inputCommittee').value;
-            var transactionId = document.getElementById('inputTransactionId').value.trim();
+    // Get values
+    var fullName = document.getElementById('inputFullName').value.trim();
+    var email = document.getElementById('inputEmail').value.trim();
+    var phone = document.getElementById('inputPhone').value.trim();
+    var college = document.getElementById('inputCollege').value.trim();
+    var year = document.getElementById('inputYear').value;
+    var section = document.getElementById('inputSection').value.trim();
+    var committee = document.getElementById('inputCommittee').value;
+    var transactionId = document.getElementById('inputTransactionId').value.trim();
 
-            // Validation
-            if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
-                alert('⚠️ Please fill in all required fields.');
-                return;
-            }
+    // Validation
+    if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
+        alert('⚠️ Please fill in all required fields.');
+        return;
+    }
 
-            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-                alert('⚠️ Please enter a valid email address.');
-                return;
-            }
+    if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+        alert('⚠️ Please enter a valid email address.');
+        return;
+    }
 
-            var phoneDigits = phone.replace(/\D/g, '');
-            if (phoneDigits.length < 10) {
-                alert('⚠️ Please enter a valid phone number.');
-                return;
-            }
+    var phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+        alert('⚠️ Please enter a valid phone number.');
+        return;
+    }
 
-            // Show loading
-            var btn = document.getElementById('submitBtn');
-            var originalBtnText = btn.innerHTML;
-            btn.innerHTML = 'Submitting... ⏳';
-            btn.disabled = true;
+    // Show loading
+    var btn = document.getElementById('submitBtn');
+    var originalBtnText = btn.innerHTML;
+    btn.innerHTML = 'Submitting... ⏳';
+    btn.disabled = true;
 
-            // Prepare data
-            var formData = {
-                _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
-                _template: 'table',
-                _captcha: 'false',
-                'Delegation Type': selectedDelegation === 'internal' ? 'Internal' : 'External',
-                'Full Name': fullName,
-                'Email': email,
-                'Phone Number': phone,
-                'College/Institution': college,
-                'Year': year,
-                'Section': section.toUpperCase(),
-                'Preferred Committee': committee,
-                'Transaction ID': transactionId,
-                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
-                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-            };
+    // Auto-response message for delegate
+    var autoResponseMessage = 'Thank you for registering for NNRG Model United Nations 2026!\n\n';
+    autoResponseMessage += 'Your registration has been received successfully.\n\n';
+    autoResponseMessage += 'Registration Details:\n';
+    autoResponseMessage += '- Name: ' + fullName + '\n';
+    autoResponseMessage += '- College: ' + college + '\n';
+    autoResponseMessage += '- Committee: ' + committee + '\n';
+    autoResponseMessage += '- Delegation Type: ' + (selectedDelegation === 'internal' ? 'Internal' : 'External') + '\n';
+    autoResponseMessage += '- Fee Paid: ' + (selectedDelegation === 'internal' ? '₹200' : '₹600') + '\n';
+    autoResponseMessage += '- Transaction ID: ' + transactionId + '\n\n';
+    autoResponseMessage += 'Conference Dates: March 13-14, 2026\n';
+    autoResponseMessage += 'Venue: NNRG Campus, Hyderabad\n\n';
+    autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
+    autoResponseMessage += 'We look forward to seeing you at the conference!\n\n';
+    autoResponseMessage += 'Best Regards,\n';
+    autoResponseMessage += 'NNRG MUN Team';
 
-            console.log('Sending data:', formData);
+    // Prepare data with auto-response
+    var formData = {
+        // FormSubmit settings
+        _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
+        _template: 'table',
+        _captcha: 'false',
+        _replyto: email,
+        _autoresponse: autoResponseMessage,
+        
+        // Form data
+        'Delegation Type': selectedDelegation === 'internal' ? 'Internal' : 'External',
+        'Full Name': fullName,
+        'Email': email,
+        'Phone Number': phone,
+        'College/Institution': college,
+        'Year': year,
+        'Section': section.toUpperCase(),
+        'Preferred Committee': committee,
+        'Transaction ID': transactionId,
+        'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+        'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    };
 
-            // Function to show success - FIXED VERSION
-            function showSuccess() {
-                console.log('Showing success message...');
-                
-                // Hide the form
-                var formElement = document.getElementById('registrationForm');
-                if (formElement) {
-                    formElement.style.display = 'none';
-                    console.log('Form hidden');
-                }
-                
-                // Hide the payment section
-                var paymentElement = document.getElementById('paymentSection');
-                if (paymentElement) {
-                    paymentElement.style.display = 'none';
-                    console.log('Payment section hidden');
-                }
-                
-                // Show success message
-                var successElement = document.getElementById('successMessage');
-                if (successElement) {
-                    successElement.classList.add('show');
-                    successElement.style.display = 'block';
-                    console.log('Success message shown');
-                }
+    console.log('Sending data:', formData);
 
-                // Clear form fields
-                document.getElementById('inputFullName').value = '';
-                document.getElementById('inputEmail').value = '';
-                document.getElementById('inputPhone').value = '';
-                document.getElementById('inputCollege').value = '';
-                document.getElementById('inputYear').value = '';
-                document.getElementById('inputSection').value = '';
-                document.getElementById('inputCommittee').value = '';
-                document.getElementById('inputTransactionId').value = '';
-                
-                // Reset button
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
-                
-                // Scroll to success message
-                setTimeout(function() {
-                    successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
-                
-                console.log('Success message displayed!');
-            }
-
-            // Send to FormSubmit
-            fetch(FORMSUBMIT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(function(response) {
-                console.log('Response received:', response.status);
-                showSuccess();
-            })
-            .catch(function(error) {
-                console.log('Fetch error (but email likely sent):', error);
-                // Still show success because emails are being received
-                showSuccess();
-            });
+    // Function to show success
+    function showSuccess() {
+        console.log('Showing success message...');
+        
+        // Hide the form
+        var formElement = document.getElementById('registrationForm');
+        if (formElement) {
+            formElement.style.display = 'none';
         }
+        
+        // Hide the payment section
+        var paymentElement = document.getElementById('paymentSection');
+        if (paymentElement) {
+            paymentElement.style.display = 'none';
+        }
+        
+        // Show success message
+        var successElement = document.getElementById('successMessage');
+        if (successElement) {
+            successElement.classList.add('show');
+            successElement.style.display = 'block';
+        }
+
+        // Clear form fields
+        document.getElementById('inputFullName').value = '';
+        document.getElementById('inputEmail').value = '';
+        document.getElementById('inputPhone').value = '';
+        document.getElementById('inputCollege').value = '';
+        document.getElementById('inputYear').value = '';
+        document.getElementById('inputSection').value = '';
+        document.getElementById('inputCommittee').value = '';
+        document.getElementById('inputTransactionId').value = '';
+        
+        // Reset button
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+        
+        // Scroll to success message
+        setTimeout(function() {
+            successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+    }
+
+    // Send to FormSubmit
+    fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(function(response) {
+        console.log('Response received:', response.status);
+        showSuccess();
+    })
+    .catch(function(error) {
+        console.log('Fetch error (but email likely sent):', error);
+        showSuccess();
+    });
+}
 
         // ===== iOS/Android Touch Flip Card Handler =====
         (function() {
