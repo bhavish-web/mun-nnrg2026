@@ -14,31 +14,22 @@
         }
 
         :root {
-            /* NAVY BLUE & GOLD THEME */
             --primary-navy: #001B44;
             --secondary-navy: #002855;
             --tertiary-navy: #003366;
             --dark-navy: #001233;
             --light-navy: #0A3D6E;
-            
-            /* Gold Palette */
             --gold-light: #E6C670;
             --gold-primary: #D4AF37;
             --gold-deep: #A67C00;
             --gold-shine: #FFD700;
-            
-            /* Neutral Colors */
             --cream: #F9F7F1;
             --off-white: #FEFDFB;
             --pure-white: #FFFFFF;
             --light-gray: #B8B5AD;
-            
-            /* Typography */
             --font-display: 'Playfair Display', serif;
             --font-elegant: 'Cormorant Garamond', serif;
             --font-body: 'Inter', sans-serif;
-            
-            /* Spacing */
             --section-padding: 140px 8%;
             --mobile-padding: 80px 5%;
         }
@@ -55,7 +46,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -352,7 +342,6 @@
                 radial-gradient(ellipse at 60% 80%, rgba(166, 124, 0, 0.05) 0%, transparent 40%);
         }
 
-        /* NNRG MUN Watermark */
         .mun-watermark {
             position: absolute;
             top: 50%;
@@ -371,7 +360,6 @@
             object-fit: contain;
         }
 
-        /* Animated Grid Lines */
         .grid-lines {
             position: absolute;
             top: 0;
@@ -390,7 +378,6 @@
             100% { transform: translate(100px, 100px); }
         }
 
-        /* Floating Particles */
         .particles {
             position: absolute;
             width: 100%;
@@ -957,7 +944,7 @@
             line-height: 1.8;
         }
 
-        /* ===== COMMITTEES - FLIP CARDS ===== */
+        /* ===== COMMITTEES ===== */
         .committees {
             background: var(--primary-navy);
             position: relative;
@@ -975,7 +962,6 @@
             height: 500px;
             position: relative;
             cursor: pointer;
-            -webkit-perspective: 1000px;
             perspective: 1000px;
         }
 
@@ -983,19 +969,15 @@
             position: relative;
             width: 100%;
             height: 100%;
-            -webkit-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
         .committee-card:hover .committee-card-inner {
-            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
 
         .committee-card.flipped .committee-card-inner {
-            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
 
@@ -1004,12 +986,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             border-radius: 15px;
             overflow: hidden;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
         }
 
         .committee-front {
@@ -1021,9 +1000,6 @@
             justify-content: center;
             text-align: center;
             padding: 40px;
-            z-index: 2;
-            -webkit-transform: rotateY(0deg) translate3d(0, 0, 0);
-            transform: rotateY(0deg) translate3d(0, 0, 0);
         }
 
         .committee-front::before {
@@ -1108,15 +1084,13 @@
 
         .committee-back {
             background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
-            -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
-            transform: rotateY(180deg) translate3d(0, 0, 0);
+            transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 50px 40px;
-            z-index: 1;
         }
 
         .committee-back::before {
@@ -1158,9 +1132,6 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-size: 12px;
             color: var(--primary-navy);
             text-transform: uppercase;
@@ -1168,30 +1139,14 @@
             opacity: 0.8;
         }
 
-        /* Touch Device Overrides */
         @media (hover: none) and (pointer: coarse) {
             .committee-card:hover .committee-card-inner {
-                -webkit-transform: rotateY(0deg);
                 transform: rotateY(0deg);
-            }
-            
-            .committee-card.flipped .committee-card-inner {
-                -webkit-transform: rotateY(180deg);
-                transform: rotateY(180deg);
             }
             
             .flip-indicator::before {
                 content: '👆';
             }
-        }
-
-        .committee-card.touch-device {
-            -webkit-tap-highlight-color: transparent;
-            transition: transform 0.2s ease;
-        }
-
-        .committee-card.touch-device:active {
-            transform: scale(0.98);
         }
 
         /* ===== TIMELINE ===== */
@@ -1244,7 +1199,6 @@
             border: 1px solid rgba(230, 198, 112, 0.2);
             padding: 40px;
             border-radius: 10px;
-            position: relative;
             transition: all 0.4s ease;
         }
 
@@ -1337,7 +1291,6 @@
             z-index: 1;
         }
 
-        /* Delegation Type Selector */
         .delegation-selector {
             display: flex;
             justify-content: center;
@@ -1401,7 +1354,6 @@
             margin-top: 5px;
         }
 
-        /* Registration Form Wrapper */
         .registration-form-wrapper {
             background: var(--primary-navy);
             border-radius: 20px;
@@ -1412,7 +1364,6 @@
             gap: 50px;
         }
 
-        /* Form Styling */
         .registration-form {
             display: flex;
             flex-direction: column;
@@ -1496,7 +1447,6 @@
             gap: 15px;
         }
 
-        /* Conditional Fields */
         .conditional-field {
             display: none;
         }
@@ -1509,17 +1459,10 @@
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Delegation Type Toggle (Inside Form) */
         .delegation-type-toggle {
             display: none;
             gap: 15px;
@@ -1554,7 +1497,7 @@
             border-color: var(--gold-light);
         }
 
-        /* File Upload Styling */
+        /* File Upload */
         .file-upload-wrapper {
             position: relative;
         }
@@ -1652,7 +1595,7 @@
             color: #ff6b6b;
         }
 
-        /* Portfolio Preferences Section */
+        /* Preferences Section */
         .preferences-section {
             background: rgba(0, 40, 85, 0.3);
             border: 1px solid rgba(230, 198, 112, 0.2);
@@ -1695,10 +1638,6 @@
             color: var(--primary-navy);
         }
 
-        .matrix-download span {
-            font-size: 14px;
-        }
-
         .preference-group {
             display: flex;
             flex-direction: column;
@@ -1737,7 +1676,6 @@
 
         .preference-item input:focus {
             border-color: var(--gold-light);
-            box-shadow: 0 0 15px rgba(230, 198, 112, 0.2);
         }
 
         .preferences-note {
@@ -1891,7 +1829,7 @@
             line-height: 1.6;
         }
 
-        /* Enhanced Success Message */
+        /* Success Message */
         .success-message {
             display: none;
             text-align: center;
@@ -1905,17 +1843,9 @@
         }
 
         @keyframes successPop {
-            0% { 
-                opacity: 0; 
-                transform: scale(0.8); 
-            }
-            50% { 
-                transform: scale(1.05); 
-            }
-            100% { 
-                opacity: 1; 
-                transform: scale(1); 
-            }
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .success-icon {
@@ -1929,12 +1859,6 @@
             font-size: 50px;
             color: var(--primary-navy);
             margin: 0 auto 30px;
-            animation: successBounce 0.6s ease 0.3s;
-        }
-
-        @keyframes successBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
         }
 
         .success-message h3 {
@@ -2039,7 +1963,7 @@
             color: var(--light-gray);
         }
 
-        /* ===== MOBILE STICKY CTA ===== */
+        /* Mobile Sticky CTA */
         .mobile-cta {
             display: none;
             position: fixed;
@@ -2060,196 +1984,52 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 72px;
-            }
-
-            .section-title {
-                font-size: 48px;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .committees-grid {
-                gap: 40px;
-            }
-
-            .about-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
-            }
-
-            .mun-watermark {
-                width: 350px;
-                height: 350px;
-            }
-
-            .registration-form-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .delegation-selector {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .delegation-btn {
-                width: 100%;
-                max-width: 350px;
-            }
+            .hero h1 { font-size: 72px; }
+            .section-title { font-size: 48px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-features { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .mun-watermark { width: 350px; height: 350px; }
+            .registration-form-wrapper { grid-template-columns: 1fr; }
+            .delegation-selector { flex-direction: column; align-items: center; }
+            .delegation-btn { width: 100%; max-width: 350px; }
         }
 
         @media (max-width: 768px) {
-            :root {
-                --section-padding: 80px 5%;
-            }
-
-            .cursor, .cursor-dot {
-                display: none;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero-tagline {
-                font-size: 18px;
-            }
-
-            .countdown {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .countdown-item {
-                width: 80px;
-                height: 100px;
-            }
-
-            .countdown-number {
-                font-size: 36px;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .btn-primary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: 36px;
-            }
-
-            .section-number {
-                font-size: 80px;
-            }
-
-            .about-features,
-            .about-stats,
-            .features-grid,
-            .committees-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .committee-card {
-                height: 450px;
-            }
-
-            .timeline-line {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                flex-direction: row;
-                padding-left: 60px;
-                padding-right: 0;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .mobile-cta {
-                display: block;
-            }
-
-            .mun-watermark {
-                width: 280px;
-                height: 280px;
-            }
-
-            .registration-form-wrapper {
-                padding: 25px 18px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .delegation-btn {
-                padding: 20px 30px;
-                min-width: unset;
-            }
-
-            .delegation-btn .fee-amount {
-                font-size: 24px;
-            }
-
-            .payment-amount {
-                font-size: 36px;
-            }
-
-            .qr-code-container {
-                width: 160px;
-                height: 160px;
-            }
-
-            .preferences-header {
-                flex-direction: column;
-                gap: 12px;
-                align-items: flex-start;
-            }
-
-            .preference-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-
-            .preference-item input {
-                width: 100%;
-            }
-
-            .delegation-type-toggle {
-                flex-direction: column;
-            }
+            :root { --section-padding: 80px 5%; }
+            .cursor, .cursor-dot { display: none; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .hero h1 { font-size: 42px; }
+            .hero-tagline { font-size: 18px; }
+            .countdown { flex-wrap: wrap; gap: 15px; }
+            .countdown-item { width: 80px; height: 100px; }
+            .countdown-number { font-size: 36px; }
+            .hero-cta { flex-direction: column; }
+            .btn-primary { width: 100%; justify-content: center; }
+            .section-title { font-size: 36px; }
+            .section-number { font-size: 80px; }
+            .about-features, .about-stats, .features-grid, .committees-grid { grid-template-columns: 1fr; gap: 20px; }
+            .committee-card { height: 450px; }
+            .timeline-line { left: 20px; }
+            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { flex-direction: row; padding-left: 60px; padding-right: 0; }
+            .timeline-dot { left: 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .mobile-cta { display: block; }
+            .mun-watermark { width: 280px; height: 280px; }
+            .registration-form-wrapper { padding: 25px 18px; }
+            .form-row { grid-template-columns: 1fr; }
+            .delegation-btn { padding: 20px 30px; min-width: unset; }
+            .delegation-btn .fee-amount { font-size: 24px; }
+            .payment-amount { font-size: 36px; }
+            .qr-code-container { width: 160px; height: 160px; }
+            .preferences-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .preference-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .preference-item input { width: 100%; }
+            .delegation-type-toggle { flex-direction: column; }
         }
 
-        /* ===== ANIMATION CLASSES ===== */
+        /* Animations */
         .reveal {
             opacity: 0;
             transform: translateY(60px);
@@ -2259,28 +2039,6 @@
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .stagger-1 { transition-delay: 0.1s; }
@@ -2395,7 +2153,6 @@
         <div class="about-content-wrapper">
             <div class="about-text reveal">
                 <p>The NNRG Model United Nations Conference represents a unique convergence of academic excellence and practical diplomatic training. Organized by the prestigious Nalla Narasimha Reddy Education Society's Group of Institutions, this conference is designed to cultivate the next generation of global leaders.</p>
-                
                 <p>Through intensive committee sessions, expert-led workshops, and real-world simulation of United Nations proceedings, delegates will develop critical skills in negotiation, public speaking, research, and consensus-building.</p>
             </div>
 
@@ -2500,7 +2257,6 @@
         </div>
 
         <div class="committees-grid">
-            <!-- DISEC -->
             <div class="committee-card reveal stagger-1">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2519,7 +2275,6 @@
                 </div>
             </div>
 
-            <!-- AIPPM -->
             <div class="committee-card reveal stagger-2">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2538,7 +2293,6 @@
                 </div>
             </div>
 
-            <!-- TLA -->
             <div class="committee-card reveal stagger-3">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2557,7 +2311,6 @@
                 </div>
             </div>
 
-            <!-- UNHRC -->
             <div class="committee-card reveal stagger-4">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2590,7 +2343,6 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- Registration Open -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">February 10, 2026</div>
@@ -2600,7 +2352,6 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Agenda Release -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 1, 2026</div>
@@ -2610,7 +2361,6 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Registration Deadline -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 9, 2026</div>
@@ -2620,7 +2370,6 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- Conference Days -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">March 13-14, 2026</div>
@@ -2639,7 +2388,6 @@
             <h2 class="section-title reveal">Secure Your<br>Seat Today</h2>
         </div>
 
-        <!-- Delegation Type Selector -->
         <div class="delegation-selector reveal">
             <button class="delegation-btn active" id="internalBtn" onclick="selectDelegation('internal')">
                 Internal Delegation
@@ -2655,7 +2403,6 @@
 
         <div class="registration-container reveal">
             <div class="registration-form-wrapper">
-                <!-- Registration Form -->
                 <div class="registration-form" id="registrationForm">
                     <div class="form-header">
                         <h3 id="formTitle">Internal Delegation Registration</h3>
@@ -2684,7 +2431,7 @@
                     </div>
 
                     <!-- Roll Number - Only for Internal -->
-                    <div class="form-group conditional-field" id="rollNumberField">
+                    <div class="form-group conditional-field show" id="rollNumberField">
                         <label>Roll Number <span class="required">*</span></label>
                         <input type="text" id="inputRollNumber" placeholder="Enter your roll number">
                     </div>
@@ -2706,7 +2453,7 @@
                         </div>
                     </div>
 
-                    <!-- Delegation Type (Individual/Group) - Shows for External -->
+                    <!-- Delegation Type - Only for External -->
                     <div class="form-group conditional-field" id="delegationTypeGroup">
                         <label>Delegation Type <span class="required">*</span></label>
                         <div class="delegation-type-toggle show">
@@ -2719,7 +2466,7 @@
                         </div>
                     </div>
 
-                    <!-- Group Leader Phone - Shows only for Group Delegation -->
+                    <!-- Group Leader Phone - Only for Group -->
                     <div class="form-group conditional-field" id="groupLeaderField">
                         <label>Group Leader Phone Number <span class="required">*</span></label>
                         <input type="tel" id="inputGroupLeaderPhone" placeholder="+91 XXXXX XXXXX">
@@ -2736,11 +2483,11 @@
                         </select>
                     </div>
 
-                    <!-- Portfolio Preferences Section -->
+                    <!-- Portfolio Preferences -->
                     <div class="preferences-section">
                         <div class="preferences-header">
                             <h4>📋 Portfolio Preferences</h4>
-                            <a href="country-matrix.pdf" target="_blank" class="matrix-download" id="matrixDownload">
+                            <a href="country-matrix.pdf" target="_blank" class="matrix-download">
                                 <span>📄</span> Country Matrix
                             </a>
                         </div>
@@ -2775,8 +2522,8 @@
                             <label class="file-upload-label" id="fileUploadLabel">
                                 <span class="file-upload-icon">📸</span>
                                 <span class="file-upload-text">Click to upload screenshot</span>
-                                <span class="file-upload-hint">PNG, JPG or JPEG (Max 5MB)</span>
-                                <input type="file" class="file-upload-input" id="inputScreenshot" accept="image/png, image/jpeg, image/jpg" onchange="handleFileSelect(this)">
+                                <span class="file-upload-hint">Any image format (Max 5MB)</span>
+                                <input type="file" class="file-upload-input" id="inputScreenshot" accept="image/*" onchange="handleFileSelect(this)">
                             </label>
                             <div class="file-name-display" id="fileNameDisplay">
                                 <span class="file-icon">🖼️</span>
@@ -2853,14 +2600,14 @@
             <div class="footer-section">
                 <h4>Connect</h4>
                 <ul class="footer-links">
-                    <li><a href="https://www.instagram.com/nnrgmun?igsh=MXExMHhpNXExODd5Ng==" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.instagram.com/nnrgmun" target="_blank">Instagram</a></li>
                     <li><a href="https://www.linkedin.com/in/mun-nnrg-b161a73ab" target="_blank">LinkedIn</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Location</h4>
                 <ul class="footer-links">
-                    <li><a href="https://maps.app.goo.gl/QvUGkgFe4FzXqew88?g_st=ipc" target="_blank">Campus Location</a></li>
+                    <li><a href="https://maps.app.goo.gl/QvUGkgFe4FzXqew88" target="_blank">Campus Location</a></li>
                 </ul>
             </div>
         </div>
@@ -2876,23 +2623,27 @@
 
     <script>
         // ===========================================
-        // FORMSUBMIT - munnnrg@gmail.com
+        // CONFIGURATION
         // ===========================================
         var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
+        var IMGBB_API_KEY = 'ece57f93eb9b1ae79510fef0e3d23534';
+        
         var selectedDelegation = 'internal';
         var selectedDelegationType = 'individual';
-        var selectedFile = null;
 
-        // Preloader
+        // ===========================================
+        // PRELOADER
+        // ===========================================
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById('preloader').classList.add('hidden');
             }, 2500);
-            // Show roll number field for internal by default
             updateFormFields();
         };
 
-        // Particles
+        // ===========================================
+        // PARTICLES
+        // ===========================================
         var particlesContainer = document.getElementById('particles');
         if (particlesContainer) {
             for (var i = 0; i < 25; i++) {
@@ -2905,7 +2656,9 @@
             }
         }
 
-        // Cursor
+        // ===========================================
+        // CUSTOM CURSOR
+        // ===========================================
         var cursor = document.getElementById('cursor');
         var cursorDot = document.getElementById('cursorDot');
         if (cursor && cursorDot) {
@@ -2917,7 +2670,9 @@
             });
         }
 
-        // Navbar scroll
+        // ===========================================
+        // NAVBAR SCROLL
+        // ===========================================
         var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 100) {
@@ -2927,7 +2682,9 @@
             }
         });
 
-        // Mobile menu
+        // ===========================================
+        // MOBILE MENU
+        // ===========================================
         var menuToggle = document.getElementById('menuToggle');
         var mobileMenu = document.getElementById('mobileMenu');
         var menuClose = document.getElementById('menuClose');
@@ -2943,25 +2700,28 @@
             };
         }
         var mobileLinks = document.querySelectorAll('.mobile-menu a');
-        for (var i = 0; i < mobileLinks.length; i++) {
-            mobileLinks[i].onclick = function() {
+        mobileLinks.forEach(function(link) {
+            link.onclick = function() {
                 mobileMenu.classList.remove('active');
             };
-        }
+        });
 
-        // Smooth scroll
-        var anchors = document.querySelectorAll('a[href^="#"]');
-        for (var i = 0; i < anchors.length; i++) {
-            anchors[i].addEventListener('click', function(e) {
+        // ===========================================
+        // SMOOTH SCROLL
+        // ===========================================
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 var target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        }
+        });
 
-        // Countdown
+        // ===========================================
+        // COUNTDOWN
+        // ===========================================
         function updateCountdown() {
             var eventDate = new Date('2026-03-13T09:00:00').getTime();
             var now = new Date().getTime();
@@ -2976,8 +2736,10 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Scroll reveal
-        var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
+        // ===========================================
+        // SCROLL REVEAL
+        // ===========================================
+        var reveals = document.querySelectorAll('.reveal, .timeline-item');
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -2987,7 +2749,9 @@
         }, { threshold: 0.1 });
         reveals.forEach(function(el) { observer.observe(el); });
 
-        // Parallax
+        // ===========================================
+        // PARALLAX
+        // ===========================================
         document.addEventListener('scroll', function() {
             var gridLines = document.querySelector('.grid-lines');
             if (gridLines) {
@@ -2995,7 +2759,9 @@
             }
         });
 
-        // Number counter
+        // ===========================================
+        // STAT COUNTER
+        // ===========================================
         var counters = document.querySelectorAll('.stat-number');
         var counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
@@ -3021,7 +2787,41 @@
         }, { threshold: 0.5 });
         counters.forEach(function(counter) { counterObserver.observe(counter); });
 
-        // Update form fields based on delegation type
+        // ===========================================
+        // COMMITTEE CARDS - TOUCH SUPPORT
+        // ===========================================
+        (function() {
+            function isTouchDevice() {
+                return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            }
+            
+            if (isTouchDevice()) {
+                var committeeCards = document.querySelectorAll('.committee-card');
+                committeeCards.forEach(function(card) {
+                    card.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        committeeCards.forEach(function(otherCard) {
+                            if (otherCard !== card) {
+                                otherCard.classList.remove('flipped');
+                            }
+                        });
+                        this.classList.toggle('flipped');
+                    });
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.committee-card')) {
+                        committeeCards.forEach(function(card) {
+                            card.classList.remove('flipped');
+                        });
+                    }
+                });
+            }
+        })();
+
+        // ===========================================
+        // FORM FIELD MANAGEMENT
+        // ===========================================
         function updateFormFields() {
             var rollNumberField = document.getElementById('rollNumberField');
             var delegationTypeGroup = document.getElementById('delegationTypeGroup');
@@ -3042,7 +2842,6 @@
             }
         }
 
-        // Delegation selection (Internal/External)
         function selectDelegation(type) {
             selectedDelegation = type;
             var intBtn = document.getElementById('internalBtn');
@@ -3065,7 +2864,6 @@
             updateFormFields();
         }
 
-        // Delegation Type Selection (Individual/Group)
         function selectDelegationType(type) {
             selectedDelegationType = type;
             var individualBtn = document.getElementById('individualBtn');
@@ -3081,7 +2879,9 @@
             updateFormFields();
         }
 
-        // File upload handling
+        // ===========================================
+        // FILE UPLOAD HANDLING
+        // ===========================================
         function handleFileSelect(input) {
             var file = input.files[0];
             var fileUploadLabel = document.getElementById('fileUploadLabel');
@@ -3089,22 +2889,18 @@
             var fileNameSpan = document.getElementById('fileName');
 
             if (file) {
-                // Validate file size (5MB max)
                 if (file.size > 5 * 1024 * 1024) {
                     alert('⚠️ File size must be less than 5MB');
                     input.value = '';
                     return;
                 }
 
-                // Validate file type
-                var validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-                if (!validTypes.includes(file.type)) {
-                    alert('⚠️ Please upload a PNG, JPG or JPEG image');
+                if (!file.type.startsWith('image/')) {
+                    alert('⚠️ Please upload an image file');
                     input.value = '';
                     return;
                 }
 
-                selectedFile = file;
                 fileUploadLabel.classList.add('has-file');
                 fileNameDisplay.classList.add('show');
                 fileNameSpan.textContent = file.name;
@@ -3117,16 +2913,15 @@
             var fileNameDisplay = document.getElementById('fileNameDisplay');
 
             input.value = '';
-            selectedFile = null;
             fileUploadLabel.classList.remove('has-file');
             fileNameDisplay.classList.remove('show');
         }
 
-        // ===== FORM SUBMISSION WITH FILE UPLOAD =====
-        function submitForm() {
-            console.log('Submit clicked!');
-
-            // Get values
+        // ===========================================
+        // FORM SUBMISSION WITH IMGBB UPLOAD
+        // ===========================================
+        async function submitForm() {
+            // Get all values
             var fullName = document.getElementById('inputFullName').value.trim();
             var email = document.getElementById('inputEmail').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
@@ -3148,25 +2943,21 @@
                 return;
             }
 
-            // Roll number validation for internal
             if (selectedDelegation === 'internal' && !rollNumber) {
                 alert('⚠️ Please enter your Roll Number.');
                 return;
             }
 
-            // Validate preferences
             if (!preference1 || !preference2 || !preference3) {
                 alert('⚠️ Please enter all three portfolio preferences.');
                 return;
             }
 
-            // Validate group leader phone for external group delegation
             if (selectedDelegation === 'external' && selectedDelegationType === 'group' && !groupLeaderPhone) {
                 alert('⚠️ Please enter the Group Leader Phone Number.');
                 return;
             }
 
-            // Validate screenshot
             if (!screenshotFile) {
                 alert('⚠️ Please upload your payment screenshot.');
                 return;
@@ -3186,21 +2977,41 @@
             // Show loading
             var btn = document.getElementById('submitBtn');
             var originalBtnText = btn.innerHTML;
-            btn.innerHTML = 'Uploading... ⏳';
+            btn.innerHTML = 'Uploading Screenshot... ⏳';
             btn.disabled = true;
 
-            // Determine delegation type text
+            // Step 1: Upload image to ImgBB
+            var screenshotUrl = '';
+            try {
+                var imgFormData = new FormData();
+                imgFormData.append('image', screenshotFile);
+                
+                var imgResponse = await fetch('https://api.imgbb.com/1/upload?key=' + IMGBB_API_KEY, {
+                    method: 'POST',
+                    body: imgFormData
+                });
+                
+                var imgResult = await imgResponse.json();
+                
+                if (imgResult.success) {
+                    screenshotUrl = imgResult.data.url;
+                    console.log('✅ Image uploaded:', screenshotUrl);
+                } else {
+                    throw new Error('Image upload failed');
+                }
+            } catch (error) {
+                console.error('❌ Image upload error:', error);
+                alert('⚠️ Failed to upload screenshot. Please try again.');
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+                return;
+            }
+
+            btn.innerHTML = 'Submitting Registration... ⏳';
+
+            // Prepare data
             var delegationTypeText = selectedDelegation === 'internal' ? 'Internal' : 'External (' + (selectedDelegationType === 'individual' ? 'Individual' : 'Group') + ')';
 
-            // Create FormData for file upload
-            var formData = new FormData();
-            
-            // FormSubmit settings
-            formData.append('_subject', '🎓 NNRG MUN 2026 Registration - ' + fullName);
-            formData.append('_template', 'table');
-            formData.append('_captcha', 'false');
-            formData.append('_replyto', email);
-            
             // Auto-response message
             var autoResponseMessage = 'Thank you for registering for NNRG Model United Nations 2026!\n\n';
             autoResponseMessage += 'Your registration has been received successfully.\n\n';
@@ -3223,64 +3034,51 @@
             autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
             autoResponseMessage += 'Best Regards,\n';
             autoResponseMessage += 'NNRG MUN Team';
-            
-            formData.append('_autoresponse', autoResponseMessage);
-            
-            // Form data
-            formData.append('Delegation Type', delegationTypeText);
-            formData.append('Full Name', fullName);
-            formData.append('Email', email);
-            formData.append('Phone Number', phone);
-            formData.append('College/Institution', college);
-            
+
+            // Form data object
+            var formData = {
+                _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
+                _template: 'table',
+                _captcha: 'false',
+                _replyto: email,
+                _autoresponse: autoResponseMessage,
+                
+                'Delegation Type': delegationTypeText,
+                'Full Name': fullName,
+                'Email': email,
+                'Phone Number': phone,
+                'College/Institution': college,
+                'Year': year,
+                'Section': section.toUpperCase(),
+                'Preferred Committee': committee,
+                'Portfolio Preference 1': preference1,
+                'Portfolio Preference 2': preference2,
+                'Portfolio Preference 3': preference3,
+                'Transaction ID': transactionId,
+                'Payment Screenshot': screenshotUrl,
+                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            };
+
+            // Add conditional fields
             if (selectedDelegation === 'internal') {
-                formData.append('Roll Number', rollNumber);
+                formData['Roll Number'] = rollNumber;
             }
-            
-            formData.append('Year', year);
-            formData.append('Section', section.toUpperCase());
             
             if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
-                formData.append('Group Leader Phone', groupLeaderPhone);
+                formData['Group Leader Phone'] = groupLeaderPhone;
             }
-            
-            formData.append('Preferred Committee', committee);
-            formData.append('Portfolio Preference 1', preference1);
-            formData.append('Portfolio Preference 2', preference2);
-            formData.append('Portfolio Preference 3', preference3);
-            formData.append('Transaction ID', transactionId);
-            formData.append('Registration Fee', selectedDelegation === 'internal' ? '₹200' : '₹600');
-            formData.append('Submission Time', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
-            
-            // Append the file
-            formData.append('attachment', screenshotFile, screenshotFile.name);
 
-            console.log('Sending data with file...');
-
-            // Function to show success
+            // Show success function
             function showSuccess() {
-                console.log('Showing success message...');
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('paymentSection').style.display = 'none';
                 
-                // Hide the form
-                var formElement = document.getElementById('registrationForm');
-                if (formElement) {
-                    formElement.style.display = 'none';
-                }
-                
-                // Hide the payment section
-                var paymentElement = document.getElementById('paymentSection');
-                if (paymentElement) {
-                    paymentElement.style.display = 'none';
-                }
-                
-                // Show success message
                 var successElement = document.getElementById('successMessage');
-                if (successElement) {
-                    successElement.classList.add('show');
-                    successElement.style.display = 'block';
-                }
+                successElement.classList.add('show');
+                successElement.style.display = 'block';
 
-                // Clear form fields
+                // Clear form
                 document.getElementById('inputFullName').value = '';
                 document.getElementById('inputEmail').value = '';
                 document.getElementById('inputPhone').value = '';
@@ -3296,66 +3094,32 @@
                 document.getElementById('inputGroupLeaderPhone').value = '';
                 removeFile();
                 
-                // Reset button
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
                 
-                // Scroll to success message
                 setTimeout(function() {
                     successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
             }
 
-            // Send to FormSubmit with FormData (for file upload)
-            fetch(FORMSUBMIT_URL, {
-                method: 'POST',
-                body: formData
-                // Don't set Content-Type header - browser will set it with boundary
-            })
-            .then(function(response) {
-                console.log('Response received:', response.status);
+            // Send to FormSubmit
+            try {
+                var response = await fetch(FORMSUBMIT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('✅ Form submitted:', response.status);
                 showSuccess();
-            })
-            .catch(function(error) {
-                console.log('Fetch error (but email likely sent):', error);
-                showSuccess();
-            });
+            } catch (error) {
+                console.log('Form submission:', error);
+                showSuccess(); // Still show success as email likely sent
+            }
         }
-
-        // ===== iOS/Android Touch Flip Card Handler =====
-        (function() {
-            function isTouchDevice() {
-                return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-            }
-            
-            if (isTouchDevice()) {
-                var committeeCards = document.querySelectorAll('.committee-card');
-                
-                committeeCards.forEach(function(card) {
-                    card.classList.add('touch-device');
-                    
-                    card.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        
-                        committeeCards.forEach(function(otherCard) {
-                            if (otherCard !== card) {
-                                otherCard.classList.remove('flipped');
-                            }
-                        });
-                        
-                        this.classList.toggle('flipped');
-                    });
-                });
-                
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.committee-card')) {
-                        committeeCards.forEach(function(card) {
-                            card.classList.remove('flipped');
-                        });
-                    }
-                });
-            }
-        })();
     </script>
 </body>
 </html>
