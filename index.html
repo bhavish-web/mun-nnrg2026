@@ -1416,7 +1416,7 @@
         .registration-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .form-header {
@@ -1455,7 +1455,7 @@
 
         .form-group input,
         .form-group select {
-            padding: 16px 18px;
+            padding: 14px 16px;
             border: 2px solid rgba(230, 198, 112, 0.2);
             background: rgba(0, 40, 85, 0.5);
             border-radius: 10px;
@@ -1493,50 +1493,15 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* Delegation Type Toggle (Inside Form) */
-        .delegation-type-toggle {
-            display: none;
             gap: 15px;
-            margin-top: 5px;
         }
 
-        .delegation-type-toggle.show {
-            display: flex;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid rgba(230, 198, 112, 0.3);
-            background: rgba(0, 40, 85, 0.5);
-            color: var(--cream);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .toggle-btn:hover {
-            border-color: var(--gold-light);
-        }
-
-        .toggle-btn.active {
-            background: var(--gold-light);
-            color: var(--primary-navy);
-            border-color: var(--gold-light);
-        }
-
-        /* Group Leader Field */
-        .group-leader-field {
+        /* Conditional Fields */
+        .conditional-field {
             display: none;
         }
 
-        .group-leader-field.show {
+        .conditional-field.show {
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -1554,39 +1519,171 @@
             }
         }
 
+        /* Delegation Type Toggle (Inside Form) */
+        .delegation-type-toggle {
+            display: none;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .delegation-type-toggle.show {
+            display: flex;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid rgba(230, 198, 112, 0.3);
+            background: rgba(0, 40, 85, 0.5);
+            color: var(--cream);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--gold-light);
+        }
+
+        .toggle-btn.active {
+            background: var(--gold-light);
+            color: var(--primary-navy);
+            border-color: var(--gold-light);
+        }
+
+        /* File Upload Styling */
+        .file-upload-wrapper {
+            position: relative;
+        }
+
+        .file-upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 20px;
+            border: 2px dashed rgba(230, 198, 112, 0.4);
+            background: rgba(0, 40, 85, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--gold-light);
+            background: rgba(0, 40, 85, 0.5);
+        }
+
+        .file-upload-label.has-file {
+            border-color: var(--gold-light);
+            background: rgba(230, 198, 112, 0.1);
+        }
+
+        .file-upload-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text {
+            font-size: 14px;
+            color: var(--cream);
+            margin-bottom: 5px;
+        }
+
+        .file-upload-hint {
+            font-size: 12px;
+            color: var(--light-gray);
+        }
+
+        .file-upload-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-name-display {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: rgba(230, 198, 112, 0.15);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--gold-light);
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-name-display.show {
+            display: flex;
+        }
+
+        .file-name-display .file-icon {
+            font-size: 18px;
+        }
+
+        .file-name-display .file-name {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-name-display .remove-file {
+            background: none;
+            border: none;
+            color: var(--cream);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .file-name-display .remove-file:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff6b6b;
+        }
+
         /* Portfolio Preferences Section */
         .preferences-section {
             background: rgba(0, 40, 85, 0.3);
             border: 1px solid rgba(230, 198, 112, 0.2);
             border-radius: 12px;
-            padding: 20px;
-            margin-top: 10px;
+            padding: 18px;
         }
 
         .preferences-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .preferences-header h4 {
             font-family: var(--font-display);
-            font-size: 18px;
+            font-size: 16px;
             color: var(--gold-light);
         }
 
         .matrix-download {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
+            gap: 6px;
+            padding: 6px 12px;
             background: rgba(230, 198, 112, 0.1);
             border: 1px solid var(--gold-light);
             border-radius: 20px;
             color: var(--gold-light);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1599,31 +1696,31 @@
         }
 
         .matrix-download span {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .preference-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .preference-item {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .preference-label {
-            min-width: 100px;
-            font-size: 13px;
+            min-width: 90px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--cream);
         }
 
         .preference-item input {
             flex: 1;
-            padding: 14px 16px;
+            padding: 12px 14px;
             border: 2px solid rgba(230, 198, 112, 0.2);
             background: rgba(0, 40, 85, 0.5);
             border-radius: 10px;
@@ -1644,24 +1741,24 @@
         }
 
         .preferences-note {
-            margin-top: 15px;
-            padding: 12px 15px;
+            margin-top: 12px;
+            padding: 10px 12px;
             background: rgba(230, 198, 112, 0.08);
             border-left: 3px solid var(--gold-light);
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--light-gray);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .btn-submit {
             margin-top: 15px;
-            padding: 20px 40px;
+            padding: 18px 35px;
             background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
             color: var(--primary-navy);
             border: none;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -1691,6 +1788,12 @@
             box-shadow: 0 15px 40px rgba(230, 198, 112, 0.4);
         }
 
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Payment Section */
         .payment-section {
             display: flex;
@@ -1714,7 +1817,7 @@
         .payment-header p {
             font-size: 14px;
             color: var(--light-gray);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .payment-amount {
@@ -1725,16 +1828,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .qr-code-container {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             background: var(--pure-white);
             border-radius: 15px;
-            padding: 12px;
-            margin-bottom: 25px;
+            padding: 10px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1763,8 +1866,8 @@
         }
 
         .qr-placeholder span {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 8px;
         }
 
         .payment-info {
@@ -1779,12 +1882,13 @@
 
         .payment-note {
             margin-top: 20px;
-            padding: 15px 20px;
+            padding: 12px 16px;
             background: rgba(230, 198, 112, 0.1);
             border: 1px solid rgba(230, 198, 112, 0.3);
             border-radius: 10px;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--cream);
+            line-height: 1.6;
         }
 
         /* Enhanced Success Message */
@@ -2099,7 +2203,7 @@
             }
 
             .registration-form-wrapper {
-                padding: 30px 20px;
+                padding: 25px 18px;
             }
 
             .form-row {
@@ -2120,20 +2224,20 @@
             }
 
             .qr-code-container {
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
             }
 
             .preferences-header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 align-items: flex-start;
             }
 
             .preference-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 6px;
             }
 
             .preference-item input {
@@ -2579,6 +2683,12 @@
                         <input type="text" id="inputCollege" placeholder="Enter your college name">
                     </div>
 
+                    <!-- Roll Number - Only for Internal -->
+                    <div class="form-group conditional-field" id="rollNumberField">
+                        <label>Roll Number <span class="required">*</span></label>
+                        <input type="text" id="inputRollNumber" placeholder="Enter your roll number">
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group">
                             <label>Year <span class="required">*</span></label>
@@ -2597,7 +2707,7 @@
                     </div>
 
                     <!-- Delegation Type (Individual/Group) - Shows for External -->
-                    <div class="form-group" id="delegationTypeGroup" style="display: none;">
+                    <div class="form-group conditional-field" id="delegationTypeGroup">
                         <label>Delegation Type <span class="required">*</span></label>
                         <div class="delegation-type-toggle show">
                             <button type="button" class="toggle-btn active" id="individualBtn" onclick="selectDelegationType('individual')">
@@ -2610,7 +2720,7 @@
                     </div>
 
                     <!-- Group Leader Phone - Shows only for Group Delegation -->
-                    <div class="form-group group-leader-field" id="groupLeaderField">
+                    <div class="form-group conditional-field" id="groupLeaderField">
                         <label>Group Leader Phone Number <span class="required">*</span></label>
                         <input type="tel" id="inputGroupLeaderPhone" placeholder="+91 XXXXX XXXXX">
                     </div>
@@ -2649,13 +2759,31 @@
                             </div>
                         </div>
                         <div class="preferences-note">
-                            💡 <strong>Tip:</strong> Download the Country Matrix PDF to view all available portfolios for your selected committee before making your preferences.
+                            💡 <strong>Tip:</strong> Download the Country Matrix PDF to view all available portfolios for your selected committee.
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Transaction ID <span class="required">*</span></label>
                         <input type="text" id="inputTransactionId" placeholder="Enter payment transaction ID">
+                    </div>
+
+                    <!-- Payment Screenshot Upload -->
+                    <div class="form-group">
+                        <label>Payment Screenshot <span class="required">*</span></label>
+                        <div class="file-upload-wrapper">
+                            <label class="file-upload-label" id="fileUploadLabel">
+                                <span class="file-upload-icon">📸</span>
+                                <span class="file-upload-text">Click to upload screenshot</span>
+                                <span class="file-upload-hint">PNG, JPG or JPEG (Max 5MB)</span>
+                                <input type="file" class="file-upload-input" id="inputScreenshot" accept="image/png, image/jpeg, image/jpg" onchange="handleFileSelect(this)">
+                            </label>
+                            <div class="file-name-display" id="fileNameDisplay">
+                                <span class="file-icon">🖼️</span>
+                                <span class="file-name" id="fileName"></span>
+                                <button type="button" class="remove-file" onclick="removeFile()">✕</button>
+                            </div>
+                        </div>
                     </div>
 
                     <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
@@ -2686,7 +2814,7 @@
                     </div>
 
                     <div class="payment-note">
-                        ⚠️ Please save the transaction ID after payment and enter it in the form to complete registration.
+                        ⚠️ After payment, take a screenshot and upload it in the form along with the Transaction ID.
                     </div>
                 </div>
 
@@ -2753,12 +2881,15 @@
         var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
         var selectedDelegation = 'internal';
         var selectedDelegationType = 'individual';
+        var selectedFile = null;
 
         // Preloader
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById('preloader').classList.add('hidden');
             }, 2500);
+            // Show roll number field for internal by default
+            updateFormFields();
         };
 
         // Particles
@@ -2890,6 +3021,27 @@
         }, { threshold: 0.5 });
         counters.forEach(function(counter) { counterObserver.observe(counter); });
 
+        // Update form fields based on delegation type
+        function updateFormFields() {
+            var rollNumberField = document.getElementById('rollNumberField');
+            var delegationTypeGroup = document.getElementById('delegationTypeGroup');
+            var groupLeaderField = document.getElementById('groupLeaderField');
+
+            if (selectedDelegation === 'internal') {
+                rollNumberField.classList.add('show');
+                delegationTypeGroup.classList.remove('show');
+                groupLeaderField.classList.remove('show');
+            } else {
+                rollNumberField.classList.remove('show');
+                delegationTypeGroup.classList.add('show');
+                if (selectedDelegationType === 'group') {
+                    groupLeaderField.classList.add('show');
+                } else {
+                    groupLeaderField.classList.remove('show');
+                }
+            }
+        }
+
         // Delegation selection (Internal/External)
         function selectDelegation(type) {
             selectedDelegation = type;
@@ -2897,23 +3049,20 @@
             var extBtn = document.getElementById('externalBtn');
             var title = document.getElementById('formTitle');
             var amount = document.getElementById('paymentAmount');
-            var delegationTypeGroup = document.getElementById('delegationTypeGroup');
 
             if (type === 'internal') {
                 intBtn.classList.add('active');
                 extBtn.classList.remove('active');
                 title.innerText = 'Internal Delegation Registration';
                 amount.innerText = '₹200';
-                delegationTypeGroup.style.display = 'none';
-                // Reset to individual
-                selectDelegationType('individual');
+                selectedDelegationType = 'individual';
             } else {
                 extBtn.classList.add('active');
                 intBtn.classList.remove('active');
                 title.innerText = 'External Delegation Registration';
                 amount.innerText = '₹600';
-                delegationTypeGroup.style.display = 'block';
             }
+            updateFormFields();
         }
 
         // Delegation Type Selection (Individual/Group)
@@ -2921,20 +3070,59 @@
             selectedDelegationType = type;
             var individualBtn = document.getElementById('individualBtn');
             var groupBtn = document.getElementById('groupBtn');
-            var groupLeaderField = document.getElementById('groupLeaderField');
 
             if (type === 'individual') {
                 individualBtn.classList.add('active');
                 groupBtn.classList.remove('active');
-                groupLeaderField.classList.remove('show');
             } else {
                 groupBtn.classList.add('active');
                 individualBtn.classList.remove('active');
-                groupLeaderField.classList.add('show');
+            }
+            updateFormFields();
+        }
+
+        // File upload handling
+        function handleFileSelect(input) {
+            var file = input.files[0];
+            var fileUploadLabel = document.getElementById('fileUploadLabel');
+            var fileNameDisplay = document.getElementById('fileNameDisplay');
+            var fileNameSpan = document.getElementById('fileName');
+
+            if (file) {
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('⚠️ File size must be less than 5MB');
+                    input.value = '';
+                    return;
+                }
+
+                // Validate file type
+                var validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                if (!validTypes.includes(file.type)) {
+                    alert('⚠️ Please upload a PNG, JPG or JPEG image');
+                    input.value = '';
+                    return;
+                }
+
+                selectedFile = file;
+                fileUploadLabel.classList.add('has-file');
+                fileNameDisplay.classList.add('show');
+                fileNameSpan.textContent = file.name;
             }
         }
 
-        // ===== FORM SUBMISSION WITH AUTO-RESPONSE =====
+        function removeFile() {
+            var input = document.getElementById('inputScreenshot');
+            var fileUploadLabel = document.getElementById('fileUploadLabel');
+            var fileNameDisplay = document.getElementById('fileNameDisplay');
+
+            input.value = '';
+            selectedFile = null;
+            fileUploadLabel.classList.remove('has-file');
+            fileNameDisplay.classList.remove('show');
+        }
+
+        // ===== FORM SUBMISSION WITH FILE UPLOAD =====
         function submitForm() {
             console.log('Submit clicked!');
 
@@ -2943,6 +3131,7 @@
             var email = document.getElementById('inputEmail').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
             var college = document.getElementById('inputCollege').value.trim();
+            var rollNumber = document.getElementById('inputRollNumber').value.trim();
             var year = document.getElementById('inputYear').value;
             var section = document.getElementById('inputSection').value.trim();
             var committee = document.getElementById('inputCommittee').value;
@@ -2951,10 +3140,17 @@
             var preference3 = document.getElementById('inputPreference3').value.trim();
             var transactionId = document.getElementById('inputTransactionId').value.trim();
             var groupLeaderPhone = document.getElementById('inputGroupLeaderPhone').value.trim();
+            var screenshotFile = document.getElementById('inputScreenshot').files[0];
 
             // Validation
             if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
                 alert('⚠️ Please fill in all required fields.');
+                return;
+            }
+
+            // Roll number validation for internal
+            if (selectedDelegation === 'internal' && !rollNumber) {
+                alert('⚠️ Please enter your Roll Number.');
                 return;
             }
 
@@ -2967,6 +3163,12 @@
             // Validate group leader phone for external group delegation
             if (selectedDelegation === 'external' && selectedDelegationType === 'group' && !groupLeaderPhone) {
                 alert('⚠️ Please enter the Group Leader Phone Number.');
+                return;
+            }
+
+            // Validate screenshot
+            if (!screenshotFile) {
+                alert('⚠️ Please upload your payment screenshot.');
                 return;
             }
 
@@ -2984,18 +3186,30 @@
             // Show loading
             var btn = document.getElementById('submitBtn');
             var originalBtnText = btn.innerHTML;
-            btn.innerHTML = 'Submitting... ⏳';
+            btn.innerHTML = 'Uploading... ⏳';
             btn.disabled = true;
 
             // Determine delegation type text
             var delegationTypeText = selectedDelegation === 'internal' ? 'Internal' : 'External (' + (selectedDelegationType === 'individual' ? 'Individual' : 'Group') + ')';
 
-            // Auto-response message for delegate
+            // Create FormData for file upload
+            var formData = new FormData();
+            
+            // FormSubmit settings
+            formData.append('_subject', '🎓 NNRG MUN 2026 Registration - ' + fullName);
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            formData.append('_replyto', email);
+            
+            // Auto-response message
             var autoResponseMessage = 'Thank you for registering for NNRG Model United Nations 2026!\n\n';
             autoResponseMessage += 'Your registration has been received successfully.\n\n';
             autoResponseMessage += 'Registration Details:\n';
             autoResponseMessage += '- Name: ' + fullName + '\n';
             autoResponseMessage += '- College: ' + college + '\n';
+            if (selectedDelegation === 'internal') {
+                autoResponseMessage += '- Roll Number: ' + rollNumber + '\n';
+            }
             autoResponseMessage += '- Committee: ' + committee + '\n';
             autoResponseMessage += '- Delegation Type: ' + delegationTypeText + '\n';
             autoResponseMessage += '- Portfolio Preferences:\n';
@@ -3007,42 +3221,41 @@
             autoResponseMessage += 'Conference Dates: March 13-14, 2026\n';
             autoResponseMessage += 'Venue: NNRG Campus, Hyderabad\n\n';
             autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
-            autoResponseMessage += 'We look forward to seeing you at the conference!\n\n';
             autoResponseMessage += 'Best Regards,\n';
             autoResponseMessage += 'NNRG MUN Team';
-
-            // Prepare data with auto-response
-            var formData = {
-                // FormSubmit settings
-                _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
-                _template: 'table',
-                _captcha: 'false',
-                _replyto: email,
-                _autoresponse: autoResponseMessage,
-                
-                // Form data
-                'Delegation Type': delegationTypeText,
-                'Full Name': fullName,
-                'Email': email,
-                'Phone Number': phone,
-                'College/Institution': college,
-                'Year': year,
-                'Section': section.toUpperCase(),
-                'Preferred Committee': committee,
-                'Portfolio Preference 1': preference1,
-                'Portfolio Preference 2': preference2,
-                'Portfolio Preference 3': preference3,
-                'Transaction ID': transactionId,
-                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
-                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-            };
-
-            // Add group leader phone if applicable
-            if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
-                formData['Group Leader Phone'] = groupLeaderPhone;
+            
+            formData.append('_autoresponse', autoResponseMessage);
+            
+            // Form data
+            formData.append('Delegation Type', delegationTypeText);
+            formData.append('Full Name', fullName);
+            formData.append('Email', email);
+            formData.append('Phone Number', phone);
+            formData.append('College/Institution', college);
+            
+            if (selectedDelegation === 'internal') {
+                formData.append('Roll Number', rollNumber);
             }
+            
+            formData.append('Year', year);
+            formData.append('Section', section.toUpperCase());
+            
+            if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
+                formData.append('Group Leader Phone', groupLeaderPhone);
+            }
+            
+            formData.append('Preferred Committee', committee);
+            formData.append('Portfolio Preference 1', preference1);
+            formData.append('Portfolio Preference 2', preference2);
+            formData.append('Portfolio Preference 3', preference3);
+            formData.append('Transaction ID', transactionId);
+            formData.append('Registration Fee', selectedDelegation === 'internal' ? '₹200' : '₹600');
+            formData.append('Submission Time', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
+            
+            // Append the file
+            formData.append('attachment', screenshotFile, screenshotFile.name);
 
-            console.log('Sending data:', formData);
+            console.log('Sending data with file...');
 
             // Function to show success
             function showSuccess() {
@@ -3072,6 +3285,7 @@
                 document.getElementById('inputEmail').value = '';
                 document.getElementById('inputPhone').value = '';
                 document.getElementById('inputCollege').value = '';
+                document.getElementById('inputRollNumber').value = '';
                 document.getElementById('inputYear').value = '';
                 document.getElementById('inputSection').value = '';
                 document.getElementById('inputCommittee').value = '';
@@ -3080,6 +3294,7 @@
                 document.getElementById('inputPreference3').value = '';
                 document.getElementById('inputTransactionId').value = '';
                 document.getElementById('inputGroupLeaderPhone').value = '';
+                removeFile();
                 
                 // Reset button
                 btn.innerHTML = originalBtnText;
@@ -3091,14 +3306,11 @@
                 }, 100);
             }
 
-            // Send to FormSubmit
+            // Send to FormSubmit with FormData (for file upload)
             fetch(FORMSUBMIT_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
+                body: formData
+                // Don't set Content-Type header - browser will set it with boundary
             })
             .then(function(response) {
                 console.log('Response received:', response.status);
