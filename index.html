@@ -957,7 +957,7 @@
             line-height: 1.8;
         }
 
-        /* ===== COMMITTEES - FLIP CARDS (FIXED) ===== */
+        /* ===== COMMITTEES - FLIP CARDS ===== */
         .committees {
             background: var(--primary-navy);
             position: relative;
@@ -1331,7 +1331,7 @@
         }
 
         .registration-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -1416,7 +1416,7 @@
         .registration-form {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         .form-header {
@@ -1455,11 +1455,11 @@
 
         .form-group input,
         .form-group select {
-            padding: 18px 20px;
+            padding: 16px 18px;
             border: 2px solid rgba(230, 198, 112, 0.2);
             background: rgba(0, 40, 85, 0.5);
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--cream);
             font-family: var(--font-body);
             transition: all 0.3s ease;
@@ -1496,8 +1496,166 @@
             gap: 20px;
         }
 
-        .btn-submit {
+        /* Delegation Type Toggle (Inside Form) */
+        .delegation-type-toggle {
+            display: none;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .delegation-type-toggle.show {
+            display: flex;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(230, 198, 112, 0.3);
+            background: rgba(0, 40, 85, 0.5);
+            color: var(--cream);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--gold-light);
+        }
+
+        .toggle-btn.active {
+            background: var(--gold-light);
+            color: var(--primary-navy);
+            border-color: var(--gold-light);
+        }
+
+        /* Group Leader Field */
+        .group-leader-field {
+            display: none;
+        }
+
+        .group-leader-field.show {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Portfolio Preferences Section */
+        .preferences-section {
+            background: rgba(0, 40, 85, 0.3);
+            border: 1px solid rgba(230, 198, 112, 0.2);
+            border-radius: 12px;
+            padding: 20px;
             margin-top: 10px;
+        }
+
+        .preferences-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .preferences-header h4 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--gold-light);
+        }
+
+        .matrix-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(230, 198, 112, 0.1);
+            border: 1px solid var(--gold-light);
+            border-radius: 20px;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .matrix-download:hover {
+            background: var(--gold-light);
+            color: var(--primary-navy);
+        }
+
+        .matrix-download span {
+            font-size: 16px;
+        }
+
+        .preference-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .preference-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .preference-label {
+            min-width: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .preference-item input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid rgba(230, 198, 112, 0.2);
+            background: rgba(0, 40, 85, 0.5);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--cream);
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .preference-item input::placeholder {
+            color: var(--light-gray);
+        }
+
+        .preference-item input:focus {
+            border-color: var(--gold-light);
+            box-shadow: 0 0 15px rgba(230, 198, 112, 0.2);
+        }
+
+        .preferences-note {
+            margin-top: 15px;
+            padding: 12px 15px;
+            background: rgba(230, 198, 112, 0.08);
+            border-left: 3px solid var(--gold-light);
+            border-radius: 5px;
+            font-size: 12px;
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        .btn-submit {
+            margin-top: 15px;
             padding: 20px 40px;
             background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
             color: var(--primary-navy);
@@ -1571,11 +1729,11 @@
         }
 
         .qr-code-container {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             background: var(--pure-white);
             border-radius: 15px;
-            padding: 15px;
+            padding: 12px;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -1964,6 +2122,26 @@
             .qr-code-container {
                 width: 180px;
                 height: 180px;
+            }
+
+            .preferences-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .preference-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .preference-item input {
+                width: 100%;
+            }
+
+            .delegation-type-toggle {
+                flex-direction: column;
             }
         }
 
@@ -2418,6 +2596,25 @@
                         </div>
                     </div>
 
+                    <!-- Delegation Type (Individual/Group) - Shows for External -->
+                    <div class="form-group" id="delegationTypeGroup" style="display: none;">
+                        <label>Delegation Type <span class="required">*</span></label>
+                        <div class="delegation-type-toggle show">
+                            <button type="button" class="toggle-btn active" id="individualBtn" onclick="selectDelegationType('individual')">
+                                👤 Individual
+                            </button>
+                            <button type="button" class="toggle-btn" id="groupBtn" onclick="selectDelegationType('group')">
+                                👥 Group Delegation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Group Leader Phone - Shows only for Group Delegation -->
+                    <div class="form-group group-leader-field" id="groupLeaderField">
+                        <label>Group Leader Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="inputGroupLeaderPhone" placeholder="+91 XXXXX XXXXX">
+                    </div>
+
                     <div class="form-group">
                         <label>Preferred Committee <span class="required">*</span></label>
                         <select id="inputCommittee">
@@ -2427,6 +2624,33 @@
                             <option value="TLA">TLA - Telangana Legislative Assembly</option>
                             <option value="UNHRC">UNHRC - United Nations Human Rights Council</option>
                         </select>
+                    </div>
+
+                    <!-- Portfolio Preferences Section -->
+                    <div class="preferences-section">
+                        <div class="preferences-header">
+                            <h4>📋 Portfolio Preferences</h4>
+                            <a href="country-matrix.pdf" target="_blank" class="matrix-download" id="matrixDownload">
+                                <span>📄</span> Country Matrix
+                            </a>
+                        </div>
+                        <div class="preference-group">
+                            <div class="preference-item">
+                                <span class="preference-label">Preference 1 <span class="required">*</span></span>
+                                <input type="text" id="inputPreference1" placeholder="Enter country/portfolio name">
+                            </div>
+                            <div class="preference-item">
+                                <span class="preference-label">Preference 2 <span class="required">*</span></span>
+                                <input type="text" id="inputPreference2" placeholder="Enter country/portfolio name">
+                            </div>
+                            <div class="preference-item">
+                                <span class="preference-label">Preference 3 <span class="required">*</span></span>
+                                <input type="text" id="inputPreference3" placeholder="Enter country/portfolio name">
+                            </div>
+                        </div>
+                        <div class="preferences-note">
+                            💡 <strong>Tip:</strong> Download the Country Matrix PDF to view all available portfolios for your selected committee before making your preferences.
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -2439,7 +2663,7 @@
                     </button>
                 </div>
 
-                <!-- Payment Section - ADDED ID HERE -->
+                <!-- Payment Section -->
                 <div class="payment-section" id="paymentSection">
                     <div class="payment-header">
                         <h3>Payment Details</h3>
@@ -2466,7 +2690,7 @@
                     </div>
                 </div>
 
-                <!-- Success Message - ENHANCED -->
+                <!-- Success Message -->
                 <div class="success-message" id="successMessage">
                     <div class="success-icon">✓</div>
                     <h3>Registration Successful!</h3>
@@ -2528,6 +2752,7 @@
         // ===========================================
         var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
         var selectedDelegation = 'internal';
+        var selectedDelegationType = 'individual';
 
         // Preloader
         window.onload = function() {
@@ -2665,167 +2890,225 @@
         }, { threshold: 0.5 });
         counters.forEach(function(counter) { counterObserver.observe(counter); });
 
-        // Delegation selection
+        // Delegation selection (Internal/External)
         function selectDelegation(type) {
             selectedDelegation = type;
             var intBtn = document.getElementById('internalBtn');
             var extBtn = document.getElementById('externalBtn');
             var title = document.getElementById('formTitle');
             var amount = document.getElementById('paymentAmount');
+            var delegationTypeGroup = document.getElementById('delegationTypeGroup');
 
             if (type === 'internal') {
                 intBtn.classList.add('active');
                 extBtn.classList.remove('active');
                 title.innerText = 'Internal Delegation Registration';
                 amount.innerText = '₹200';
+                delegationTypeGroup.style.display = 'none';
+                // Reset to individual
+                selectDelegationType('individual');
             } else {
                 extBtn.classList.add('active');
                 intBtn.classList.remove('active');
                 title.innerText = 'External Delegation Registration';
                 amount.innerText = '₹600';
+                delegationTypeGroup.style.display = 'block';
             }
         }
 
-       // ===== FORM SUBMISSION WITH AUTO-RESPONSE =====
-function submitForm() {
-    console.log('Submit clicked!');
+        // Delegation Type Selection (Individual/Group)
+        function selectDelegationType(type) {
+            selectedDelegationType = type;
+            var individualBtn = document.getElementById('individualBtn');
+            var groupBtn = document.getElementById('groupBtn');
+            var groupLeaderField = document.getElementById('groupLeaderField');
 
-    // Get values
-    var fullName = document.getElementById('inputFullName').value.trim();
-    var email = document.getElementById('inputEmail').value.trim();
-    var phone = document.getElementById('inputPhone').value.trim();
-    var college = document.getElementById('inputCollege').value.trim();
-    var year = document.getElementById('inputYear').value;
-    var section = document.getElementById('inputSection').value.trim();
-    var committee = document.getElementById('inputCommittee').value;
-    var transactionId = document.getElementById('inputTransactionId').value.trim();
-
-    // Validation
-    if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
-        alert('⚠️ Please fill in all required fields.');
-        return;
-    }
-
-    if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-        alert('⚠️ Please enter a valid email address.');
-        return;
-    }
-
-    var phoneDigits = phone.replace(/\D/g, '');
-    if (phoneDigits.length < 10) {
-        alert('⚠️ Please enter a valid phone number.');
-        return;
-    }
-
-    // Show loading
-    var btn = document.getElementById('submitBtn');
-    var originalBtnText = btn.innerHTML;
-    btn.innerHTML = 'Submitting... ⏳';
-    btn.disabled = true;
-
-    // Auto-response message for delegate
-    var autoResponseMessage = 'Thank you for registering for NNRG Model United Nations 2026!\n\n';
-    autoResponseMessage += 'Your registration has been received successfully.\n\n';
-    autoResponseMessage += 'Registration Details:\n';
-    autoResponseMessage += '- Name: ' + fullName + '\n';
-    autoResponseMessage += '- College: ' + college + '\n';
-    autoResponseMessage += '- Committee: ' + committee + '\n';
-    autoResponseMessage += '- Delegation Type: ' + (selectedDelegation === 'internal' ? 'Internal' : 'External') + '\n';
-    autoResponseMessage += '- Fee Paid: ' + (selectedDelegation === 'internal' ? '₹200' : '₹600') + '\n';
-    autoResponseMessage += '- Transaction ID: ' + transactionId + '\n\n';
-    autoResponseMessage += 'Conference Dates: March 13-14, 2026\n';
-    autoResponseMessage += 'Venue: NNRG Campus, Hyderabad\n\n';
-    autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
-    autoResponseMessage += 'We look forward to seeing you at the conference!\n\n';
-    autoResponseMessage += 'Best Regards,\n';
-    autoResponseMessage += 'NNRG MUN Team';
-
-    // Prepare data with auto-response
-    var formData = {
-        // FormSubmit settings
-        _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
-        _template: 'table',
-        _captcha: 'false',
-        _replyto: email,
-        _autoresponse: autoResponseMessage,
-        
-        // Form data
-        'Delegation Type': selectedDelegation === 'internal' ? 'Internal' : 'External',
-        'Full Name': fullName,
-        'Email': email,
-        'Phone Number': phone,
-        'College/Institution': college,
-        'Year': year,
-        'Section': section.toUpperCase(),
-        'Preferred Committee': committee,
-        'Transaction ID': transactionId,
-        'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
-        'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-    };
-
-    console.log('Sending data:', formData);
-
-    // Function to show success
-    function showSuccess() {
-        console.log('Showing success message...');
-        
-        // Hide the form
-        var formElement = document.getElementById('registrationForm');
-        if (formElement) {
-            formElement.style.display = 'none';
-        }
-        
-        // Hide the payment section
-        var paymentElement = document.getElementById('paymentSection');
-        if (paymentElement) {
-            paymentElement.style.display = 'none';
-        }
-        
-        // Show success message
-        var successElement = document.getElementById('successMessage');
-        if (successElement) {
-            successElement.classList.add('show');
-            successElement.style.display = 'block';
+            if (type === 'individual') {
+                individualBtn.classList.add('active');
+                groupBtn.classList.remove('active');
+                groupLeaderField.classList.remove('show');
+            } else {
+                groupBtn.classList.add('active');
+                individualBtn.classList.remove('active');
+                groupLeaderField.classList.add('show');
+            }
         }
 
-        // Clear form fields
-        document.getElementById('inputFullName').value = '';
-        document.getElementById('inputEmail').value = '';
-        document.getElementById('inputPhone').value = '';
-        document.getElementById('inputCollege').value = '';
-        document.getElementById('inputYear').value = '';
-        document.getElementById('inputSection').value = '';
-        document.getElementById('inputCommittee').value = '';
-        document.getElementById('inputTransactionId').value = '';
-        
-        // Reset button
-        btn.innerHTML = originalBtnText;
-        btn.disabled = false;
-        
-        // Scroll to success message
-        setTimeout(function() {
-            successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-    }
+        // ===== FORM SUBMISSION WITH AUTO-RESPONSE =====
+        function submitForm() {
+            console.log('Submit clicked!');
 
-    // Send to FormSubmit
-    fetch(FORMSUBMIT_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(function(response) {
-        console.log('Response received:', response.status);
-        showSuccess();
-    })
-    .catch(function(error) {
-        console.log('Fetch error (but email likely sent):', error);
-        showSuccess();
-    });
-}
+            // Get values
+            var fullName = document.getElementById('inputFullName').value.trim();
+            var email = document.getElementById('inputEmail').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var college = document.getElementById('inputCollege').value.trim();
+            var year = document.getElementById('inputYear').value;
+            var section = document.getElementById('inputSection').value.trim();
+            var committee = document.getElementById('inputCommittee').value;
+            var preference1 = document.getElementById('inputPreference1').value.trim();
+            var preference2 = document.getElementById('inputPreference2').value.trim();
+            var preference3 = document.getElementById('inputPreference3').value.trim();
+            var transactionId = document.getElementById('inputTransactionId').value.trim();
+            var groupLeaderPhone = document.getElementById('inputGroupLeaderPhone').value.trim();
+
+            // Validation
+            if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
+                alert('⚠️ Please fill in all required fields.');
+                return;
+            }
+
+            // Validate preferences
+            if (!preference1 || !preference2 || !preference3) {
+                alert('⚠️ Please enter all three portfolio preferences.');
+                return;
+            }
+
+            // Validate group leader phone for external group delegation
+            if (selectedDelegation === 'external' && selectedDelegationType === 'group' && !groupLeaderPhone) {
+                alert('⚠️ Please enter the Group Leader Phone Number.');
+                return;
+            }
+
+            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                alert('⚠️ Please enter a valid email address.');
+                return;
+            }
+
+            var phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                alert('⚠️ Please enter a valid phone number.');
+                return;
+            }
+
+            // Show loading
+            var btn = document.getElementById('submitBtn');
+            var originalBtnText = btn.innerHTML;
+            btn.innerHTML = 'Submitting... ⏳';
+            btn.disabled = true;
+
+            // Determine delegation type text
+            var delegationTypeText = selectedDelegation === 'internal' ? 'Internal' : 'External (' + (selectedDelegationType === 'individual' ? 'Individual' : 'Group') + ')';
+
+            // Auto-response message for delegate
+            var autoResponseMessage = 'Thank you for registering for NNRG Model United Nations 2026!\n\n';
+            autoResponseMessage += 'Your registration has been received successfully.\n\n';
+            autoResponseMessage += 'Registration Details:\n';
+            autoResponseMessage += '- Name: ' + fullName + '\n';
+            autoResponseMessage += '- College: ' + college + '\n';
+            autoResponseMessage += '- Committee: ' + committee + '\n';
+            autoResponseMessage += '- Delegation Type: ' + delegationTypeText + '\n';
+            autoResponseMessage += '- Portfolio Preferences:\n';
+            autoResponseMessage += '  1. ' + preference1 + '\n';
+            autoResponseMessage += '  2. ' + preference2 + '\n';
+            autoResponseMessage += '  3. ' + preference3 + '\n';
+            autoResponseMessage += '- Fee Paid: ' + (selectedDelegation === 'internal' ? '₹200' : '₹600') + '\n';
+            autoResponseMessage += '- Transaction ID: ' + transactionId + '\n\n';
+            autoResponseMessage += 'Conference Dates: March 13-14, 2026\n';
+            autoResponseMessage += 'Venue: NNRG Campus, Hyderabad\n\n';
+            autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
+            autoResponseMessage += 'We look forward to seeing you at the conference!\n\n';
+            autoResponseMessage += 'Best Regards,\n';
+            autoResponseMessage += 'NNRG MUN Team';
+
+            // Prepare data with auto-response
+            var formData = {
+                // FormSubmit settings
+                _subject: '🎓 NNRG MUN 2026 Registration - ' + fullName,
+                _template: 'table',
+                _captcha: 'false',
+                _replyto: email,
+                _autoresponse: autoResponseMessage,
+                
+                // Form data
+                'Delegation Type': delegationTypeText,
+                'Full Name': fullName,
+                'Email': email,
+                'Phone Number': phone,
+                'College/Institution': college,
+                'Year': year,
+                'Section': section.toUpperCase(),
+                'Preferred Committee': committee,
+                'Portfolio Preference 1': preference1,
+                'Portfolio Preference 2': preference2,
+                'Portfolio Preference 3': preference3,
+                'Transaction ID': transactionId,
+                'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
+                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            };
+
+            // Add group leader phone if applicable
+            if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
+                formData['Group Leader Phone'] = groupLeaderPhone;
+            }
+
+            console.log('Sending data:', formData);
+
+            // Function to show success
+            function showSuccess() {
+                console.log('Showing success message...');
+                
+                // Hide the form
+                var formElement = document.getElementById('registrationForm');
+                if (formElement) {
+                    formElement.style.display = 'none';
+                }
+                
+                // Hide the payment section
+                var paymentElement = document.getElementById('paymentSection');
+                if (paymentElement) {
+                    paymentElement.style.display = 'none';
+                }
+                
+                // Show success message
+                var successElement = document.getElementById('successMessage');
+                if (successElement) {
+                    successElement.classList.add('show');
+                    successElement.style.display = 'block';
+                }
+
+                // Clear form fields
+                document.getElementById('inputFullName').value = '';
+                document.getElementById('inputEmail').value = '';
+                document.getElementById('inputPhone').value = '';
+                document.getElementById('inputCollege').value = '';
+                document.getElementById('inputYear').value = '';
+                document.getElementById('inputSection').value = '';
+                document.getElementById('inputCommittee').value = '';
+                document.getElementById('inputPreference1').value = '';
+                document.getElementById('inputPreference2').value = '';
+                document.getElementById('inputPreference3').value = '';
+                document.getElementById('inputTransactionId').value = '';
+                document.getElementById('inputGroupLeaderPhone').value = '';
+                
+                // Reset button
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+                
+                // Scroll to success message
+                setTimeout(function() {
+                    successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+
+            // Send to FormSubmit
+            fetch(FORMSUBMIT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(function(response) {
+                console.log('Response received:', response.status);
+                showSuccess();
+            })
+            .catch(function(error) {
+                console.log('Fetch error (but email likely sent):', error);
+                showSuccess();
+            });
+        }
 
         // ===== iOS/Android Touch Flip Card Handler =====
         (function() {
