@@ -944,7 +944,7 @@
             line-height: 1.8;
         }
 
-        /* ===== COMMITTEES ===== */
+        /* ===== COMMITTEES - iOS FIXED ===== */
         .committees {
             background: var(--primary-navy);
             position: relative;
@@ -962,22 +962,32 @@
             height: 500px;
             position: relative;
             cursor: pointer;
+            -webkit-perspective: 1000px;
             perspective: 1000px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .committee-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
+            -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
-        .committee-card:hover .committee-card-inner {
-            transform: rotateY(180deg);
+        /* Desktop hover - only on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .committee-card:hover .committee-card-inner {
+                -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+            }
         }
 
+        /* Flipped state for touch devices */
         .committee-card.flipped .committee-card-inner {
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
 
@@ -986,6 +996,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             border-radius: 15px;
             overflow: hidden;
@@ -1000,6 +1011,9 @@
             justify-content: center;
             text-align: center;
             padding: 40px;
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            z-index: 2;
         }
 
         .committee-front::before {
@@ -1076,14 +1090,14 @@
             opacity: 0.7;
         }
 
-        .flip-indicator::before {
-            content: '↻';
+        .flip-indicator .flip-icon {
             font-size: 16px;
             color: var(--gold-light);
         }
 
         .committee-back {
             background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary), var(--gold-light));
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
@@ -1091,6 +1105,7 @@
             justify-content: center;
             text-align: center;
             padding: 50px 40px;
+            z-index: 1;
         }
 
         .committee-back::before {
@@ -1139,14 +1154,9 @@
             opacity: 0.8;
         }
 
-        @media (hover: none) and (pointer: coarse) {
-            .committee-card:hover .committee-card-inner {
-                transform: rotateY(0deg);
-            }
-            
-            .flip-indicator::before {
-                content: '👆';
-            }
+        /* Touch device active state feedback */
+        .committee-card.touch-active {
+            transform: scale(0.98);
         }
 
         /* ===== TIMELINE ===== */
@@ -2253,10 +2263,11 @@
             <span class="section-number">03</span>
             <div class="section-badge">Committees</div>
             <h2 class="section-title reveal">Engage in<br><span class="highlight">Global Discourse</span></h2>
-            <p class="section-description reveal">Hover over each committee to discover the agenda</p>
+            <p class="section-description reveal">Tap or hover over each committee to discover the agenda</p>
         </div>
 
         <div class="committees-grid">
+            <!-- DISEC -->
             <div class="committee-card reveal stagger-1">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2265,7 +2276,10 @@
                         </div>
                         <h3 class="committee-name">DISEC</h3>
                         <p class="committee-full-name">Disarmament and International Security Committee</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <div class="flip-indicator">
+                            <span class="flip-icon">↻</span>
+                            <span class="flip-text">Hover to view agenda</span>
+                        </div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2275,6 +2289,7 @@
                 </div>
             </div>
 
+            <!-- AIPPM -->
             <div class="committee-card reveal stagger-2">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2283,7 +2298,10 @@
                         </div>
                         <h3 class="committee-name">AIPPM</h3>
                         <p class="committee-full-name">All India Political Parties Meet</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <div class="flip-indicator">
+                            <span class="flip-icon">↻</span>
+                            <span class="flip-text">Hover to view agenda</span>
+                        </div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2293,6 +2311,7 @@
                 </div>
             </div>
 
+            <!-- TLA -->
             <div class="committee-card reveal stagger-3">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2301,7 +2320,10 @@
                         </div>
                         <h3 class="committee-name">TLA</h3>
                         <p class="committee-full-name">Telangana Legislative Assembly</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <div class="flip-indicator">
+                            <span class="flip-icon">↻</span>
+                            <span class="flip-text">Hover to view agenda</span>
+                        </div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2311,6 +2333,7 @@
                 </div>
             </div>
 
+            <!-- UNHRC -->
             <div class="committee-card reveal stagger-4">
                 <div class="committee-card-inner">
                     <div class="committee-front">
@@ -2319,7 +2342,10 @@
                         </div>
                         <h3 class="committee-name">UNHRC</h3>
                         <p class="committee-full-name">United Nations Human Rights Council</p>
-                        <div class="flip-indicator">Hover to view agenda</div>
+                        <div class="flip-indicator">
+                            <span class="flip-icon">↻</span>
+                            <span class="flip-text">Hover to view agenda</span>
+                        </div>
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
@@ -2487,7 +2513,7 @@
                     <div class="preferences-section">
                         <div class="preferences-header">
                             <h4>📋 Portfolio Preferences</h4>
-                            <a href="country-matrix.pdf" target="_blank" class="matrix-download">
+                            <a href="https://drive.google.com/file/d/1jQRFckeHt69MA8XeIcg1HjNgL_BgeKow/view?usp=drive_link" target="_blank" class="matrix-download">
                                 <span>📄</span> Country Matrix
                             </a>
                         </div>
@@ -2788,35 +2814,111 @@
         counters.forEach(function(counter) { counterObserver.observe(counter); });
 
         // ===========================================
-        // COMMITTEE CARDS - TOUCH SUPPORT
+        // COMMITTEE CARDS - iOS/TOUCH FIXED
         // ===========================================
         (function() {
-            function isTouchDevice() {
-                return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            var committeeCards = document.querySelectorAll('.committee-card');
+            var isTouchDevice = false;
+            
+            // Detect touch device
+            function detectTouch() {
+                isTouchDevice = (('ontouchstart' in window) ||
+                    (navigator.maxTouchPoints > 0) ||
+                    (navigator.msMaxTouchPoints > 0) ||
+                    window.matchMedia('(hover: none)').matches);
+                return isTouchDevice;
             }
             
-            if (isTouchDevice()) {
-                var committeeCards = document.querySelectorAll('.committee-card');
-                committeeCards.forEach(function(card) {
-                    card.addEventListener('click', function(e) {
-                        e.stopPropagation();
+            detectTouch();
+            
+            // Update flip indicator text based on device
+            function updateFlipIndicators() {
+                var flipTexts = document.querySelectorAll('.flip-text');
+                var flipIcons = document.querySelectorAll('.flip-icon');
+                
+                flipTexts.forEach(function(text) {
+                    text.textContent = isTouchDevice ? 'Tap to view agenda' : 'Hover to view agenda';
+                });
+                
+                flipIcons.forEach(function(icon) {
+                    icon.textContent = isTouchDevice ? '👆' : '↻';
+                });
+            }
+            
+            updateFlipIndicators();
+            
+            // Handle touch/click for all devices
+            committeeCards.forEach(function(card) {
+                // Touch start - add active state
+                card.addEventListener('touchstart', function(e) {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+                
+                // Touch end - remove active state and toggle flip
+                card.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('touch-active');
+                    
+                    // Close other cards
+                    committeeCards.forEach(function(otherCard) {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('flipped');
+                        }
+                    });
+                    
+                    // Toggle this card
+                    this.classList.toggle('flipped');
+                }, { passive: false });
+                
+                // Touch cancel - remove active state
+                card.addEventListener('touchcancel', function(e) {
+                    this.classList.remove('touch-active');
+                }, { passive: true });
+                
+                // Click handler for non-touch devices that might also click
+                card.addEventListener('click', function(e) {
+                    if (isTouchDevice) {
+                        return; // Already handled by touch events
+                    }
+                    
+                    // For devices with both touch and mouse (like laptops with touchscreens)
+                    if (window.matchMedia('(hover: none)').matches) {
+                        e.preventDefault();
+                        
                         committeeCards.forEach(function(otherCard) {
                             if (otherCard !== card) {
                                 otherCard.classList.remove('flipped');
                             }
                         });
+                        
                         this.classList.toggle('flipped');
-                    });
-                });
-                
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.committee-card')) {
-                        committeeCards.forEach(function(card) {
-                            card.classList.remove('flipped');
-                        });
                     }
                 });
-            }
+            });
+            
+            // Close cards when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.committee-card')) {
+                    committeeCards.forEach(function(card) {
+                        card.classList.remove('flipped');
+                    });
+                }
+            });
+            
+            // Close cards when touching outside
+            document.addEventListener('touchend', function(e) {
+                if (!e.target.closest('.committee-card')) {
+                    committeeCards.forEach(function(card) {
+                        card.classList.remove('flipped');
+                    });
+                }
+            }, { passive: true });
+            
+            // Re-check on resize (for orientation changes)
+            window.addEventListener('resize', function() {
+                detectTouch();
+                updateFlipIndicators();
+            });
         })();
 
         // ===========================================
