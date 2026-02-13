@@ -2450,17 +2450,17 @@
                             <input type="tel" id="inputPhone" placeholder="+91 XXXXX XXXXX">
                         </div>
                     </div>
-
-                     <!-- College/Institution - Only for External -->
-                    <div class="form-group conditional-field show" id="CollegeNameField">
-                        <label>College/Institution <span class="required">*</span></label>
-                        <input type="text" id="inputCollegeName" placeholder="Enter your College/Institution">
-                    </div>
-
+           
                     <!-- Roll Number - Only for Internal -->
                     <div class="form-group conditional-field show" id="rollNumberField">
                         <label>Roll Number <span class="required">*</span></label>
                         <input type="text" id="inputRollNumber" placeholder="Enter your roll number">
+                    </div>
+
+                    <!-- College/Institution - Only for External -->
+                    <div class="form-group conditional-field" id="collegeField">
+                        <label>College/Institution <span class="required">*</span></label>
+                        <input type="text" id="inputCollege" placeholder="Enter your college/institution name">
                     </div>
 
                     <div class="form-row">
@@ -2927,15 +2927,20 @@
         // ===========================================
         function updateFormFields() {
             var rollNumberField = document.getElementById('rollNumberField');
+            var collegeField = document.getElementById('collegeField');
             var delegationTypeGroup = document.getElementById('delegationTypeGroup');
             var groupLeaderField = document.getElementById('groupLeaderField');
 
             if (selectedDelegation === 'internal') {
+                // Internal: Show Roll Number, Hide College, Hide Delegation Type
                 rollNumberField.classList.add('show');
+                collegeField.classList.remove('show');
                 delegationTypeGroup.classList.remove('show');
                 groupLeaderField.classList.remove('show');
             } else {
+                // External: Hide Roll Number, Show College, Show Delegation Type
                 rollNumberField.classList.remove('show');
+                collegeField.classList.add('show');
                 delegationTypeGroup.classList.add('show');
                 if (selectedDelegationType === 'group') {
                     groupLeaderField.classList.add('show');
@@ -3040,14 +3045,20 @@
             var groupLeaderPhone = document.getElementById('inputGroupLeaderPhone').value.trim();
             var screenshotFile = document.getElementById('inputScreenshot').files[0];
 
-            // Validation
-            if (!fullName || !email || !phone || !college || !year || !section || !committee || !transactionId) {
+            // Validation - Common required fields
+            if (!fullName || !email || !phone || !year || !section || !committee || !transactionId) {
                 alert('⚠️ Please fill in all required fields.');
                 return;
             }
 
+            // Conditional validation based on delegation type
             if (selectedDelegation === 'internal' && !rollNumber) {
                 alert('⚠️ Please enter your Roll Number.');
+                return;
+            }
+
+            if (selectedDelegation === 'external' && !college) {
+                alert('⚠️ Please enter your College/Institution name.');
                 return;
             }
 
@@ -3120,7 +3131,9 @@
             autoResponseMessage += 'Your registration has been received successfully.\n\n';
             autoResponseMessage += 'Registration Details:\n';
             autoResponseMessage += '- Name: ' + fullName + '\n';
-            autoResponseMessage += '- College: ' + college + '\n';
+            if (selectedDelegation === 'external') {
+                autoResponseMessage += '- College: ' + college + '\n';
+            }
             if (selectedDelegation === 'internal') {
                 autoResponseMessage += '- Roll Number: ' + rollNumber + '\n';
             }
@@ -3150,7 +3163,6 @@
                 'Full Name': fullName,
                 'Email': email,
                 'Phone Number': phone,
-                'College/Institution': college,
                 'Year': year,
                 'Section': section.toUpperCase(),
                 'Preferred Committee': committee,
@@ -3166,6 +3178,10 @@
             // Add conditional fields
             if (selectedDelegation === 'internal') {
                 formData['Roll Number'] = rollNumber;
+            }
+            
+            if (selectedDelegation === 'external') {
+                formData['College/Institution'] = college;
             }
             
             if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
