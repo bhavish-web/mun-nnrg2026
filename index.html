@@ -6,7 +6,7 @@
     <title>NNRG Model United Nations 2026 | International Conference</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== GLOBAL RESET & VARIABLES ===== */
+              /* ===== GLOBAL RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -1992,7 +1992,7 @@
             justify-content: center;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE - TABLET ===== */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 72px; }
             .section-title { font-size: 48px; }
@@ -2005,38 +2005,717 @@
             .delegation-btn { width: 100%; max-width: 350px; }
         }
 
+        /* ===== MOBILE RESPONSIVE - IMPROVED ===== */
         @media (max-width: 768px) {
-            :root { --section-padding: 80px 5%; }
-            .cursor, .cursor-dot { display: none; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .hero h1 { font-size: 42px; }
-            .hero-tagline { font-size: 18px; }
-            .countdown { flex-wrap: wrap; gap: 15px; }
-            .countdown-item { width: 80px; height: 100px; }
-            .countdown-number { font-size: 36px; }
-            .hero-cta { flex-direction: column; }
-            .btn-primary { width: 100%; justify-content: center; }
-            .section-title { font-size: 36px; }
-            .section-number { font-size: 80px; }
-            .about-features, .about-stats, .features-grid, .committees-grid { grid-template-columns: 1fr; gap: 20px; }
-            .committee-card { height: 450px; }
-            .timeline-line { left: 20px; }
-            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { flex-direction: row; padding-left: 60px; padding-right: 0; }
-            .timeline-dot { left: 20px; }
-            .footer-content { grid-template-columns: 1fr; gap: 40px; }
-            .mobile-cta { display: block; }
-            .mun-watermark { width: 280px; height: 280px; }
-            .registration-form-wrapper { padding: 25px 18px; }
-            .form-row { grid-template-columns: 1fr; }
-            .delegation-btn { padding: 20px 30px; min-width: unset; }
-            .delegation-btn .fee-amount { font-size: 24px; }
-            .payment-amount { font-size: 36px; }
-            .qr-code-container { width: 160px; height: 160px; }
-            .preferences-header { flex-direction: column; gap: 12px; align-items: flex-start; }
-            .preference-item { flex-direction: column; align-items: flex-start; gap: 6px; }
-            .preference-item input { width: 100%; }
-            .delegation-type-toggle { flex-direction: column; }
+            :root { 
+                --section-padding: 60px 20px; 
+            }
+            
+            /* Hide custom cursor on mobile */
+            .cursor, .cursor-dot { 
+                display: none; 
+            }
+
+            /* === NAVIGATION === */
+            nav {
+                padding: 15px 20px;
+            }
+            
+            nav.scrolled {
+                padding: 12px 20px;
+            }
+            
+            .nav-links { 
+                display: none; 
+            }
+            
+            .menu-toggle { 
+                display: block;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            
+            .logo-emblem {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+
+            /* === MOBILE MENU - IMPROVED === */
+            .mobile-menu {
+                background: linear-gradient(180deg, var(--dark-navy) 0%, var(--primary-navy) 100%);
+                padding: 80px 30px 40px;
+                justify-content: flex-start;
+                gap: 0;
+            }
+            
+            .mobile-menu a {
+                font-size: 28px;
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(230, 198, 112, 0.1);
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu a:last-child {
+                border-bottom: none;
+                margin-top: 20px;
+                background: linear-gradient(135deg, var(--gold-deep), var(--gold-primary));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            
+            .menu-close {
+                top: 20px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(230, 198, 112, 0.3);
+                border-radius: 50%;
+                font-size: 24px;
+            }
+
+            /* === HERO SECTION === */
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh;
+                padding: 100px 20px 120px;
+            }
+            
+            .hero-badge {
+                font-size: 10px;
+                padding: 10px 20px;
+                margin-bottom: 25px;
+                letter-spacing: 1.5px;
+            }
+            
+            .hero-badge::before,
+            .hero-badge::after {
+                content: '◆';
+                font-size: 8px;
+            }
+            
+            .hero h1 { 
+                font-size: 36px;
+                letter-spacing: -1px;
+                margin-bottom: 20px;
+            }
+            
+            .hero-tagline { 
+                font-size: 16px;
+                padding: 0 10px;
+                margin-bottom: 30px;
+                line-height: 1.5;
+            }
+            
+            /* Countdown - Improved Grid */
+            .countdown { 
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                margin: 30px 0;
+                padding: 0 5px;
+            }
+            
+            .countdown-item { 
+                width: 100%;
+                height: auto;
+                padding: 15px 5px;
+                border-radius: 8px;
+            }
+            
+            .countdown-number { 
+                font-size: 28px;
+            }
+            
+            .countdown-label {
+                font-size: 8px;
+                letter-spacing: 1px;
+                margin-top: 5px;
+            }
+            
+            .hero-cta { 
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .btn-primary { 
+                width: 100%;
+                justify-content: center;
+                padding: 18px 30px;
+                font-size: 13px;
+            }
+            
+            .scroll-indicator {
+                bottom: 100px;
+            }
+            
+            .scroll-line {
+                height: 40px;
+            }
+            
+            .mun-watermark { 
+                width: 200px; 
+                height: 200px;
+                opacity: 0.03;
+            }
+
+            /* === SECTION HEADERS === */
+            .section-header {
+                margin-bottom: 50px;
+            }
+            
+            .section-number { 
+                font-size: 60px;
+                top: 30px;
+                opacity: 0.5;
+            }
+            
+            .section-badge {
+                font-size: 10px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+            
+            .section-badge::before,
+            .section-badge::after {
+                width: 25px;
+            }
+            
+            .section-title { 
+                font-size: 28px;
+                line-height: 1.2;
+                margin-bottom: 15px;
+                padding: 0 10px;
+            }
+            
+            .section-description {
+                font-size: 16px;
+                padding: 0 10px;
+                line-height: 1.7;
+            }
+
+            /* === ABOUT SECTION === */
+            .about-text {
+                font-size: 15px;
+                line-height: 1.8;
+                padding: 0 5px;
+            }
+            
+            .about-text p {
+                margin-bottom: 20px;
+            }
+            
+            /* About Features - 2x2 Grid */
+            .about-features { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-bottom: 40px;
+            }
+            
+            .about-feature {
+                padding: 20px 15px;
+                gap: 10px;
+            }
+            
+            .about-feature-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .about-feature-text h4 {
+                font-size: 13px;
+            }
+            
+            .about-feature-text p {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            /* Stats - Horizontal Layout */
+            .about-stats { 
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 30px 20px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                text-align: left;
+            }
+            
+            .stat-number {
+                font-size: 48px;
+                margin-bottom: 0;
+            }
+            
+            .stat-label {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            /* === WHY NNRG / FEATURES === */
+            .features-grid { 
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+            
+            .feature-card:hover .feature-icon {
+                transform: rotate(0deg);
+            }
+            
+            .feature-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            
+            .feature-description {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            /* === COMMITTEES === */
+            .committees-grid { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 5px;
+            }
+            
+            .committee-card { 
+                height: 380px;
+            }
+            
+            .committee-front {
+                padding: 30px 25px;
+            }
+            
+            .committee-emblem {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            
+            .committee-name {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+            
+            .committee-full-name {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+            
+            .flip-indicator {
+                bottom: 20px;
+                font-size: 11px;
+            }
+            
+            .committee-back {
+                padding: 35px 25px;
+            }
+            
+            .agenda-label {
+                font-size: 10px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+            
+            .agenda-text {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            
+            .committee-back-footer {
+                bottom: 20px;
+                font-size: 10px;
+            }
+
+            /* === TIMELINE === */
+            .timeline {
+                padding-bottom: 80px;
+            }
+            
+            .timeline-line { 
+                left: 15px;
+                width: 2px;
+            }
+            
+            .timeline-item:nth-child(odd), 
+            .timeline-item:nth-child(even) { 
+                flex-direction: row;
+                padding-left: 45px;
+                padding-right: 0;
+            }
+            
+            .timeline-dot { 
+                left: 15px;
+                width: 20px;
+                height: 20px;
+            }
+            
+            .timeline-item {
+                margin-bottom: 30px;
+            }
+            
+            .timeline-content {
+                padding: 25px 20px;
+            }
+            
+            .timeline-date {
+                font-size: 11px;
+                letter-spacing: 1px;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-title {
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+            
+            .timeline-description {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            /* === REGISTRATION === */
+            .registration {
+                padding: 60px 15px 120px;
+            }
+            
+            .delegation-selector {
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 30px;
+            }
+            
+            .delegation-btn { 
+                padding: 20px 25px;
+                min-width: unset;
+                width: 100%;
+                border-radius: 12px;
+            }
+            
+            .delegation-btn .fee {
+                font-size: 12px;
+            }
+            
+            .delegation-btn .fee-amount { 
+                font-size: 22px;
+            }
+            
+            .registration-form-wrapper { 
+                padding: 25px 20px;
+                border-radius: 15px;
+                gap: 30px;
+            }
+            
+            .form-header h3 {
+                font-size: 22px;
+            }
+            
+            .form-header p {
+                font-size: 13px;
+            }
+            
+            .form-row { 
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            
+            .form-group label {
+                font-size: 12px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 16px;
+                font-size: 16px;
+                border-radius: 12px;
+            }
+            
+            /* Preferences Section */
+            .preferences-section {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            
+            .preferences-header { 
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+            
+            .preferences-header h4 {
+                font-size: 14px;
+            }
+            
+            .matrix-download {
+                padding: 8px 14px;
+                font-size: 10px;
+            }
+            
+            .preference-item { 
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            
+            .preference-label {
+                font-size: 11px;
+            }
+            
+            .preference-item input { 
+                width: 100%;
+                padding: 14px;
+                font-size: 16px;
+            }
+            
+            .preferences-note {
+                font-size: 11px;
+                padding: 10px;
+            }
+            
+            /* Delegation Type Toggle */
+            .delegation-type-toggle { 
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .toggle-btn {
+                padding: 14px;
+                font-size: 14px;
+            }
+            
+            /* File Upload */
+            .file-upload-label {
+                padding: 20px 15px;
+            }
+            
+            .file-upload-icon {
+                font-size: 28px;
+            }
+            
+            .file-upload-text {
+                font-size: 13px;
+            }
+            
+            .file-upload-hint {
+                font-size: 11px;
+            }
+            
+            /* Payment Section */
+            .payment-section {
+                padding: 25px 20px;
+                margin-top: 10px;
+            }
+            
+            .payment-header h3 {
+                font-size: 20px;
+            }
+            
+            .payment-header p {
+                font-size: 13px;
+            }
+            
+            .payment-amount { 
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+            
+            .qr-code-container { 
+                width: 160px;
+                height: 160px;
+                padding: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .payment-info {
+                font-size: 12px;
+            }
+            
+            .payment-note {
+                font-size: 11px;
+                padding: 12px;
+            }
+            
+            .btn-submit {
+                padding: 18px 30px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            
+            /* Success Message */
+            .success-message {
+                padding: 40px 25px;
+            }
+            
+            .success-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+            
+            .success-message h3 {
+                font-size: 28px;
+            }
+            
+            .success-message p {
+                font-size: 14px;
+            }
+
+            /* === FOOTER === */
+            footer {
+                padding: 60px 20px 120px;
+            }
+            
+            .footer-content { 
+                grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: center;
+            }
+            
+            .footer-brand h3 {
+                font-size: 28px;
+            }
+            
+            .footer-brand p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+            
+            .footer-section h4 {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+            
+            .footer-links a {
+                font-size: 14px;
+                justify-content: center;
+            }
+            
+            .footer-links a:hover {
+                padding-left: 0;
+            }
+            
+            .footer-links a::before {
+                display: none;
+            }
+            
+            .footer-bottom {
+                padding-top: 30px;
+            }
+            
+            .footer-bottom p {
+                font-size: 12px;
+            }
+
+            /* === MOBILE STICKY CTA - IMPROVED === */
+            .mobile-cta { 
+                display: block;
+                padding: 12px 20px;
+                padding-bottom: calc(12px + env(safe-area-inset-bottom));
+                background: rgba(0, 27, 68, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+            
+            .mobile-cta .btn-primary {
+                padding: 16px 30px;
+                font-size: 13px;
+                border-radius: 12px;
+            }
+
+            /* === ANIMATIONS - REDUCED FOR MOBILE === */
+            .reveal {
+                transform: translateY(30px);
+            }
+            
+            .countdown-item:hover,
+            .about-feature:hover,
+            .stat-card:hover,
+            .feature-card:hover,
+            .timeline-content:hover {
+                transform: none;
+            }
+            
+            /* Disable parallax on mobile for performance */
+            .grid-lines {
+                animation: none;
+            }
+        }
+
+        /* === EXTRA SMALL DEVICES (below 380px) === */
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .countdown-number {
+                font-size: 24px;
+            }
+            
+            .countdown-label {
+                font-size: 7px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .committee-card {
+                height: 350px;
+            }
+            
+            .committee-name {
+                font-size: 30px;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .stat-number {
+                font-size: 42px;
+            }
         }
 
         /* Animations */
