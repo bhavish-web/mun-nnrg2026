@@ -3008,7 +3008,7 @@
                     </div>
                     <div class="committee-back">
                         <div class="agenda-label">Committee Agenda</div>
-                        <p class="agenda-text">Reviewing 'Praja Palana' Welfare Progress and the 2026 Debt Crisis: Scrutinizing the Rajiv Yuva Vikasam, Student Fee Reimbursement, the Gandhi Statue Proposal, and the Socio-Legal Implications of HYDRAA’s Enforcement Actions.				
+                        <p class="agenda-text">Reviewing 'Praja Palana' Welfare Progress and the 2026 Debt Crisis: Scrutinizing the Rajiv Yuva Vikasam, Student Fee Reimbursement, the Gandhi Statue Proposal, and the Socio-Legal Implications of HYDRAA's Enforcement Actions.				
 </p>
                         <div class="committee-back-footer">TLA • 2026</div>
                     </div>
@@ -3081,7 +3081,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">March 13-14, 2026</div>
+                    <div class="timeline-date">March 12-13, 2026</div>
                     <h3 class="timeline-title">Conference Days</h3>
                     <p class="timeline-description">Two-day intensive conference with committee sessions and closing ceremony.</p>
                 </div>
@@ -3291,7 +3291,7 @@
                     <h3>Registration Successful!</h3>
                     <p>Thank you for registering for NNRG MUN 2026!</p>
                     <p style="margin-top: 15px;">A confirmation email will be sent to your registered email address shortly.</p>
-                    <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">We look forward to seeing you at the conference on March 13-14, 2026!</p>
+                    <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">We look forward to seeing you at the conference on March 12-13, 2026!</p>
                     <a href="#about" class="btn-primary" style="margin-top: 30px; display: inline-flex;">
                         <span>Back to Home</span>
                         <span>→</span>
@@ -3440,10 +3440,10 @@
         });
 
         // ===========================================
-        // COUNTDOWN
+        // COUNTDOWN - CHANGED TO MARCH 12
         // ===========================================
         function updateCountdown() {
-            var eventDate = new Date('2026-03-13T09:00:00').getTime();
+            var eventDate = new Date('2026-03-12T09:00:00').getTime();
             var now = new Date().getTime();
             var diff = eventDate - now;
             if (diff > 0) {
@@ -3719,7 +3719,7 @@
         }
 
         // ===========================================
-        // FORM SUBMISSION WITH IMGBB UPLOAD
+        // FORM SUBMISSION WITH IMGBB UPLOAD - FIXED
         // ===========================================
         async function submitForm() {
             // Get all values
@@ -3734,12 +3734,14 @@
             var preference1 = document.getElementById('inputPreference1').value.trim();
             var preference2 = document.getElementById('inputPreference2').value.trim();
             var preference3 = document.getElementById('inputPreference3').value.trim();
+            var munExp = document.getElementById('inputMunExp').value.trim();
+            var previousAwards = document.getElementById('inputPreviousAwards').value.trim();
             var transactionId = document.getElementById('inputTransactionId').value.trim();
             var groupLeaderPhone = document.getElementById('inputGroupLeaderPhone').value.trim();
             var screenshotFile = document.getElementById('inputScreenshot').files[0];
 
             // Validation - Common required fields
-            if (!fullName || !email || !phone || !year || !section || !committee || !transactionId) {
+            if (!fullName || !email || !phone || !year || !section || !committee || !munExp || !previousAwards || !transactionId) {
                 alert('⚠️ Please fill in all required fields.');
                 return;
             }
@@ -3836,9 +3838,11 @@
             autoResponseMessage += '  1. ' + preference1 + '\n';
             autoResponseMessage += '  2. ' + preference2 + '\n';
             autoResponseMessage += '  3. ' + preference3 + '\n';
+            autoResponseMessage += '- MUN Experience: ' + munExp + '\n';
+            autoResponseMessage += '- Previous Awards: ' + previousAwards + '\n';
             autoResponseMessage += '- Fee Paid: ' + (selectedDelegation === 'internal' ? '₹200' : '₹600') + '\n';
             autoResponseMessage += '- Transaction ID: ' + transactionId + '\n\n';
-            autoResponseMessage += 'Conference Dates: March 13-14, 2026\n';
+            autoResponseMessage += 'Conference Dates: March 12-13, 2026\n';
             autoResponseMessage += 'Venue: NNRG Campus, Hyderabad\n\n';
             autoResponseMessage += 'For any queries, contact us at munnnrg@gmail.com\n\n';
             autoResponseMessage += 'Best Regards,\n';
@@ -3862,6 +3866,8 @@
                 'Portfolio Preference 1': preference1,
                 'Portfolio Preference 2': preference2,
                 'Portfolio Preference 3': preference3,
+                'MUN Experience': munExp,
+                'Previous Awards': previousAwards,
                 'Transaction ID': transactionId,
                 'Payment Screenshot': screenshotUrl,
                 'Registration Fee': selectedDelegation === 'internal' ? '₹200' : '₹600',
@@ -3902,6 +3908,8 @@
                 document.getElementById('inputPreference1').value = '';
                 document.getElementById('inputPreference2').value = '';
                 document.getElementById('inputPreference3').value = '';
+                document.getElementById('inputMunExp').value = '';
+                document.getElementById('inputPreviousAwards').value = '';
                 document.getElementById('inputTransactionId').value = '';
                 document.getElementById('inputGroupLeaderPhone').value = '';
                 removeFile();
