@@ -1457,6 +1457,12 @@
             gap: 15px;
         }
 
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
         .conditional-field {
             display: none;
         }
@@ -1626,26 +1632,29 @@
             color: var(--gold-light);
         }
 
+        /* ===== MATRIX DOWNLOAD BUTTON - FIXED ===== */
         .matrix-download {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            background: rgba(230, 198, 112, 0.1);
-            border: 1px solid var(--gold-light);
+            padding: 7px 14px;
+            background: var(--primary-navy);
+            border: 1.5px solid var(--gold-light);
             border-radius: 20px;
             color: var(--gold-light);
             text-decoration: none;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .matrix-download:hover {
             background: var(--gold-light);
             color: var(--primary-navy);
+            box-shadow: 0 4px 15px rgba(230, 198, 112, 0.35);
         }
 
         .preference-group {
@@ -2450,6 +2459,11 @@
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
+
+            .form-row-3 {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
             
             .form-group label {
                 font-size: 12px;
@@ -3158,6 +3172,10 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Branch <span class="required">*</span></label>
+                            <input type="text" id="inputBranch" placeholder="CSE, ECE, MECH...">
+                        </div>
+                        <div class="form-group">
                             <label>Section <span class="required">*</span></label>
                             <input type="text" id="inputSection" placeholder="A, B, C...">
                         </div>
@@ -3197,7 +3215,7 @@
                     <div class="preferences-section">
                         <div class="preferences-header">
                             <h4>📋 Portfolio Preferences</h4>
-                            <a href="https://drive.google.com/file/d/1K2U7BSGUdKHBkTlKOU8JWq6FztuQxumP/view?usp=sharing">
+                            <a href="https://drive.google.com/file/d/1K2U7BSGUdKHBkTlKOU8JWq6FztuQxumP/view?usp=sharing" class="matrix-download">
                                 <span>📄</span> Country Matrix
                             </a>
                         </div>
@@ -3730,6 +3748,7 @@
             var college = document.getElementById('inputCollege').value.trim();
             var rollNumber = document.getElementById('inputRollNumber').value.trim();
             var year = document.getElementById('inputYear').value;
+            var branch = document.getElementById('inputBranch').value.trim();
             var section = document.getElementById('inputSection').value.trim();
             var committee = document.getElementById('inputCommittee').value;
             var preference1 = document.getElementById('inputPreference1').value.trim();
@@ -3742,7 +3761,7 @@
             var screenshotFile = document.getElementById('inputScreenshot').files[0];
 
             // Validation - Common required fields
-            if (!fullName || !email || !phone || !year || !section || !committee || !munExp || !previousAwards || !transactionId) {
+            if (!fullName || !email || !phone || !year || !branch || !section || !committee || !munExp || !previousAwards || !transactionId) {
                 alert('⚠️ Please fill in all required fields.');
                 return;
             }
@@ -3833,6 +3852,8 @@
             if (selectedDelegation === 'internal') {
                 autoResponseMessage += '- Roll Number: ' + rollNumber + '\n';
             }
+            autoResponseMessage += '- Branch: ' + branch + '\n';
+            autoResponseMessage += '- Section: ' + section + '\n';
             autoResponseMessage += '- Committee: ' + committee + '\n';
             autoResponseMessage += '- Delegation Type: ' + delegationTypeText + '\n';
             autoResponseMessage += '- Portfolio Preferences:\n';
@@ -3862,6 +3883,7 @@
                 'Email': email,
                 'Phone Number': phone,
                 'Year': year,
+                'Branch': branch,
                 'Section': section.toUpperCase(),
                 'Preferred Committee': committee,
                 'Portfolio Preference 1': preference1,
@@ -3904,6 +3926,7 @@
                 document.getElementById('inputCollege').value = '';
                 document.getElementById('inputRollNumber').value = '';
                 document.getElementById('inputYear').value = '';
+                document.getElementById('inputBranch').value = '';
                 document.getElementById('inputSection').value = '';
                 document.getElementById('inputCommittee').value = '';
                 document.getElementById('inputPreference1').value = '';
