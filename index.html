@@ -2689,9 +2689,8 @@
         // ===========================================
         // CONFIGURATION
         // ===========================================
-        var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/munnnrg@gmail.com';
         var IMGBB_API_KEY = 'ece57f93eb9b1ae79510fef0e3d23534';
-        
+
         var selectedDelegation = 'internal';
         var selectedDelegationType = 'individual';
 
@@ -2754,20 +2753,13 @@
         var menuClose = document.getElementById('menuClose');
 
         if (menuToggle) {
-            menuToggle.onclick = function() {
-                mobileMenu.classList.add('active');
-            };
+            menuToggle.onclick = function() { mobileMenu.classList.add('active'); };
         }
         if (menuClose) {
-            menuClose.onclick = function() {
-                mobileMenu.classList.remove('active');
-            };
+            menuClose.onclick = function() { mobileMenu.classList.remove('active'); };
         }
-        var mobileLinks = document.querySelectorAll('.mobile-menu a');
-        mobileLinks.forEach(function(link) {
-            link.onclick = function() {
-                mobileMenu.classList.remove('active');
-            };
+        document.querySelectorAll('.mobile-menu a').forEach(function(link) {
+            link.onclick = function() { mobileMenu.classList.remove('active'); };
         });
 
         // ===========================================
@@ -2777,9 +2769,7 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 var target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
@@ -2788,11 +2778,10 @@
         // ===========================================
         function updateCountdown() {
             var eventDate = new Date('2026-03-12T09:00:00').getTime();
-            var now = new Date().getTime();
-            var diff = eventDate - now;
+            var diff = eventDate - Date.now();
             if (diff > 0) {
-                document.getElementById('days').innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
-                document.getElementById('hours').innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                document.getElementById('days').innerText    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                document.getElementById('hours').innerText   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
                 document.getElementById('minutes').innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
                 document.getElementById('seconds').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
             }
@@ -2803,137 +2792,92 @@
         // ===========================================
         // SCROLL REVEAL
         // ===========================================
-        var reveals = document.querySelectorAll('.reveal, .timeline-item');
-        var observer = new IntersectionObserver(function(entries) {
+        var revealObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-        reveals.forEach(function(el) { observer.observe(el); });
+        document.querySelectorAll('.reveal, .timeline-item').forEach(function(el) {
+            revealObserver.observe(el);
+        });
 
         // ===========================================
         // PARALLAX
         // ===========================================
         document.addEventListener('scroll', function() {
-            var gridLines = document.querySelector('.grid-lines');
-            if (gridLines) {
-                gridLines.style.transform = 'translateY(' + (window.pageYOffset * 0.1) + 'px)';
-            }
+            var gl = document.querySelector('.grid-lines');
+            if (gl) gl.style.transform = 'translateY(' + (window.pageYOffset * 0.1) + 'px)';
         });
 
         // ===========================================
         // STAT COUNTER
         // ===========================================
-        var counters = document.querySelectorAll('.stat-number');
         var counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    var target = entry.target;
-                    var value = target.innerText;
-                    var numericValue = parseInt(value.replace(/\D/g, ''));
-                    var suffix = value.replace(/[0-9]/g, '');
-                    var current = 0;
-                    var increment = numericValue / 60;
+                    var t = entry.target;
+                    var raw = t.innerText;
+                    var num = parseInt(raw.replace(/\D/g, ''));
+                    var suffix = raw.replace(/[0-9]/g, '');
+                    var cur = 0, inc = num / 60;
                     var timer = setInterval(function() {
-                        current += increment;
-                        if (current >= numericValue) {
-                            target.innerText = numericValue + suffix;
-                            clearInterval(timer);
-                        } else {
-                            target.innerText = Math.floor(current) + suffix;
-                        }
+                        cur += inc;
+                        if (cur >= num) { t.innerText = num + suffix; clearInterval(timer); }
+                        else t.innerText = Math.floor(cur) + suffix;
                     }, 30);
-                    counterObserver.unobserve(target);
+                    counterObserver.unobserve(t);
                 }
             });
         }, { threshold: 0.5 });
-        counters.forEach(function(counter) { counterObserver.observe(counter); });
+        document.querySelectorAll('.stat-number').forEach(function(c) { counterObserver.observe(c); });
 
         // ===========================================
-        // COMMITTEE CARDS - iOS/TOUCH FIXED
+        // COMMITTEE CARDS — TOUCH / HOVER FLIP
         // ===========================================
         (function() {
-            var committeeCards = document.querySelectorAll('.committee-card');
-            var isTouchDevice = false;
-            
-            function detectTouch() {
-                isTouchDevice = (('ontouchstart' in window) ||
-                    (navigator.maxTouchPoints > 0) ||
-                    (navigator.msMaxTouchPoints > 0) ||
-                    window.matchMedia('(hover: none)').matches);
-                return isTouchDevice;
-            }
-            
-            detectTouch();
-            
-            function updateFlipIndicators() {
-                var flipTexts = document.querySelectorAll('.flip-text');
-                var flipIcons = document.querySelectorAll('.flip-icon');
-                flipTexts.forEach(function(text) {
-                    text.textContent = isTouchDevice ? 'Tap to view agenda' : 'Hover to view agenda';
+            var cards = document.querySelectorAll('.committee-card');
+            var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none)').matches;
+
+            function setIndicators() {
+                document.querySelectorAll('.flip-text').forEach(function(t) {
+                    t.textContent = isTouch ? 'Tap to view agenda' : 'Hover to view agenda';
                 });
-                flipIcons.forEach(function(icon) {
-                    icon.textContent = isTouchDevice ? '👆' : '↻';
+                document.querySelectorAll('.flip-icon').forEach(function(i) {
+                    i.textContent = isTouch ? '👆' : '↻';
                 });
             }
-            
-            updateFlipIndicators();
-            
-            committeeCards.forEach(function(card) {
-                card.addEventListener('touchstart', function(e) {
-                    this.classList.add('touch-active');
-                }, { passive: true });
-                
+            setIndicators();
+
+            cards.forEach(function(card) {
+                card.addEventListener('touchstart', function() { this.classList.add('touch-active'); }, { passive: true });
+                card.addEventListener('touchcancel', function() { this.classList.remove('touch-active'); }, { passive: true });
                 card.addEventListener('touchend', function(e) {
                     e.preventDefault();
                     this.classList.remove('touch-active');
-                    committeeCards.forEach(function(otherCard) {
-                        if (otherCard !== card) {
-                            otherCard.classList.remove('flipped');
-                        }
-                    });
+                    var me = this;
+                    cards.forEach(function(c) { if (c !== me) c.classList.remove('flipped'); });
                     this.classList.toggle('flipped');
                 }, { passive: false });
-                
-                card.addEventListener('touchcancel', function(e) {
-                    this.classList.remove('touch-active');
-                }, { passive: true });
-                
-                card.addEventListener('click', function(e) {
-                    if (isTouchDevice) return;
-                    if (window.matchMedia('(hover: none)').matches) {
-                        e.preventDefault();
-                        committeeCards.forEach(function(otherCard) {
-                            if (otherCard !== card) {
-                                otherCard.classList.remove('flipped');
-                            }
-                        });
-                        this.classList.toggle('flipped');
-                    }
+                card.addEventListener('click', function() {
+                    if (!isTouch && !window.matchMedia('(hover: none)').matches) return;
+                    var me = this;
+                    cards.forEach(function(c) { if (c !== me) c.classList.remove('flipped'); });
+                    this.classList.toggle('flipped');
                 });
             });
-            
+
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.committee-card')) {
-                    committeeCards.forEach(function(card) {
-                        card.classList.remove('flipped');
-                    });
-                }
+                if (!e.target.closest('.committee-card'))
+                    cards.forEach(function(c) { c.classList.remove('flipped'); });
             });
-            
             document.addEventListener('touchend', function(e) {
-                if (!e.target.closest('.committee-card')) {
-                    committeeCards.forEach(function(card) {
-                        card.classList.remove('flipped');
-                    });
-                }
+                if (!e.target.closest('.committee-card'))
+                    cards.forEach(function(c) { c.classList.remove('flipped'); });
             }, { passive: true });
-            
+
             window.addEventListener('resize', function() {
-                detectTouch();
-                updateFlipIndicators();
+                isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none)').matches;
+                setIndicators();
             });
         })();
 
@@ -2941,62 +2885,38 @@
         // FORM FIELD MANAGEMENT
         // ===========================================
         function updateFormFields() {
-            var rollNumberField = document.getElementById('rollNumberField');
+            var rollField    = document.getElementById('rollNumberField');
             var collegeField = document.getElementById('collegeField');
-            var delegationTypeGroup = document.getElementById('delegationTypeGroup');
-            var groupLeaderField = document.getElementById('groupLeaderField');
+            var delTypeGroup = document.getElementById('delegationTypeGroup');
+            var groupField   = document.getElementById('groupLeaderField');
 
             if (selectedDelegation === 'internal') {
-                rollNumberField.classList.add('show');
+                rollField.classList.add('show');
                 collegeField.classList.remove('show');
-                delegationTypeGroup.classList.remove('show');
-                groupLeaderField.classList.remove('show');
+                delTypeGroup.classList.remove('show');
+                groupField.classList.remove('show');
             } else {
-                rollNumberField.classList.remove('show');
+                rollField.classList.remove('show');
                 collegeField.classList.add('show');
-                delegationTypeGroup.classList.add('show');
-                if (selectedDelegationType === 'group') {
-                    groupLeaderField.classList.add('show');
-                } else {
-                    groupLeaderField.classList.remove('show');
-                }
+                delTypeGroup.classList.add('show');
+                groupField.classList[selectedDelegationType === 'group' ? 'add' : 'remove']('show');
             }
         }
 
         function selectDelegation(type) {
             selectedDelegation = type;
-            var intBtn = document.getElementById('internalBtn');
-            var extBtn = document.getElementById('externalBtn');
-            var title = document.getElementById('formTitle');
-            var amount = document.getElementById('paymentAmount');
-
-            if (type === 'internal') {
-                intBtn.classList.add('active');
-                extBtn.classList.remove('active');
-                title.innerText = 'Internal Delegation Registration';
-                amount.innerText = '₹200';
-                selectedDelegationType = 'individual';
-            } else {
-                extBtn.classList.add('active');
-                intBtn.classList.remove('active');
-                title.innerText = 'External Delegation Registration';
-                amount.innerText = '₹600';
-            }
+            document.getElementById('internalBtn').classList[type === 'internal' ? 'add' : 'remove']('active');
+            document.getElementById('externalBtn').classList[type === 'external' ? 'add' : 'remove']('active');
+            document.getElementById('formTitle').innerText  = type === 'internal' ? 'Internal Delegation Registration' : 'External Delegation Registration';
+            document.getElementById('paymentAmount').innerText = type === 'internal' ? '₹200' : '₹600';
+            if (type === 'internal') selectedDelegationType = 'individual';
             updateFormFields();
         }
 
         function selectDelegationType(type) {
             selectedDelegationType = type;
-            var individualBtn = document.getElementById('individualBtn');
-            var groupBtn = document.getElementById('groupBtn');
-
-            if (type === 'individual') {
-                individualBtn.classList.add('active');
-                groupBtn.classList.remove('active');
-            } else {
-                groupBtn.classList.add('active');
-                individualBtn.classList.remove('active');
-            }
+            document.getElementById('individualBtn').classList[type === 'individual' ? 'add' : 'remove']('active');
+            document.getElementById('groupBtn').classList[type === 'group' ? 'add' : 'remove']('active');
             updateFormFields();
         }
 
@@ -3005,230 +2925,180 @@
         // ===========================================
         function handleFileSelect(input) {
             var file = input.files[0];
-            var fileUploadLabel = document.getElementById('fileUploadLabel');
-            var fileNameDisplay = document.getElementById('fileNameDisplay');
-            var fileNameSpan = document.getElementById('fileName');
-
-            if (file) {
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('⚠️ File size must be less than 5MB');
-                    input.value = '';
-                    return;
-                }
-                if (!file.type.startsWith('image/')) {
-                    alert('⚠️ Please upload an image file');
-                    input.value = '';
-                    return;
-                }
-                fileUploadLabel.classList.add('has-file');
-                fileNameDisplay.classList.add('show');
-                fileNameSpan.textContent = file.name;
-            }
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) { alert('⚠️ File size must be less than 5MB'); input.value = ''; return; }
+            if (!file.type.startsWith('image/')) { alert('⚠️ Please upload an image file'); input.value = ''; return; }
+            document.getElementById('fileUploadLabel').classList.add('has-file');
+            document.getElementById('fileNameDisplay').classList.add('show');
+            document.getElementById('fileName').textContent = file.name;
         }
 
         function removeFile() {
-            var input = document.getElementById('inputScreenshot');
-            var fileUploadLabel = document.getElementById('fileUploadLabel');
-            var fileNameDisplay = document.getElementById('fileNameDisplay');
-            input.value = '';
-            fileUploadLabel.classList.remove('has-file');
-            fileNameDisplay.classList.remove('show');
+            document.getElementById('inputScreenshot').value = '';
+            document.getElementById('fileUploadLabel').classList.remove('has-file');
+            document.getElementById('fileNameDisplay').classList.remove('show');
         }
 
         // ===========================================
-        // FORM SUBMISSION — FIXED
-        // Bug 1 fixed: autoresponse is now a single flat string (no \n chars that
-        //              could corrupt the JSON body sent to FormSubmit).
-        // Bug 2 fixed: catch block no longer silently calls showSuccess(); it now
-        //              surfaces the real error so the submission isn't lost.
+        // FORM SUBMISSION — FormSubmit AJAX
         // ===========================================
         async function submitForm() {
-            var fullName = document.getElementById('inputFullName').value.trim();
-            var email = document.getElementById('inputEmail').value.trim();
-            var phone = document.getElementById('inputPhone').value.trim();
-            var college = document.getElementById('inputCollege').value.trim();
-            var rollNumber = document.getElementById('inputRollNumber').value.trim();
-            var year = document.getElementById('inputYear').value;
-            var branch = document.getElementById('inputBranch').value.trim();
-            var section = document.getElementById('inputSection').value.trim();
-            var committee = document.getElementById('inputCommittee').value;
-            var preference1 = document.getElementById('inputPreference1').value.trim();
-            var preference2 = document.getElementById('inputPreference2').value.trim();
-            var preference3 = document.getElementById('inputPreference3').value.trim();
-            var munExp = document.getElementById('inputMunExp').value.trim();
-            var previousAwards = document.getElementById('inputPreviousAwards').value.trim();
-            var transactionId = document.getElementById('inputTransactionId').value.trim();
-            var groupLeaderPhone = document.getElementById('inputGroupLeaderPhone').value.trim();
+            // --- Gather values ---
+            var fullName       = document.getElementById('inputFullName').value.trim();
+            var email          = document.getElementById('inputEmail').value.trim();
+            var phone          = document.getElementById('inputPhone').value.trim();
+            var college        = document.getElementById('inputCollege').value.trim();
+            var rollNumber     = document.getElementById('inputRollNumber').value.trim();
+            var year           = document.getElementById('inputYear').value;
+            var branch         = document.getElementById('inputBranch').value.trim();
+            var section        = document.getElementById('inputSection').value.trim();
+            var committee      = document.getElementById('inputCommittee').value;
+            var pref1          = document.getElementById('inputPreference1').value.trim();
+            var pref2          = document.getElementById('inputPreference2').value.trim();
+            var pref3          = document.getElementById('inputPreference3').value.trim();
+            var munExp         = document.getElementById('inputMunExp').value.trim();
+            var awards         = document.getElementById('inputPreviousAwards').value.trim();
+            var txnId          = document.getElementById('inputTransactionId').value.trim();
+            var groupLeader    = document.getElementById('inputGroupLeaderPhone').value.trim();
             var screenshotFile = document.getElementById('inputScreenshot').files[0];
 
-            if (!fullName || !email || !phone || !year || !branch || !section || !committee || !munExp || !previousAwards || !transactionId) {
-                alert('⚠️ Please fill in all required fields.');
-                return;
+            // --- Validation ---
+            if (!fullName || !email || !phone || !year || !branch || !section || !committee || !munExp || !awards || !txnId) {
+                alert('⚠️ Please fill in all required fields.'); return;
             }
             if (selectedDelegation === 'internal' && !rollNumber) {
-                alert('⚠️ Please enter your Roll Number.');
-                return;
+                alert('⚠️ Please enter your Roll Number.'); return;
             }
             if (selectedDelegation === 'external' && !college) {
-                alert('⚠️ Please enter your College/Institution name.');
-                return;
+                alert('⚠️ Please enter your College/Institution name.'); return;
             }
-            if (!preference1 || !preference2 || !preference3) {
-                alert('⚠️ Please enter all three portfolio preferences.');
-                return;
+            if (!pref1 || !pref2 || !pref3) {
+                alert('⚠️ Please enter all three portfolio preferences.'); return;
             }
-            if (selectedDelegation === 'external' && selectedDelegationType === 'group' && !groupLeaderPhone) {
-                alert('⚠️ Please enter the Group Leader Phone Number.');
-                return;
+            if (selectedDelegation === 'external' && selectedDelegationType === 'group' && !groupLeader) {
+                alert('⚠️ Please enter the Group Leader Phone Number.'); return;
             }
             if (!screenshotFile) {
-                alert('⚠️ Please upload your payment screenshot.');
-                return;
+                alert('⚠️ Please upload your payment screenshot.'); return;
             }
-            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-                alert('⚠️ Please enter a valid email address.');
-                return;
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('⚠️ Please enter a valid email address.'); return;
             }
-            var phoneDigits = phone.replace(/\D/g, '');
-            if (phoneDigits.length < 10) {
-                alert('⚠️ Please enter a valid phone number.');
-                return;
+            if (phone.replace(/\D/g, '').length < 10) {
+                alert('⚠️ Please enter a valid phone number.'); return;
             }
 
             var btn = document.getElementById('submitBtn');
-            var originalBtnText = btn.innerHTML;
+            var originalText = btn.innerHTML;
             btn.innerHTML = 'Uploading Screenshot... ⏳';
             btn.disabled = true;
 
-            // Step 1: Upload image to ImgBB
+            // --- Step 1: Upload screenshot to ImgBB ---
             var screenshotUrl = '';
             try {
-                var imgFormData = new FormData();
-                imgFormData.append('image', screenshotFile);
-                var imgResponse = await fetch('https://api.imgbb.com/1/upload?key=' + IMGBB_API_KEY, {
+                var imgData = new FormData();
+                imgData.append('image', screenshotFile);
+                var imgRes = await fetch('https://api.imgbb.com/1/upload?key=' + IMGBB_API_KEY, {
                     method: 'POST',
-                    body: imgFormData
+                    body: imgData
                 });
-                var imgResult = await imgResponse.json();
-                if (imgResult.success) {
-                    screenshotUrl = imgResult.data.url;
-                } else {
-                    throw new Error('ImgBB upload failed: ' + (imgResult.error && imgResult.error.message || 'unknown error'));
-                }
-            } catch (error) {
-                console.error('❌ Image upload error:', error);
-                alert('⚠️ Failed to upload screenshot. Please check your internet connection and try again.');
-                btn.innerHTML = originalBtnText;
+                var imgJson = await imgRes.json();
+                if (!imgJson.success) throw new Error(imgJson.error && imgJson.error.message || 'ImgBB upload failed');
+                screenshotUrl = imgJson.data.url;
+            } catch (err) {
+                console.error('Image upload error:', err);
+                alert('⚠️ Failed to upload screenshot. Check your connection and try again.');
+                btn.innerHTML = originalText;
                 btn.disabled = false;
                 return;
             }
 
             btn.innerHTML = 'Submitting Registration... ⏳';
 
-            var delegationTypeText = selectedDelegation === 'internal'
+            // --- Step 2: Build FormData for FormSubmit (multipart, no JSON) ---
+            var delegationLabel = selectedDelegation === 'internal'
                 ? 'Internal'
                 : 'External (' + (selectedDelegationType === 'individual' ? 'Individual' : 'Group') + ')';
 
-            // FIX 1: Single flat string — no newline characters that corrupt JSON
-            var delegationInfo = selectedDelegation === 'internal'
-                ? ('Roll No: ' + rollNumber)
-                : ('College: ' + college);
-            var autoResponseMessage = 'Dear ' + fullName + ', your NNRG MUN 2026 registration is confirmed! ' + delegationInfo + ' | Year: ' + year + ' | Branch: ' + branch + ' | Section: ' + section + ' | Committee: ' + committee + ' | Delegation: ' + delegationTypeText + ' | Preferences: 1.' + preference1 + ' 2.' + preference2 + ' 3.' + preference3 + ' | MUN Exp: ' + munExp + ' | Awards: ' + previousAwards + ' | Fee: ' + (selectedDelegation === 'internal' ? 'Rs.200' : 'Rs.600') + ' | Txn ID: ' + transactionId + '. Conference: March 12-13 2026, NNRG Campus, Hyderabad. For queries email munnnrg@gmail.com - NNRG MUN Team';
+            var fd = new FormData();
 
-            var formData = {
-                _subject: 'NNRG MUN 2026 Registration - ' + fullName,
-                _template: 'table',
-                _captcha: 'false',
-                _replyto: email,
-                _autoresponse: autoResponseMessage,
+            // FormSubmit special fields
+            fd.append('_subject',  'NNRG MUN 2026 Registration — ' + fullName);
+            fd.append('_template', 'table');
+            fd.append('_captcha',  'false');
+            fd.append('_replyto',  email);
 
-                'Delegation Type': delegationTypeText,
-                'Full Name': fullName,
-                'Email': email,
-                'Phone Number': phone,
-                'Year': year,
-                'Branch': branch,
-                'Section': section.toUpperCase(),
-                'Preferred Committee': committee,
-                'Portfolio Preference 1': preference1,
-                'Portfolio Preference 2': preference2,
-                'Portfolio Preference 3': preference3,
-                'MUN Experience': munExp,
-                'Previous Awards': previousAwards,
-                'Transaction ID': transactionId,
-                'Payment Screenshot': screenshotUrl,
-                'Registration Fee': selectedDelegation === 'internal' ? 'Rs.200' : 'Rs.600',
-                'Submission Time': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-            };
+            // Registration data
+            fd.append('Delegation Type',       delegationLabel);
+            fd.append('Full Name',             fullName);
+            fd.append('Email',                 email);
+            fd.append('Phone Number',          phone);
+            if (selectedDelegation === 'internal') fd.append('Roll Number',         rollNumber);
+            if (selectedDelegation === 'external') fd.append('College/Institution', college);
+            if (selectedDelegation === 'external' && selectedDelegationType === 'group')
+                fd.append('Group Leader Phone', groupLeader);
+            fd.append('Year',                  year);
+            fd.append('Branch',                branch);
+            fd.append('Section',               section.toUpperCase());
+            fd.append('Preferred Committee',   committee);
+            fd.append('Portfolio Preference 1', pref1);
+            fd.append('Portfolio Preference 2', pref2);
+            fd.append('Portfolio Preference 3', pref3);
+            fd.append('MUN Experience',        munExp);
+            fd.append('Previous Awards',       awards);
+            fd.append('Registration Fee',      selectedDelegation === 'internal' ? 'Rs.200' : 'Rs.600');
+            fd.append('Transaction ID',        txnId);
+            fd.append('Payment Screenshot',    screenshotUrl);
+            fd.append('Submission Time',       new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
 
-            if (selectedDelegation === 'internal') {
-                formData['Roll Number'] = rollNumber;
-            }
-            if (selectedDelegation === 'external') {
-                formData['College/Institution'] = college;
-            }
-            if (selectedDelegation === 'external' && selectedDelegationType === 'group') {
-                formData['Group Leader Phone'] = groupLeaderPhone;
+            // --- Step 3: POST to FormSubmit ---
+            try {
+                var res = await fetch('https://formsubmit.co/ajax/munnnrg@gmail.com', {
+                    method: 'POST',
+                    body: fd
+                });
+
+                var result = {};
+                try { result = await res.json(); } catch(e) {}
+
+                if (res.ok && result.success !== false) {
+                    console.log('✅ Registration submitted successfully');
+                    showSuccess();
+                } else {
+                    throw new Error(result.message || ('Server error (status ' + res.status + ')'));
+                }
+            } catch (err) {
+                console.error('Submission error:', err);
+                alert('⚠️ Registration failed: ' + err.message + '\n\nPlease retry or contact munnnrg@gmail.com');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             }
 
             function showSuccess() {
                 document.getElementById('registrationForm').style.display = 'none';
-                document.getElementById('paymentSection').style.display = 'none';
-                var successElement = document.getElementById('successMessage');
-                successElement.classList.add('show');
-                successElement.style.display = 'block';
+                document.getElementById('paymentSection').style.display   = 'none';
+                var msg = document.getElementById('successMessage');
+                msg.classList.add('show');
+                msg.style.display = 'block';
 
-                document.getElementById('inputFullName').value = '';
-                document.getElementById('inputEmail').value = '';
-                document.getElementById('inputPhone').value = '';
-                document.getElementById('inputCollege').value = '';
-                document.getElementById('inputRollNumber').value = '';
-                document.getElementById('inputYear').value = '';
-                document.getElementById('inputBranch').value = '';
-                document.getElementById('inputSection').value = '';
+                // Clear all fields
+                ['inputFullName','inputEmail','inputPhone','inputCollege','inputRollNumber',
+                 'inputBranch','inputSection','inputPreference1','inputPreference2',
+                 'inputPreference3','inputMunExp','inputPreviousAwards',
+                 'inputTransactionId','inputGroupLeaderPhone'].forEach(function(id) {
+                    var el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+                document.getElementById('inputYear').value      = '';
                 document.getElementById('inputCommittee').value = '';
-                document.getElementById('inputPreference1').value = '';
-                document.getElementById('inputPreference2').value = '';
-                document.getElementById('inputPreference3').value = '';
-                document.getElementById('inputMunExp').value = '';
-                document.getElementById('inputPreviousAwards').value = '';
-                document.getElementById('inputTransactionId').value = '';
-                document.getElementById('inputGroupLeaderPhone').value = '';
                 removeFile();
 
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
+                btn.innerHTML = originalText;
+                btn.disabled  = false;
 
                 setTimeout(function() {
-                    successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
-            }
-
-            // FIX 2: Properly check response and surface real errors
-            try {
-                var response = await fetch(FORMSUBMIT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                var result = {};
-                try { result = await response.json(); } catch(e) {}
-
-                if (response.ok && result.success !== false) {
-                    console.log('✅ Form submitted successfully');
-                    showSuccess();
-                } else {
-                    throw new Error(result.message || ('Server returned status ' + response.status + '. Please try again.'));
-                }
-            } catch (error) {
-                console.error('❌ Submission error:', error);
-                alert('⚠️ Registration failed: ' + error.message + ' Please retry or contact munnnrg@gmail.com');
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
             }
         }
     </script>
